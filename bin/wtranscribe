@@ -1,0 +1,24 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -e
+mkdir -p $HOME/tmp
+
+IN="$1"
+MODEL=$HOME/src/whisper.cpp/models/ggml-medium.bin
+BASENAME=$(basename "$IN"); BASENAME=${BASENAME%.*}
+OUTDIR=$(dirname "$IN")
+mkdir -p "$OUTDIR"
+
+ffmpeg -y -i "$IN" -ar 16000 -ac 1 -c:a pcm_s16le $HOME/tmp/${BASENAME}.wav
+
+$HOME/src/whisper.cpp/build/bin/whisper-cli \
+  -f $HOME/tmp/${BASENAME}.wav \
+  -m "$MODEL" -l ja -otxt \
+  -of "$OUTDIR/${BASENAME}"
+
+TXT="$OUTDIR/${BASENAME}.txt"
+TMP="$HOME/tmp/${BASENAME}_nodup.txt"
+
+awk '{sub(/^\[.*\]  */, ""); if(!seen[$0]++) print}' "$TXT" > "$TMP"
+mv "$TMP" "$TXT"
+
+echo "✅ 重複削除済み → $TXT"

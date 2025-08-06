@@ -1,0 +1,31 @@
+[0628/143139.463075] [INFO:main.cc(55)] Using temp dir /data/misc/update_engine/tmp
+[0628/143139.463729] [INFO:main.cc(64)] A/B Update Engine starting
+[0628/143139.476969] [INFO:BootControlClient.cpp(416)] Using AIDL version of IBootControl
+[0628/143139.480780] [INFO:boot_control_android.cc(64)] Loaded boot control hal.
+[0628/143139.498716] [ERROR:update_attempter_android.cc(1092)] prefs_->GetInt64(kPrefsPreviousSlot, &previous_slot) failed.
+[0628/143139.710593] [INFO:update_attempter_android.cc(226)] OTAResult::NOT_ATTEMPTED
+[0628/143139.716641] [INFO:update_attempter_android.cc(985)] Clearing update complete marker.
+[0628/143139.717252] [INFO:update_attempter_android.cc(1470)] Scheduling CleanupPreviousUpdateAction.
+[0628/143139.723139] [INFO:dynamic_partition_control_android.cc(1006)] SnapshotManager initialized.
+[0628/143139.799357] [INFO:action_processor.cc(51)] ActionProcessor: starting CleanupPreviousUpdateAction
+[0628/143139.878581] [INFO:cleanup_previous_update_action.cc(151)] Starting/resuming CleanupPreviousUpdateAction
+[0628/143145.886536] [INFO:cleanup_previous_update_action.cc(192)] Boot completed, waiting on markBootSuccessful()
+[0628/143145.889740] [INFO:boot_config.cpp(46)] [libfstab] Using Android DT directory /proc/device-tree/firmware/android/
+[0628/143145.933345] [INFO:snapshot.cpp(4145)] EnsureMetadataMounted does nothing in Android mode.
+[0628/143145.934070] [INFO:snapshot_stats.cpp(40)] Read merge statistics file failed: No such file or directory
+[0628/143145.953468] [INFO:cleanup_previous_update_action.cc(291)] Waiting for any previous merge request to complete. This can take up to several minutes.
+[0628/143145.967321] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: None
+[0628/143145.975619] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: None
+[0628/143145.977073] [INFO:cleanup_previous_update_action.cc(328)] Can't find any snapshot to merge.
+[0628/143145.977853] [INFO:snapshot.cpp(247)] Cancelling update from state: 0
+[0628/143145.978997] [INFO:snapshot.cpp(352)] Removing all update state.
+[0628/143146.002150] [INFO:BootControlClient.cpp(416)] Using AIDL version of IBootControl
+[0628/143146.023455] [INFO:cleanup_previous_update_action.cc(133)] Stopping/suspending/completing CleanupPreviousUpdateAction
+[0628/143146.077416] [INFO:cleanup_previous_update_action.cc(513)] Not reporting merge stats because state is None
+[0628/143146.078696] [INFO:cleanup_previous_update_action.cc(133)] Stopping/suspending/completing CleanupPreviousUpdateAction
+[0628/143146.079873] [INFO:action_processor.cc(116)] ActionProcessor: finished last action CleanupPreviousUpdateAction with code ErrorCode::kSuccess
+[0628/143146.080551] [INFO:update_attempter_android.cc(733)] Processing Done.
+[0628/143146.099342] [INFO:dynamic_partition_control_android.cc(354)] Destroying [] from device mapper
+[0628/143146.118872] [INFO:dynamic_partition_control_android.cc(358)] UnmapAllPartitions done
+[0628/143146.121132] [INFO:update_attempter_android.cc(985)] Clearing update complete marker.
+[0628/143146.124392] [INFO:update_attempter_android.cc(882)] Terminating cleanup previous update.

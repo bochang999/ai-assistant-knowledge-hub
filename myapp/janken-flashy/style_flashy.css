@@ -1,0 +1,432 @@
+/* 🎨 FLASHY JANKEN - 派手な一般向けバージョン */
+
+:root {
+    /* 鮮やかなカラーパレット */
+    --primary-gradient: linear-gradient(135deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #feca57);
+    --secondary-gradient: linear-gradient(45deg, #667eea, #764ba2);
+    --accent-gradient: linear-gradient(90deg, #fa709a, #fee140);
+    --success-gradient: linear-gradient(45deg, #56ab2f, #a8e6cf);
+    --danger-gradient: linear-gradient(45deg, #fc466b, #3f5efb);
+    --neon-blue: #00ffff;
+    --neon-pink: #ff00ff;
+    --neon-green: #00ff00;
+    --neon-yellow: #ffff00;
+    
+    /* アニメーション設定 */
+    --bounce-timing: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --elastic-timing: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    --spring-timing: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Arial Black', Arial, sans-serif;
+    background: var(--primary-gradient);
+    background-size: 400% 400%;
+    animation: gradientShift 8s ease infinite;
+    color: white;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* 背景グラデーションアニメーション */
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* パーティクルエフェクト背景 */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 107, 107, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(78, 205, 196, 0.1) 0%, transparent 50%);
+    animation: floatParticles 20s linear infinite;
+    pointer-events: none;
+    z-index: -1;
+}
+
+@keyframes floatParticles {
+    0% { transform: translateY(0) rotate(0deg); }
+    100% { transform: translateY(-100vh) rotate(360deg); }
+}
+
+.container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+/* ヘッダー */
+header h1 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 30px;
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: titleBounce 2s var(--bounce-timing) infinite;
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+    position: relative;
+    white-space: nowrap;
+}
+
+header h1::after {
+    content: '✨';
+    position: absolute;
+    animation: sparkle 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes titleBounce {
+    0%, 100% { transform: scale(1) rotate(0deg); }
+    50% { transform: scale(1.1) rotate(2deg); }
+}
+
+@keyframes sparkle {
+    0% { opacity: 0.5; transform: scale(0.8); }
+    100% { opacity: 1; transform: scale(1.2); }
+}
+
+/* ゲーム情報エリア */
+.game-info {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 30px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    animation: infoGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes infoGlow {
+    0% { box-shadow: 0 8px 32px rgba(0, 255, 255, 0.3); }
+    100% { box-shadow: 0 8px 32px rgba(255, 0, 255, 0.3); }
+}
+
+.round-info {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.score-info {
+    display: flex;
+    justify-content: space-around;
+}
+
+.score-item {
+    text-align: center;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 15px;
+    background: var(--secondary-gradient);
+    animation: scoreFloat 4s ease-in-out infinite;
+}
+
+.score-item:nth-child(1) { animation-delay: 0s; }
+.score-item:nth-child(2) { animation-delay: 0.5s; }
+
+@keyframes scoreFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+/* 選択ボタン */
+.choices {
+    display: flex;
+    justify-content: space-around;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.choice-button {
+    background: var(--primary-gradient);
+    border: none;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    cursor: pointer;
+    transition: all 0.3s var(--elastic-timing);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    border: 3px solid rgba(255, 255, 255, 0.4);
+    position: relative;
+    overflow: hidden;
+}
+
+.choice-button::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transform: rotate(45deg);
+    animation: shimmer 2s linear infinite;
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+    100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+}
+
+.choice-button:hover {
+    transform: scale(1.2) rotate(10deg);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+    animation: rainbow 1s linear infinite;
+}
+
+@keyframes rainbow {
+    0% { filter: hue-rotate(0deg); }
+    100% { filter: hue-rotate(360deg); }
+}
+
+.choice-button:active {
+    transform: scale(0.9);
+    animation: explosion 0.5s var(--bounce-timing);
+}
+
+@keyframes explosion {
+    0% { transform: scale(0.9); box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7); }
+    70% { transform: scale(1.1); box-shadow: 0 0 0 20px rgba(255, 255, 255, 0); }
+    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
+}
+
+.choice-icon {
+    font-size: 2rem;
+    display: block;
+    animation: iconSpin 3s linear infinite;
+}
+
+@keyframes iconSpin {
+    0% { transform: rotate(0deg) scale(1); }
+    25% { transform: rotate(90deg) scale(1.1); }
+    50% { transform: rotate(180deg) scale(1); }
+    75% { transform: rotate(270deg) scale(1.1); }
+    100% { transform: rotate(360deg) scale(1); }
+}
+
+.choice-text {
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin-top: 5px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+/* バトルエリア */
+.battle-area {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.battle-area::before {
+    content: '⚡';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3rem;
+    animation: lightning 1s ease-in-out infinite alternate;
+    z-index: 2;
+}
+
+@keyframes lightning {
+    0% { color: var(--neon-yellow); text-shadow: 0 0 10px var(--neon-yellow); }
+    100% { color: var(--neon-blue); text-shadow: 0 0 20px var(--neon-blue); }
+}
+
+.choice-display {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+}
+
+.choice-result {
+    font-size: 4rem;
+    margin-bottom: 10px;
+    animation: resultPulse 2s ease-in-out infinite;
+}
+
+@keyframes resultPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+.choice-label {
+    font-weight: bold;
+    font-size: 1rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+.vs-text {
+    font-size: 2rem;
+    font-weight: bold;
+    background: var(--danger-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: vsShake 0.5s ease-in-out infinite alternate;
+}
+
+@keyframes vsShake {
+    0% { transform: rotate(-2deg); }
+    100% { transform: rotate(2deg); }
+}
+
+/* 結果エリア */
+.result-area {
+    text-align: center;
+    margin-bottom: 30px;
+    height: 60px;
+}
+
+.result-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s var(--elastic-timing);
+}
+
+.result-text.show {
+    opacity: 1;
+    transform: translateY(0);
+    animation: resultCelebration 2s var(--bounce-timing);
+}
+
+@keyframes resultCelebration {
+    0% { transform: scale(0.5) rotate(-10deg); }
+    50% { transform: scale(1.2) rotate(5deg); }
+    100% { transform: scale(1) rotate(0deg); }
+}
+
+.result-text.win {
+    background: var(--success-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: winFireworks 1s ease-out;
+}
+
+@keyframes winFireworks {
+    0% { text-shadow: 0 0 0 var(--neon-green); }
+    50% { text-shadow: 0 0 30px var(--neon-green), 0 0 40px var(--neon-green); }
+    100% { text-shadow: 0 0 10px var(--neon-green); }
+}
+
+.result-text.lose {
+    background: var(--danger-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.result-text.draw {
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* 最終結果ボタン */
+#final-result-btn {
+    background: var(--primary-gradient) !important;
+    color: white !important;
+    font-size: 20px !important;
+    font-weight: bold !important;
+    padding: 30px !important;
+    text-align: center !important;
+    cursor: pointer !important;
+    border-radius: 25px !important;
+    border: 5px solid rgba(255, 255, 255, 0.8) !important;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3) !important;
+    animation: finalButtonMega 2s var(--bounce-timing) infinite !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+#final-result-btn::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, var(--neon-pink), var(--neon-blue), var(--neon-green), var(--neon-yellow));
+    z-index: -1;
+    border-radius: 25px;
+    animation: borderRainbow 2s linear infinite;
+}
+
+@keyframes borderRainbow {
+    0% { filter: hue-rotate(0deg); }
+    100% { filter: hue-rotate(360deg); }
+}
+
+@keyframes finalButtonMega {
+    0%, 100% { 
+        transform: scale(1) rotate(0deg); 
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    }
+    50% { 
+        transform: scale(1.05) rotate(1deg); 
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+    }
+}
+
+/* 無効化状態 */
+.choice-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    animation: none;
+}
+
+.choice-button:disabled:hover {
+    transform: none;
+    animation: none;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 2rem;
+    }
+    
+    .choice-button {
+        width: 70px;
+        height: 70px;
+    }
+    
+    .choice-icon {
+        font-size: 1.8rem;
+    }
+    
+    .choice-result {
+        font-size: 3rem;
+    }
+}

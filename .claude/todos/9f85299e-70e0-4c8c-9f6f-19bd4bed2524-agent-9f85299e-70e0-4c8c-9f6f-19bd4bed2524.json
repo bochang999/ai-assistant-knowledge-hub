@@ -1,0 +1,56 @@
+[
+  {
+    "content": "シンデレラ物語プロジェクトフォルダの作成",
+    "status": "completed",
+    "priority": "high",
+    "id": "1"
+  },
+  {
+    "content": "プロジェクト管理ファイル（requirements.md, spec.md, tasks.md, devlog.md）の作成",
+    "status": "completed",
+    "priority": "high",
+    "id": "2"
+  },
+  {
+    "content": "第1章：継母・義姉たちの悪行とシンデレラの苦難（3756字完成・Notion投稿済み）",
+    "status": "completed",
+    "priority": "high",
+    "id": "3"
+  },
+  {
+    "content": "Notion MCP接続問題の完全解決（OPENAPI_MCP_HEADERS方式で解決済み）",
+    "status": "completed",
+    "priority": "high",
+    "id": "4"
+  },
+  {
+    "content": "第2章：舞踏会の知らせと嘲笑（3000字）の執筆",
+    "status": "in_progress",
+    "priority": "high",
+    "id": "5"
+  },
+  {
+    "content": "第3章：妖精の魔法と舞踏会（3000字）の執筆",
+    "status": "pending",
+    "priority": "medium",
+    "id": "6"
+  },
+  {
+    "content": "第4章：ガラスの靴の捜索と逆転劇（3000字）の執筆",
+    "status": "pending",
+    "priority": "medium",
+    "id": "7"
+  },
+  {
+    "content": "第5章：最終的な報いとハッピーエンド（3000字）の執筆",
+    "status": "pending",
+    "priority": "medium",
+    "id": "8"
+  },
+  {
+    "content": "完成版のNotionへの投稿",
+    "status": "pending",
+    "priority": "low",
+    "id": "9"
+  }
+]

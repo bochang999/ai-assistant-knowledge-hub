@@ -1,0 +1,38 @@
+[
+  {
+    "content": "インストール成功確認",
+    "status": "completed",
+    "priority": "high",
+    "id": "install-success"
+  },
+  {
+    "content": "devlog.mdに成功体験を記録",
+    "status": "completed",
+    "priority": "high",
+    "id": "devlog-success"
+  },
+  {
+    "content": "CLAUDE.mdにノウハウ追加",
+    "status": "completed",
+    "priority": "high",
+    "id": "claude-md-update"
+  },
+  {
+    "content": "tarotプロジェクトのdevlog.mdコミット",
+    "status": "completed",
+    "priority": "high",
+    "id": "git-prepare"
+  },
+  {
+    "content": "アイコン変更成功確認",
+    "status": "pending",
+    "priority": "medium",
+    "id": "icon-verification"
+  },
+  {
+    "content": "アプリ更新成功確認",
+    "status": "pending",
+    "priority": "medium",
+    "id": "update-verification"
+  }
+]

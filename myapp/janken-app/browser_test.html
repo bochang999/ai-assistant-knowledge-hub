@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ブラウザテスト</title>
+    <style>
+        body { margin: 0; padding: 20px; font-family: Arial, sans-serif; }
+        .choice-button { padding: 20px; margin: 10px; font-size: 18px; cursor: pointer; }
+        .choice-result { font-size: 48px; text-align: center; margin: 20px; }
+        .result-text { font-size: 20px; text-align: center; margin: 20px; }
+        .score { font-size: 16px; margin: 10px; }
+    </style>
+</head>
+<body>
+    <h1>じゃんけんゲーム - ブラウザテスト</h1>
+    
+    <div class="score">
+        ラウンド: <span id="current-round">1</span> / 3
+    </div>
+    <div class="score">
+        プレイヤー: <span id="player-score">0</span>勝
+    </div>
+    <div class="score">
+        コンピューター: <span id="computer-score">0</span>勝
+    </div>
+    
+    <div>
+        <button class="choice-button" data-choice="グー">グー ✊</button>
+        <button class="choice-button" data-choice="チョキ">チョキ ✌️</button>
+        <button class="choice-button" data-choice="パー">パー ✋</button>
+    </div>
+    
+    <div>
+        プレイヤー: <div id="player-choice" class="choice-result">?</div>
+        コンピューター: <div id="computer-choice" class="choice-result">?</div>
+    </div>
+    
+    <div id="round-result" class="result-text"></div>
+    
+    <script src="script_fixed.js"></script>
+</body>
+</html>

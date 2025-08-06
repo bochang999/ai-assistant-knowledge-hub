@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>じゃんけんゲーム</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="description" content="3回勝負のじゃんけんゲーム - スマートフォン対応">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>じゃんけんゲーム</h1>
+        </header>
+
+        <div class="game-info" role="banner" aria-label="ゲーム情報">
+            <div class="round-info" aria-live="polite">
+                <span id="current-round">1</span> / 3 ラウンド
+            </div>
+            <div class="score-info">
+                <div class="score-item" aria-label="プレイヤースコア">
+                    <span class="label">プレイヤー:</span>
+                    <span id="player-score" aria-live="polite">0</span>勝
+                </div>
+                <div class="score-item" aria-label="コンピュータースコア">
+                    <span class="label">コンピューター:</span>
+                    <span id="computer-score" aria-live="polite">0</span>勝
+                </div>
+            </div>
+        </div>
+
+        <main class="game-area" role="main">
+            <div class="choices" role="group" aria-label="じゃんけんの選択肢">
+                <button class="choice-button" data-choice="グー" aria-label="グーを選択">
+                    <span class="choice-icon" aria-hidden="true">✊</span>
+                    <span class="choice-text">グー</span>
+                </button>
+                <button class="choice-button" data-choice="チョキ" aria-label="チョキを選択">
+                    <span class="choice-icon" aria-hidden="true">✌️</span>
+                    <span class="choice-text">チョキ</span>
+                </button>
+                <button class="choice-button" data-choice="パー" aria-label="パーを選択">
+                    <span class="choice-icon" aria-hidden="true">✋</span>
+                    <span class="choice-text">パー</span>
+                </button>
+            </div>
+
+            <div class="battle-area">
+                <div class="player-area">
+                    <div class="choice-display">
+                        <div id="player-choice" class="choice-result">?</div>
+                        <div class="choice-label">プレイヤー</div>
+                    </div>
+                </div>
+                
+                <div class="vs-area">
+                    <span class="vs-text">VS</span>
+                </div>
+                
+                <div class="computer-area">
+                    <div class="choice-display">
+                        <div id="computer-choice" class="choice-result">?</div>
+                        <div class="choice-label">コンピューター</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="result-area">
+                <div id="round-result" class="result-text" aria-live="assertive" aria-label="ラウンド結果"></div>
+            </div>
+        </main>
+
+        <div class="game-controls">
+            <button id="new-game-btn" class="control-button" style="display: none;" aria-label="新しいゲームを開始">
+                新しいゲーム
+            </button>
+        </div>
+
+        <div id="final-result" class="final-result" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="final-result-title">
+            <div class="final-result-content">
+                <h2 id="final-result-title" role="heading" aria-level="2"></h2>
+                <div id="final-result-details" aria-live="polite"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Debug Log Area -->\n    <div id="debug-log" style="position: fixed; bottom: 0; left: 0; right: 0; background: black; color: lime; font-size: 12px; padding: 10px; max-height: 200px; overflow-y: scroll; font-family: monospace; z-index: 9999;"></div>\n\n    <script src="script_debug.js"></script>
+</body>
+</html>

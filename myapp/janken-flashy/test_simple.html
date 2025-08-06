@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug Test</title>
+</head>
+<body>
+    <h1>Debug Test Page</h1>
+    <div id="test-buttons">
+        <button onclick="testLog()">Test Log Function</button>
+        <button onclick="testButton()">Test Button Creation</button>
+        <button onclick="testCopy()">Test Copy Function</button>
+    </div>
+    
+    <script>
+        // Copy debug script functions
+        let logs = [];
+
+        function screenLog(message) {
+            console.log(message);
+            logs.push(message);
+            
+            let debugDiv = document.getElementById('debug-area');
+            if (!debugDiv) {
+                debugDiv = document.createElement('div');
+                debugDiv.id = 'debug-area';
+                debugDiv.style.cssText = `
+                    position: fixed;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                    height: 200px;
+                    background: black;
+                    color: lime;
+                    font-size: 12px;
+                    padding: 10px;
+                    overflow-y: scroll;
+                    font-family: monospace;
+                    z-index: 5000;
+                    border-top: 2px solid lime;
+                `;
+                document.body.appendChild(debugDiv);
+                
+                // コピーボタンを追加
+                const copyBtn = document.createElement('button');
+                copyBtn.textContent = 'COPY ALL LOGS';
+                copyBtn.style.cssText = `
+                    position: fixed;
+                    bottom: 210px;
+                    right: 10px;
+                    background: lime;
+                    color: black;
+                    border: none;
+                    padding: 10px;
+                    font-weight: bold;
+                    cursor: pointer;
+                    z-index: 5001;
+                `;
+                copyBtn.onclick = () => {
+                    const allLogs = logs.join('\n');
+                    navigator.clipboard.writeText(allLogs).then(() => {
+                        copyBtn.textContent = 'COPIED!';
+                        setTimeout(() => copyBtn.textContent = 'COPY ALL LOGS', 1000);
+                    });
+                };
+                document.body.appendChild(copyBtn);
+                screenLog('Debug area and copy button created');
+            }
+            
+            debugDiv.innerHTML = logs.join('<br>');
+            debugDiv.scrollTop = debugDiv.scrollHeight;
+        }
+
+        function testLog() {
+            screenLog('Test log message ' + new Date().getTime());
+        }
+
+        function testButton() {
+            screenLog('Creating test button...');
+            const bigBtn = document.createElement('div');
+            bigBtn.innerHTML = '🔄 TEST BUTTON';
+            bigBtn.style.cssText = `
+                position: fixed;
+                top: 300px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: red;
+                color: white;
+                font-size: 24px;
+                padding: 20px;
+                cursor: pointer;
+                z-index: 99999;
+                border: 5px solid yellow;
+            `;
+            bigBtn.onclick = () => {
+                screenLog('TEST BUTTON CLICKED!');
+                bigBtn.remove();
+            };
+            document.body.appendChild(bigBtn);
+            screenLog('Test button added to page');
+        }
+
+        function testCopy() {
+            screenLog('Testing copy functionality...');
+            if (navigator.clipboard) {
+                screenLog('Clipboard API available');
+            } else {
+                screenLog('Clipboard API NOT available');
+            }
+        }
+
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', () => {
+            screenLog('Test page loaded');
+            screenLog('Browser: ' + navigator.userAgent);
+            screenLog('Viewport: ' + window.innerWidth + 'x' + window.innerHeight);
+        });
+    </script>
+</body>
+</html>

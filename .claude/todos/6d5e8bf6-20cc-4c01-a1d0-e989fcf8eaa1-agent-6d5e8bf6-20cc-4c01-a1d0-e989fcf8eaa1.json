@@ -1,0 +1,44 @@
+[
+  {
+    "content": "ド派手バトルアニメーション実装",
+    "status": "completed",
+    "priority": "high",
+    "id": "1"
+  },
+  {
+    "content": "超派手攻撃エフェクトシステム作成",
+    "status": "completed",
+    "priority": "high",
+    "id": "2"
+  },
+  {
+    "content": "勝利/敗北の超派手演出実装",
+    "status": "completed",
+    "priority": "high",
+    "id": "3"
+  },
+  {
+    "content": "画面全体エフェクトシステム",
+    "status": "completed",
+    "priority": "high",
+    "id": "4"
+  },
+  {
+    "content": "タイミング制御とテスト",
+    "status": "completed",
+    "priority": "medium",
+    "id": "5"
+  },
+  {
+    "content": "既存ゲームシステムとの統合",
+    "status": "completed",
+    "priority": "high",
+    "id": "6"
+  },
+  {
+    "content": "バトルエフェクト動作検証とデバッグ",
+    "status": "in_progress",
+    "priority": "high",
+    "id": "7"
+  }
+]

@@ -1,0 +1,20 @@
+[
+  {
+    "content": "8つのシーンファイルから本文を読み取り",
+    "status": "completed",
+    "priority": "high",
+    "id": "read_scene_content"
+  },
+  {
+    "content": "全シーンを統合して完成版テキストファイルを作成",
+    "status": "completed",
+    "priority": "high",
+    "id": "create_final_text"
+  },
+  {
+    "content": "/storage/emulated/0/Download/に保存",
+    "status": "completed",
+    "priority": "medium",
+    "id": "save_to_download"
+  }
+]

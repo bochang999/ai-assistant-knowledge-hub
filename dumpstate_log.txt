@@ -1,0 +1,317 @@
+Module metadata package name: com.google.android.modulemetadata
+Launching async 'SERIALIZE PERFETTO TRACE'Setting progress: 60/5000 (1%)
+Duration of 'DUMPSYS CRITICAL': 2.35s
+Setting progress: 110/5000 (2%)
+Duration of 'SYSTEM LOG': 3.96s
+Setting progress: 160/5000 (3%)
+Duration of 'EVENT LOG': 0.31s
+Setting progress: 210/5000 (4%)
+Duration of 'STATS LOG': 0.03s
+Setting progress: 260/5000 (5%)
+Duration of 'RADIO LOG': 0.12s
+logcat: Logcat read failure: No such file or directory
+*** command 'logcat -L -b all -v threadtime -v printable -v uid -d *:v' failed: exit code 1
+Start thread pool:1
+Adding dir /cache/recovery (recursive: 1)
+Adding dir /data/misc/recovery (recursive: 1)
+Adding dir /data/misc/update_engine_log (recursive: 1)
+Adding dir /data/misc/update_engine/prefs (recursive: 1)
+Adding dir /data/misc/logd (recursive: 0)
+/data/misc/logd: No such file or directory
+Adding dir /data/misc/prereboot (recursive: 0)
+MOUNT INFO: 140 entries added to zip file
+Setting progress: 300/5000 (6%)
+Setting progress: 350/5000 (7%)
+Duration of 'LPDUMP': 1.03s
+Duration of 'DEVICE-MAPPER': 1.02s
+Adding dir /metadata/ota (recursive: 1)
+execvp on command 'iotop -n 1 -m 100' failed (error: No such file or directory)
+*** command 'iotop -n 1 -m 100' failed: exit code 1
+Setting progress: 405/5000 (8%)
+Adding dir /data/misc/apexdata/com.android.uwb/log (recursive: 1)
+Duration of 'DUMP TRACES': 39.18s
+Duration of 'Wait for ': 35.48s
+shutdown thread pool
+Start thread pool:3
+Setting progress: 450/5000 (9%)
+Warning: Skipping "android.frameworks.cameraservice.service@2.0::ICameraService/default": cannot be fetched from service manager (null)
+Warning: Skipping "android.frameworks.cameraservice.service@2.1::ICameraService/default": cannot be fetched from service manager (null)
+Warning: Skipping "android.frameworks.cameraservice.service@2.2::ICameraService/default": cannot be fetched from service manager (null)
+Warning: Skipping "android.frameworks.sensorservice@1.0::ISensorManager/default": cannot be fetched from service manager (null)
+Warning: Skipping "android.hardware.cas@1.0::IMediaCasService/default": cannot be fetched from service manager (null)
+Warning: Skipping "android.hardware.cas@1.1::IMediaCasService/default": cannot be fetched from service manager (null)
+Warning: Skipping "android.hardware.cas@1.2::IMediaCasService/default": cannot be fetched from service manager (null)
+section 1000 status 1
+section 1000 status 2
+section 1002 status 1
+Warning: Skipping "android.hardware.secure_element@1.0::ISecureElement/SIM1": cannot be fetched from service manager (null)
+Warning: Skipping "android.hardware.secure_element@1.0::ISecureElement/SIM2": cannot be fetched from service manager (null)
+Warning: Skipping "android.hardware.secure_element@1.0::ISecureElement/eSE1": cannot be fetched from service manager (null)
+Warning: Skipping "android.hardware.secure_element@1.0::ISecureElement/eSE2": cannot be fetched from service manager (null)
+Warning: Skipping "android.hardware.secure_element@1.1::ISecureElement/SIM1": cannot be fetched from service manager (null)
+Warning: Skipping "android.hardware.secure_element@1.1::ISecureElement/SIM2": cannot be fetched from service manager (null)
+Warning: Skipping "android.hardware.secure_element@1.1::ISecureElement/eSE1": cannot be fetched from service manager (null)
+Warning: Skipping "android.hardware.secure_element@1.1::ISecureElement/eSE2": cannot be fetched from service manager (null)
+Warning: Skipping "android.hardware.secure_element@1.2::ISecureElement/SIM1": cannot be fetched from service manager (null)
+Warning: Skipping "android.hardware.secure_element@1.2::ISecureElement/SIM2": cannot be fetched from service manager (null)
+Warning: Skipping "android.hardware.secure_element@1.2::ISecureElement/eSE1": cannot be fetched from service manager (null)
+Warning: Skipping "android.hardware.secure_element@1.2::ISecureElement/eSE2": cannot be fetched from service manager (null)
+section 1002 status 2
+section 1109 status 1
+Warning: Skipping "android.hidl.allocator@1.0::IAllocator/ashmem": cannot be fetched from service manager (null)
+Warning: Skipping "android.hidl.base@1.0::IBase/SIM1": cannot be fetched from service manager (null)
+Warning: Skipping "android.hidl.base@1.0::IBase/SIM2": cannot be fetched from service manager (null)
+Warning: Skipping "android.hidl.base@1.0::IBase/ashmem": cannot be fetched from service manager (null)
+Warning: Skipping "android.hidl.base@1.0::IBase/default": cannot be fetched from service manager (null)
+Warning: Skipping "android.hidl.base@1.0::IBase/dm0": cannot be fetched from service manager (null)
+Warning: Skipping "android.hidl.base@1.0::IBase/dm1": cannot be fetched from service manager (null)
+Warning: Skipping "android.hidl.base@1.0::IBase/eSE1": cannot be fetched from service manager (null)
+Warning: Skipping "android.hidl.base@1.0::IBase/eSE2": cannot be fetched from service manager (null)
+section 1109 status 2
+section 1110 status 1
+Warning: Skipping "android.hidl.base@1.0::IBase/rilExternal": cannot be fetched from service manager (null)
+Warning: Skipping "android.hidl.base@1.0::IBase/slot1": cannot be fetched from service manager (null)
+Warning: Skipping "android.hidl.base@1.0::IBase/slot2": cannot be fetched from service manager (null)
+Warning: Skipping "android.hidl.base@1.0::IBase/software": cannot be fetched from service manager (null)
+section 1110 status 2
+section 1111 status 1
+section 1111 status 2
+section 1112 status 1
+section 1112 status 2
+section 1113 status 1
+section 1113 status 2
+section 1114 status 1
+section 1114 status 2
+section 1115 status 1
+Warning: Skipping "android.hidl.token@1.0::ITokenManager/default": cannot be fetched from service manager (null)
+Warning: Skipping "android.system.net.netd@1.0::INetd/default": cannot be fetched from service manager (null)
+Warning: Skipping "android.system.net.netd@1.1::INetd/default": cannot be fetched from service manager (null)
+section 1115 status 2
+Warning: Skipping "android.system.wifi.keystore@1.0::IKeystore/default": cannot be fetched from service manager (null)
+section 1116 status 1
+Warning: Skipping "vendor.google.audiometricext@1.0::IAudioMetricExt/default": cannot be fetched from service manager (null)
+Warning: Skipping "vendor.google.radioext@1.0::IRadioExt/default": cannot be fetched from service manager (null)
+Warning: Skipping "vendor.google.radioext@1.1::IRadioExt/default": cannot be fetched from service manager (null)
+Warning: Skipping "vendor.google.radioext@1.2::IRadioExt/default": cannot be fetched from service manager (null)
+Warning: Skipping "vendor.google.radioext@1.3::IRadioExt/default": cannot be fetched from service manager (null)
+Warning: Skipping "vendor.google.radioext@1.4::IRadioExt/default": cannot be fetched from service manager (null)
+Warning: Skipping "vendor.google.radioext@1.5::IRadioExt/default": cannot be fetched from service manager (null)
+Warning: Skipping "vendor.google.whitechapel.audio.audioext@4.0::IAudioExt/default": cannot be fetched from service manager (null)
+Warning: Skipping "vendor.samsung_slsi.telephony.hardware.oemservice@1.0::IOemService/dm0": cannot be fetched from service manager (null)
+Warning: Skipping "vendor.samsung_slsi.telephony.hardware.oemservice@1.0::IOemService/dm1": cannot be fetched from service manager (null)
+Warning: Skipping "vendor.samsung_slsi.telephony.hardware.radioExternal@1.0::IOemSlsiRadioExternal/rilExternal": cannot be fetched from service manager (null)
+Warning: Skipping "vendor.samsung_slsi.telephony.hardware.radioExternal@1.1::IOemSlsiRadioExternal/rilExternal": cannot be fetched from service manager (null)
+Calling IDumpstateDevice implementation using path /data/user_de/0/com.android.shell/files/bugreports/dumpstate_board.txt
+Calling IDumpstateDevice implementation using path /data/user_de/0/com.android.shell/files/bugreports/dumpstate_board.bin
+Using IDumpstateDevice AIDL HAL*** command 'lshal --all --types=all' failed: exit code 136
+android.frameworks.cameraservice.service@2.0::ICameraService/default does not exist, or no permission to connect.
+*** command 'lshal debug -E android.frameworks.cameraservice.service@2.0::ICameraService/default' failed: exit code 128
+android.frameworks.cameraservice.service@2.1::ICameraService/default does not exist, or no permission to connect.
+*** command 'lshal debug -E android.frameworks.cameraservice.service@2.1::ICameraService/default' failed: exit code 128
+android.frameworks.cameraservice.service@2.2::ICameraService/default does not exist, or no permission to connect.
+*** command 'lshal debug -E android.frameworks.cameraservice.service@2.2::ICameraService/default' failed: exit code 128
+android.frameworks.sensorservice@1.0::ISensorManager/default does not exist, or no permission to connect.
+*** command 'lshal debug -E android.frameworks.sensorservice@1.0::ISensorManager/default' failed: exit code 128
+android.hardware.cas@1.0::IMediaCasService/default does not exist, or no permission to connect.
+*** command 'lshal debug -E android.hardware.cas@1.0::IMediaCasService/default' failed: exit code 128
+android.hardware.cas@1.1::IMediaCasService/default does not exist, or no permission to connect.
+*** command 'lshal debug -E android.hardware.cas@1.1::IMediaCasService/default' failed: exit code 128
+android.hardware.cas@1.2::IMediaCasService/default does not exist, or no permission to connect.
+*** command 'lshal debug -E android.hardware.cas@1.2::IMediaCasService/default' failed: exit code 128
+android.hardware.secure_element@1.0::ISecureElement/SIM1 does not exist, or no permission to connect.
+*** command 'lshal debug -E android.hardware.secure_element@1.0::ISecureElement/SIM1' failed: exit code 128
+android.hardware.secure_element@1.0::ISecureElement/SIM2 does not exist, or no permission to connect.
+*** command 'lshal debug -E android.hardware.secure_element@1.0::ISecureElement/SIM2' failed: exit code 128
+android.hardware.secure_element@1.0::ISecureElement/eSE1 does not exist, or no permission to connect.
+*** command 'lshal debug -E android.hardware.secure_element@1.0::ISecureElement/eSE1' failed: exit code 128
+android.hardware.secure_element@1.0::ISecureElement/eSE2 does not exist, or no permission to connect.
+*** command 'lshal debug -E android.hardware.secure_element@1.0::ISecureElement/eSE2' failed: exit code 128
+android.hardware.secure_element@1.1::ISecureElement/SIM1 does not exist, or no permission to connect.
+*** command 'lshal debug -E android.hardware.secure_element@1.1::ISecureElement/SIM1' failed: exit code 128
+android.hardware.secure_element@1.1::ISecureElement/SIM2 does not exist, or no permission to connect.
+*** command 'lshal debug -E android.hardware.secure_element@1.1::ISecureElement/SIM2' failed: exit code 128
+Duration of 'CPU INFO': 1.00s
+android.hardware.secure_element@1.1::ISecureElement/eSE1 does not exist, or no permission to connect.
+*** command 'lshal debug -E android.hardware.secure_element@1.1::ISecureElement/eSE1' failed: exit code 128
+android.hardware.secure_element@1.1::ISecureElement/eSE2 does not exist, or no permission to connect.
+*** command 'lshal debug -E android.hardware.secure_element@1.1::ISecureElement/eSE2' failed: exit code 128
+android.hardware.secure_element@1.2::ISecureElement/SIM1 does not exist, or no permission to connect.
+*** command 'lshal debug -E android.hardware.secure_element@1.2::ISecureElement/SIM1' failed: exit code 128
+android.hardware.secure_element@1.2::ISecureElement/SIM2 does not exist, or no permission to connect.
+*** command 'lshal debug -E android.hardware.secure_element@1.2::ISecureElement/SIM2' failed: exit code 128
+Setting progress: 500/5000 (10%)
+android.hardware.secure_element@1.2::ISecureElement/eSE1 does not exist, or no permission to connect.
+*** command 'lshal debug -E android.hardware.secure_element@1.2::ISecureElement/eSE1' failed: exit code 128
+android.hardware.secure_element@1.2::ISecureElement/eSE2 does not exist, or no permission to connect.
+*** command 'lshal debug -E android.hardware.secure_element@1.2::ISecureElement/eSE2' failed: exit code 128
+android.hidl.allocator@1.0::IAllocator/ashmem does not exist, or no permission to connect.
+*** command 'lshal debug -E android.hidl.allocator@1.0::IAllocator/ashmem' failed: exit code 128
+android.hidl.base@1.0::IBase/SIM1 does not exist, or no permission to connect.
+*** command 'lshal debug -E android.hidl.base@1.0::IBase/SIM1' failed: exit code 128
+android.hidl.base@1.0::IBase/SIM2 does not exist, or no permission to connect.
+*** command 'lshal debug -E android.hidl.base@1.0::IBase/SIM2' failed: exit code 128
+android.hidl.base@1.0::IBase/ashmem does not exist, or no permission to connect.
+*** command 'lshal debug -E android.hidl.base@1.0::IBase/ashmem' failed: exit code 128
+android.hidl.base@1.0::IBase/default does not exist, or no permission to connect.
+*** command 'lshal debug -E android.hidl.base@1.0::IBase/default' failed: exit code 128
+android.hidl.base@1.0::IBase/dm0 does not exist, or no permission to connect.
+*** command 'lshal debug -E android.hidl.base@1.0::IBase/dm0' failed: exit code 128
+android.hidl.base@1.0::IBase/dm1 does not exist, or no permission to connect.
+*** command 'lshal debug -E android.hidl.base@1.0::IBase/dm1' failed: exit code 128
+android.hidl.base@1.0::IBase/eSE1 does not exist, or no permission to connect.
+*** command 'lshal debug -E android.hidl.base@1.0::IBase/eSE1' failed: exit code 128
+android.hidl.base@1.0::IBase/eSE2 does not exist, or no permission to connect.
+*** command 'lshal debug -E android.hidl.base@1.0::IBase/eSE2' failed: exit code 128
+android.hidl.base@1.0::IBase/rilExternal does not exist, or no permission to connect.
+*** command 'lshal debug -E android.hidl.base@1.0::IBase/rilExternal' failed: exit code 128
+android.hidl.base@1.0::IBase/slot1 does not exist, or no permission to connect.
+*** command 'lshal debug -E android.hidl.base@1.0::IBase/slot1' failed: exit code 128
+android.hidl.base@1.0::IBase/slot2 does not exist, or no permission to connect.
+*** command 'lshal debug -E android.hidl.base@1.0::IBase/slot2' failed: exit code 128
+android.hidl.base@1.0::IBase/software does not exist, or no permission to connect.
+*** command 'lshal debug -E android.hidl.base@1.0::IBase/software' failed: exit code 128
+debug() FAILED on android.hidl.manager@1.2::IServiceManager/default: Status(EX_TRANSACTION_FAILED): 'FAILED_TRANSACTION: '
+android.hidl.token@1.0::ITokenManager/default does not exist, or no permission to connect.
+*** command 'lshal debug -E android.hidl.token@1.0::ITokenManager/default' failed: exit code 128
+android.system.net.netd@1.0::INetd/default does not exist, or no permission to connect.
+*** command 'lshal debug -E android.system.net.netd@1.0::INetd/default' failed: exit code 128
+section 1116 status 2
+section 2001 status 1
+section 2001 status 2
+section 2002 status 1
+section 2002 status 2
+section 2003 status 1
+android.system.net.netd@1.1::INetd/default does not exist, or no permission to connect.
+*** command 'lshal debug -E android.system.net.netd@1.1::INetd/default' failed: exit code 128
+android.system.wifi.keystore@1.0::IKeystore/default does not exist, or no permission to connect.
+*** command 'lshal debug -E android.system.wifi.keystore@1.0::IKeystore/default' failed: exit code 128
+vendor.google.audiometricext@1.0::IAudioMetricExt/default does not exist, or no permission to connect.
+section 2003 status 2
+section 2004 status 1
+section 2004 status 2
+section 2005 status 1
+section 2005 status 2
+section 2006 status 1
+section 2006 status 2
+section 2007 status 1
+section 2007 status 2
+section 3054 status 1
+*** command 'lshal debug -E vendor.google.audiometricext@1.0::IAudioMetricExt/default' timed out after 2.028s (killing pid 13434)
+vendor.google.radioext@1.0::IRadioExt/default does not exist, or no permission to connect.
+*** command 'lshal debug -E vendor.google.radioext@1.0::IRadioExt/default' failed: exit code 128
+vendor.google.radioext@1.1::IRadioExt/default does not exist, or no permission to connect.
+*** command 'lshal debug -E vendor.google.radioext@1.1::IRadioExt/default' failed: exit code 128
+vendor.google.radioext@1.2::IRadioExt/default does not exist, or no permission to connect.
+*** command 'lshal debug -E vendor.google.radioext@1.2::IRadioExt/default' failed: exit code 128
+section 3054 status 2
+section 3055 status 1
+vendor.google.radioext@1.3::IRadioExt/default does not exist, or no permission to connect.
+*** command 'lshal debug -E vendor.google.radioext@1.3::IRadioExt/default' failed: exit code 128
+vendor.google.radioext@1.4::IRadioExt/default does not exist, or no permission to connect.
+*** command 'lshal debug -E vendor.google.radioext@1.4::IRadioExt/default' failed: exit code 128
+section 3055 status 2
+section 3056 status 1
+vendor.google.radioext@1.5::IRadioExt/default does not exist, or no permission to connect.
+*** command 'lshal debug -E vendor.google.radioext@1.5::IRadioExt/default' failed: exit code 128
+vendor.google.whitechapel.audio.audioext@4.0::IAudioExt/default does not exist, or no permission to connect.
+*** command 'lshal debug -E vendor.google.whitechapel.audio.audioext@4.0::IAudioExt/default' failed: exit code 128
+vendor.samsung_slsi.telephony.hardware.oemservice@1.0::IOemService/dm0 does not exist, or no permission to connect.
+*** command 'lshal debug -E vendor.samsung_slsi.telephony.hardware.oemservice@1.0::IOemService/dm0' failed: exit code 128
+vendor.samsung_slsi.telephony.hardware.oemservice@1.0::IOemService/dm1 does not exist, or no permission to connect.
+*** command 'lshal debug -E vendor.samsung_slsi.telephony.hardware.oemservice@1.0::IOemService/dm1' failed: exit code 128
+section 3056 status 2
+done
+Duration of 'INCIDENT REPORT': 4.18s
+vendor.samsung_slsi.telephony.hardware.radioExternal@1.0::IOemSlsiRadioExternal/rilExternal does not exist, or no permission to connect.
+*** command 'lshal debug -E vendor.samsung_slsi.telephony.hardware.radioExternal@1.0::IOemSlsiRadioExternal/rilExternal' failed: exit code 128
+vendor.samsung_slsi.telephony.hardware.radioExternal@1.1::IOemSlsiRadioExternal/rilExternal does not exist, or no permission to connect.
+*** command 'lshal debug -E vendor.samsung_slsi.telephony.hardware.radioExternal@1.1::IOemSlsiRadioExternal/rilExternal' failed: exit code 128
+Duration of 'DUMP HALS': 4.24s
+Duration of 'Wait for ': 2.34s
+Setting progress: 550/5000 (11%)
+Adding dir /system/etc/vintf/ (recursive: 1)
+Adding dir /vendor/etc/vintf/ (recursive: 1)
+Adding dir /product/etc/vintf/ (recursive: 1)
+Adding dir /system_ext/etc/vintf/ (recursive: 1)
+Adding dir /data/misc/nfc/logs (recursive: 1)
+AddAnrTraceDir(): dump_traces_file=/data/user_de/0/com.android.shell/files/bugreports/dumptrace_8jqKpX, anr_traces_dir=/data/anr
+Dumping current ANR traces (/data/user_de/0/com.android.shell/files/bugreports/dumptrace_8jqKpX) to the main bugreport entry
+Setting progress: 605/5000 (12%)
+Setting progress: 655/5000 (13%)
+Setting progress: 700/5000 (14%)
+Setting progress: 750/5000 (15%)
+Setting progress: 800/5000 (16%)
+Setting progress: 850/5000 (17%)
+Setting progress: 900/5000 (18%)
+Setting progress: 950/5000 (19%)
+Setting progress: 1020/5000 (20%)
+Duration of 'CHECKIN BATTERYSTATS': 1.21s
+Setting progress: 1050/5000 (21%)
+Setting progress: 1110/5000 (22%)
+Duration of 'DUMP CHECKINS': 1.72s
+Duration of 'dumpstate_board()': 6.92s
+Duration of 'DUMPSYS HIGH': 59.01s
+Setting progress: 1150/5000 (23%)
+Duration of 'SERVICE HIGH connectivity': 4.90s
+Error: must be root
+Setting progress: 1200/5000 (24%)
+Adding dir /data/misc/snapshotctl_log (recursive: 0)
+execvp on command 'typec_connector_class' failed (error: No such file or directory)
+*** command 'typec_connector_class' failed: exit code 1
+Setting progress: 1255/5000 (25%)
+Can't find service: android.hardware.boot.IBootControl/default
+Failed to start dump thread for service: android.hardware.boot.IBootControl/default, status: -2Can't find service: android.hardware.gatekeeper.IGatekeeper/default
+Failed to start dump thread for service: android.hardware.gatekeeper.IGatekeeper/default, status: -2Error with service 'android.hardware.graphics.allocator.IAllocator/default' while dumping: BAD_VALUE
+Can't find service: android.hardware.usb.IUsb/default
+Failed to start dump thread for service: android.hardware.usb.IUsb/default, status: -2Can't find service: android.hardware.usb.gadget.IUsbGadget/default
+Failed to start dump thread for service: android.hardware.usb.gadget.IUsbGadget/default, status: -2Can't find service: android.hardware.uwb.IUwb/default
+Failed to start dump thread for service: android.hardware.uwb.IUwb/default, status: -2Can't find service: android.hardware.wifi.hostapd.IHostapd/default
+Failed to start dump thread for service: android.hardware.wifi.hostapd.IHostapd/default, status: -2Error with service 'android.os.UpdateEngineService' while dumping PID: FAILED_TRANSACTION
+Error with service 'android.os.UpdateEngineService' while dumping thread info: FAILED_TRANSACTION
+Error with service 'android.os.UpdateEngineService' while dumping clients info: FAILED_TRANSACTION
+Error with service 'android.os.UpdateEngineService' while dumping: FAILED_TRANSACTION
+Error with service 'android.os.UpdateEngineStableService' while dumping PID: FAILED_TRANSACTION
+Error with service 'android.os.UpdateEngineStableService' while dumping thread info: FAILED_TRANSACTION
+Error with service 'android.os.UpdateEngineStableService' while dumping clients info: FAILED_TRANSACTION
+Error with service 'android.os.UpdateEngineStableService' while dumping: FAILED_TRANSACTION
+Can't find service: android.service.gatekeeper.IGateKeeperService
+Failed to start dump thread for service: android.service.gatekeeper.IGateKeeperService, status: -2Can't find service: android.system.vold.IVold/default
+Failed to start dump thread for service: android.system.vold.IVold/default, status: -2Can't find service: com.google.face.debug.IDebugHost/default
+Failed to start dump thread for service: com.google.face.debug.IDebugHost/default, status: -2Can't find service: com.google.face.debug.IDebugManager/default
+Failed to start dump thread for service: com.google.face.debug.IDebugManager/default, status: -2Can't find service: com.google.hardware.pixel.display.IDisplay/default
+Failed to start dump thread for service: com.google.hardware.pixel.display.IDisplay/default, status: -2Can't find service: com.google.pixel.camera.services.binder.IServiceBinder/default
+Failed to start dump thread for service: com.google.pixel.camera.services.binder.IServiceBinder/default, status: -2Can't find service: com.google.pixel.camera.services.cameraidremapper.ICameraIdRemapper/default
+Failed to start dump thread for service: com.google.pixel.camera.services.cameraidremapper.ICameraIdRemapper/default, status: -2Can't find service: com.google.pixel.camera.services.lyricconfigprovider.ILyricConfigProvider/default
+Failed to start dump thread for service: com.google.pixel.camera.services.lyricconfigprovider.ILyricConfigProvider/default, status: -2Can't find service: com.google.pixel.shared_modem_platform.ISharedModemPlatform/default
+Failed to start dump thread for service: com.google.pixel.shared_modem_platform.ISharedModemPlatform/default, status: -2Can't find service: power.stats-vendor
+Failed to start dump thread for service: power.stats-vendor, status: -2Can't find service: vendor.google.bluetooth_ext.IBTChannelAvoidance/default
+Failed to start dump thread for service: vendor.google.bluetooth_ext.IBTChannelAvoidance/default, status: -2Can't find service: vendor.google.bluetooth_ext.IBluetoothCcc/default
+Failed to start dump thread for service: vendor.google.bluetooth_ext.IBluetoothCcc/default, status: -2Can't find service: vendor.google.bluetooth_ext.IBluetoothCco/default
+Failed to start dump thread for service: vendor.google.bluetooth_ext.IBluetoothCco/default, status: -2Can't find service: vendor.google.bluetooth_ext.IBluetoothEwp/default
+Failed to start dump thread for service: vendor.google.bluetooth_ext.IBluetoothEwp/default, status: -2Can't find service: vendor.google.bluetooth_ext.IBluetoothExt/default
+Failed to start dump thread for service: vendor.google.bluetooth_ext.IBluetoothExt/default, status: -2Can't find service: vendor.google.bluetooth_ext.IBluetoothFinder/default
+Failed to start dump thread for service: vendor.google.bluetooth_ext.IBluetoothFinder/default, status: -2Can't find service: vendor.google.bluetooth_ext.IBluetoothSar/default
+Failed to start dump thread for service: vendor.google.bluetooth_ext.IBluetoothSar/default, status: -2Can't find service: vendor.google.wifi_ext.IWifiExt/default
+Failed to start dump thread for service: vendor.google.wifi_ext.IWifiExt/default, status: -2Can't find service: vendor.google.wireless_charger.IWirelessCharger/default
+Failed to start dump thread for service: vendor.google.wireless_charger.IWirelessCharger/default, status: -2Can't find service: vold
+Failed to start dump thread for service: vold, status: -2Duration of 'DUMPSYS': 46.70s
+Adding dir /data/misc/bluetooth/logs (recursive: 1)
+Setting progress: 1315/5000 (26%)
+Setting progress: 1375/5000 (27%)
+Duration of 'APP SERVICES PLATFORM': 2.54s
+Setting progress: 1435/5000 (28%)
+Duration of 'APP SERVICES NON-PLATFORM': 14.06s
+Setting progress: 1495/5000 (29%)
+Duration of 'APP PROVIDERS PLATFORM': 4.97s
+Setting progress: 1555/5000 (31%)
+Duration of 'APP PROVIDERS NON-PLATFORM': 13.17s
+Setting progress: 1615/5000 (32%)
+Adding dir /linkerconfig (recursive: 1)
+Setting progress: 1650/5000 (33%)
+Adding frozen processes from /sys/fs/cgroup
+Duration of 'DUMPSTATE': 151.97s
+Setting progress: 1700/5000 (34%)
+Adding main entry (bugreport-cheetah-BP2A.250605.031.A2-2025-07-13-11-00-57.txt) from /data/user_de/0/com.android.shell/files/bugreports/bugreport-cheetah-BP2A.250605.031.A2-2025-07-13-11-00-57.tmp to .zip bugreport
+dumpstate id 1 finished around 2025/07/13 11:04:16 (199 s)
+Adding zip text entry main_entry.txt
+dumpstate_log.txt entry on zip file logged up to here

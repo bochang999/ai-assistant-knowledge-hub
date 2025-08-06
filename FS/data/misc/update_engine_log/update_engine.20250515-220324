@@ -1,0 +1,29 @@
+[0515/220324.723207] [INFO:main.cc(55)] Using temp dir /data/misc/update_engine/tmp
+[0515/220324.730192] [INFO:main.cc(64)] A/B Update Engine starting
+[0515/220324.909950] [INFO:BootControlClient.cpp(410)] Using AIDL version of IBootControl
+[0515/220324.910660] AIBinder_linkToDeath is being called with a non-null cookie and no onUnlink callback set. This might not be intended. AIBinder_DeathRecipient_setOnUnlinked should be called first.
+[0515/220324.911309] [INFO:boot_control_android.cc(64)] Loaded boot control hal.
+[0515/220324.938575] [ERROR:update_attempter_android.cc(1070)] prefs_->GetInt64(kPrefsPreviousSlot, &previous_slot) failed.
+[0515/220324.939222] [INFO:update_attempter_android.cc(224)] OTAResult::NOT_ATTEMPTED
+[0515/220324.986356] [INFO:update_attempter_android.cc(963)] Clearing update complete marker.
+[0515/220324.986757] [INFO:update_attempter_android.cc(1447)] Scheduling CleanupPreviousUpdateAction.
+[0515/220325.006075] [INFO:action_processor.cc(51)] ActionProcessor: starting CleanupPreviousUpdateAction
+[0515/220325.006529] [INFO:cleanup_previous_update_action.cc(151)] Starting/resuming CleanupPreviousUpdateAction
+[0515/220331.020322] [INFO:cleanup_previous_update_action.cc(192)] Boot completed, waiting on markBootSuccessful()
+[0515/220331.024676] [INFO:boot_config.cpp(46)] [libfstab] Using Android DT directory /proc/device-tree/firmware/android/
+[0515/220331.051852] [INFO:snapshot.cpp(4055)] EnsureMetadataMounted does nothing in Android mode.
+[0515/220331.057314] [INFO:snapshot_stats.cpp(37)] Read merge statistics file failed: No such file or directory
+[0515/220331.073172] [INFO:cleanup_previous_update_action.cc(291)] Waiting for any previous merge request to complete. This can take up to several minutes.
+[0515/220331.094011] [INFO:snapshot.cpp(1148)] CheckMergeState for snapshots returned: None
+[0515/220331.106065] [INFO:snapshot.cpp(1113)] ProcessUpdateState handling state: None
+[0515/220331.107874] [INFO:cleanup_previous_update_action.cc(328)] Can't find any snapshot to merge.
+[0515/220331.120554] [INFO:cleanup_previous_update_action.cc(133)] Stopping/suspending/completing CleanupPreviousUpdateAction
+[0515/220331.138297] [INFO:cleanup_previous_update_action.cc(513)] Not reporting merge stats because state is None
+[0515/220331.143333] [INFO:cleanup_previous_update_action.cc(133)] Stopping/suspending/completing CleanupPreviousUpdateAction
+[0515/220331.153091] [INFO:action_processor.cc(116)] ActionProcessor: finished last action CleanupPreviousUpdateAction with code ErrorCode::kSuccess
+[0515/220331.155150] [INFO:update_attempter_android.cc(711)] Processing Done.
+[0515/220331.178456] [INFO:update_attempter_android.cc(963)] Clearing update complete marker.
+[0515/220331.180461] [INFO:update_attempter_android.cc(858)] Terminating cleanup previous update.
+[0616/021828.786026] [ERROR:BootControlClient.cpp(94)] boot control service AIDL died. Attempting to reconnect...
+[0616/021829.851904] Waited one second for android.hardware.boot.IBootControl/default (is service started? Number of threads started in the threadpool: 1. Are binder threads started and available?)
+[0616/021830.869564] Waited one second for android.hardware.boot.IBootControl/default (is service started? Number of threads started in the threadpool: 1. Are binder threads started and available?)

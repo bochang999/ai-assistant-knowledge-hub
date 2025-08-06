@@ -1,0 +1,26 @@
+[
+  {
+    "content": "Create resources directory for tarot app icon",
+    "status": "completed",
+    "priority": "high",
+    "id": "1"
+  },
+  {
+    "content": "Create tarot-themed icon files (PNG/ICO/ICNS)",
+    "status": "completed",
+    "priority": "high",
+    "id": "2"
+  },
+  {
+    "content": "Investigate version update errors",
+    "status": "in_progress",
+    "priority": "high",
+    "id": "3"
+  },
+  {
+    "content": "Test icon display and build process",
+    "status": "pending",
+    "priority": "medium",
+    "id": "4"
+  }
+]

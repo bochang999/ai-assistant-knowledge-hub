@@ -1,0 +1,872 @@
+[0619/081840.284030] [INFO:main.cc(55)] Using temp dir /data/misc/update_engine/tmp
+[0619/081840.284476] [INFO:main.cc(64)] A/B Update Engine starting
+[0619/081840.288873] [INFO:BootControlClient.cpp(416)] Using AIDL version of IBootControl
+[0619/081840.289148] [INFO:boot_control_android.cc(64)] Loaded boot control hal.
+[0619/081840.502893] [INFO:update_attempter_android.cc(1097)] Detected a slot switch, OTA succeeded, device updated from google/cheetah/cheetah:15/BP1A.250505.005.B1/13277630:user/release-keys to google/cheetah/cheetah:16/BP2A.250605.031.A2/13578606:user/release-keys, previous slot: 0 current slot: 1
+[0619/081840.503135] [INFO:update_attempter_android.cc(226)] OTAResult::OTA_SUCCESSFUL
+[0619/081840.512918] [INFO:update_attempter_android.cc(985)] Clearing update complete marker.
+[0619/081840.548231] [WARNING:metrics_utils.cc(375)] time_to_reboot is negative - system_updated_at: 1/3/1970 6:05:08 GMT current time: 1/1/1970 0:00:45 GMT
+[0619/081840.595281] [INFO:delta_performer.cc(1478)] Resetting recorded hash for prepared partitions.
+[0619/081840.615466] [INFO:update_attempter_android.cc(1470)] Scheduling CleanupPreviousUpdateAction.
+[0619/081840.622779] [INFO:dynamic_partition_control_android.cc(1006)] SnapshotManager initialized.
+[0619/081840.638853] [INFO:action_processor.cc(51)] ActionProcessor: starting CleanupPreviousUpdateAction
+[0619/081840.641343] [INFO:cleanup_previous_update_action.cc(151)] Starting/resuming CleanupPreviousUpdateAction
+[0619/081902.224616] [INFO:cleanup_previous_update_action.cc(192)] Boot completed, waiting on markBootSuccessful()
+[0619/081902.235465] [INFO:snapshot.cpp(4145)] EnsureMetadataMounted does nothing in Android mode.
+[0619/081902.303615] [INFO:snapshot_stats.cpp(40)] Read merge statistics file failed: No such file or directory
+[0619/081902.335705] [INFO:cleanup_previous_update_action.cc(291)] Waiting for any previous merge request to complete. This can take up to several minutes.
+[0619/081902.372073] [INFO:boot_config.cpp(46)] [libfstab] Using Android DT directory /proc/device-tree/firmware/android/
+[0619/081902.418809] [INFO:snapshot.cpp(1739)] Update state is being processed while booting at target slot, taking no action.
+[0619/081902.452656] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Unverified
+[0619/081902.459758] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Unverified
+[0619/081902.478211] [INFO:cleanup_previous_update_action.cc(439)] Attempting to initiate merge.
+[0619/081902.667932] [INFO:BootControlClient.cpp(416)] Using AIDL version of IBootControl
+[0619/081902.761572] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: None
+[0619/081902.763790] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: None
+[0619/081902.766145] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_dlkm_b returned: Merging
+[0619/081902.779898] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_dlkm_b returned: Merging
+[0619/081902.852691] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: None
+[0619/081902.858296] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: None
+[0619/081902.863722] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/081902.867563] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/081904.874227] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: None
+[0619/081904.879260] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: None
+[0619/081904.880533] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_dlkm_b returned: Merging
+[0619/081904.888312] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_dlkm_b returned: Merging
+[0619/081904.892615] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: None
+[0619/081904.894788] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: None
+[0619/081904.897224] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/081904.898982] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/081904.903750] [INFO:cleanup_previous_update_action.cc(403)] Waiting for merge to complete: 19%.
+[0619/081906.911277] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: None
+[0619/081906.936556] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: None
+[0619/081908.188284] Waited one second for gsiservice (is service started? Number of threads started in the threadpool: 1. Are binder threads started and available?)
+[0619/081908.231807] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_dlkm_b returned: MergeCompleted
+[0619/081908.454152] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_dlkm_b returned: MergeCompleted
+[0619/081908.456499] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: None
+[0619/081908.483416] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: None
+[0619/081908.609332] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/081908.635660] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/081908.664880] [INFO:cleanup_previous_update_action.cc(403)] Waiting for merge to complete: 33%.
+[0619/081910.684460] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/081910.686309] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/081910.687477] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/081910.701077] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/081910.727400] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/081910.738761] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/081912.780563] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/081912.868316] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/081912.883617] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/081912.950472] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/081912.956812] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/081912.961318] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/081914.971043] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/081915.043729] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/081915.051560] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/081915.056937] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/081915.092657] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/081915.099163] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/081917.133970] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/081917.146278] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/081917.151673] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/081917.170626] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/081917.178305] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/081917.187051] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/081919.193780] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/081919.196013] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/081919.202037] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/081919.209895] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/081919.210627] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/081919.211529] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/081921.221101] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/081921.223243] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/081921.226736] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/081921.236679] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/081921.239718] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/081921.243338] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/081923.256180] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/081923.697127] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/081923.719299] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/081923.749206] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/081923.765361] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/081923.800985] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/081925.809817] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/081925.860615] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/081925.879784] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/081925.882914] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/081925.883811] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/081925.885470] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/081927.905078] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/081928.004798] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/081928.048928] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/081928.080155] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/081928.158263] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/081928.169568] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/081930.177195] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/081930.196872] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/081930.274609] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/081930.294697] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/081930.295974] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/081930.300124] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/081930.303967] [INFO:cleanup_previous_update_action.cc(403)] Waiting for merge to complete: 34%.
+[0619/081932.329645] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/081932.375008] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/081932.376823] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/081932.452740] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/081932.462494] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/081932.463342] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/081934.470269] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/081934.474849] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/081934.484797] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/081934.491411] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/081934.495053] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/081934.502367] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/081936.520096] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/081936.755303] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/081936.773080] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/081936.778219] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/081936.782911] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/081936.800363] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/081938.804730] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/081938.848474] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/081938.859660] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/081938.945472] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/081938.966403] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/081938.972969] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/081941.012276] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/081941.024541] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/081941.055480] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/081941.087514] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/081941.131066] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/081941.174692] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/081943.226483] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/081943.256708] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/081943.260282] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/081943.262895] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/081943.268463] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/081943.275554] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/081945.281085] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/081945.284569] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/081945.308115] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/081945.340547] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/081945.347551] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/081945.361508] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/081947.368779] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/081947.375808] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/081947.383989] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/081947.397567] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/081947.587803] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/081947.594287] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/081949.599275] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/081949.660391] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/081949.795455] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/081949.839478] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/081949.844510] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/081949.881101] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/081951.933270] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/081951.934752] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/081951.935974] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/081951.944117] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/081951.951986] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/081951.956398] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/081953.978148] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/081954.115173] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/081954.119927] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/081954.159474] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/081954.179652] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/081954.187779] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/081956.198240] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/081956.242567] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/081956.245639] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/081956.359941] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/081956.400821] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/081956.405547] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/081956.409237] [INFO:cleanup_previous_update_action.cc(403)] Waiting for merge to complete: 35%.
+[0619/081958.432702] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/081958.438363] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/081958.449614] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/081958.500198] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/081958.509912] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/081958.567877] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082000.585324] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082000.596811] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/082000.650893] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/082000.688289] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082000.708116] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082000.739813] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082002.752894] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082002.756958] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/082002.759509] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/082002.764493] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082002.766689] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082002.767559] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082004.785977] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082004.794861] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/082004.812651] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/082004.873635] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082004.898539] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082004.917844] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082006.931018] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082006.936834] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/082006.939431] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/082006.946695] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082006.950307] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082006.965689] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082008.991172] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082008.993631] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/082008.999916] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/082009.028456] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082009.053867] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082009.056729] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082011.078349] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082011.353582] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/082011.368503] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/082011.373642] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082011.375906] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082011.384767] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082013.409886] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082013.414295] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/082013.418062] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/082013.425575] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082013.426882] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082013.427924] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082013.432748] [INFO:cleanup_previous_update_action.cc(403)] Waiting for merge to complete: 36%.
+[0619/082015.458417] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082015.461452] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/082015.494943] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/082015.504445] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082015.510416] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082015.515050] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082017.528748] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082017.541863] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/082017.553086] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/082017.555456] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082017.571389] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082017.580872] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082019.609638] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082019.628421] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/082019.630672] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/082019.641164] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082019.643273] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082019.647173] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082021.652814] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082021.734528] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/082021.735942] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/082021.738226] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082021.739542] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082021.740447] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082023.745590] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082023.746947] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/082023.748021] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/082023.752346] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082023.754155] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082023.754839] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082025.762953] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082025.764302] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/082025.766849] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/082025.768047] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082025.770711] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082025.771393] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082027.777760] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082027.779141] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/082027.780836] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/082027.783012] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082027.795527] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082027.802876] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082029.810773] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082029.812015] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/082029.813242] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/082029.814211] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082029.818215] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082029.819357] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082029.830852] [INFO:cleanup_previous_update_action.cc(403)] Waiting for merge to complete: 37%.
+[0619/082031.840679] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082031.845425] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/082031.846796] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/082031.859262] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082031.861353] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082031.899370] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082033.904931] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082033.906629] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/082033.907983] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/082033.909991] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082033.910973] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082033.918059] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082035.924559] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082035.928676] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/082035.931220] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/082035.953148] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082035.954302] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082035.954862] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082035.955819] [INFO:cleanup_previous_update_action.cc(403)] Waiting for merge to complete: 38%.
+[0619/082037.959348] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082037.965279] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/082038.000487] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/082038.018051] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082038.020092] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082038.023706] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082040.029308] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082040.063772] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/082040.093235] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/082040.095567] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082040.097081] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082040.098953] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082042.106302] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082042.108062] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/082042.109394] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/082042.111479] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082042.112146] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082042.112715] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082044.122323] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082044.125657] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/082044.128744] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/082044.132510] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082044.137319] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082044.138434] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082046.145360] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082046.147254] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/082046.150594] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/082046.168016] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082046.182827] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082046.199933] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082046.237225] [INFO:cleanup_previous_update_action.cc(403)] Waiting for merge to complete: 39%.
+[0619/082048.249407] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082048.255331] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/082048.258692] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/082048.260323] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082048.273797] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082048.283551] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082050.362857] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082050.372772] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/082050.379058] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/082050.386511] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082050.404948] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082050.422148] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082052.458253] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082052.459486] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/082052.460889] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/082052.461825] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082052.462372] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082052.465998] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082054.477524] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082054.491466] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/082054.495054] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/082054.497878] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082054.498939] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082054.501671] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082056.510517] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082056.521983] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/082056.567423] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/082056.577878] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082056.581875] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082056.601105] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082058.639438] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082058.758760] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/082058.765249] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/082058.766614] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082058.767338] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082058.768084] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082100.773028] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082100.781036] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/082100.804130] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/082100.811241] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082100.815562] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082100.862375] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082102.872707] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082102.882659] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/082102.887565] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/082102.894872] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082102.895817] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082102.896705] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082102.897960] [INFO:cleanup_previous_update_action.cc(403)] Waiting for merge to complete: 40%.
+[0619/082104.901882] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082104.903680] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/082104.913399] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/082104.924381] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082104.962661] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082105.008412] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082107.153095] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082107.209915] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/082107.213191] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/082107.217172] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082107.221167] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082107.223424] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082109.238810] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082109.302239] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/082109.304552] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/082109.311162] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082109.329840] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082109.343466] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082111.353333] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082111.357967] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/082111.406874] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/082111.480941] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082111.542385] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082111.607987] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082113.690560] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082113.789070] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/082113.801016] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/082113.857161] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082113.976429] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082114.173406] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082116.268984] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082116.297938] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/082116.344091] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/082116.371932] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082116.384502] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082116.395870] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082118.415581] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082118.434334] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/082118.452144] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/082118.455495] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082118.459513] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082118.537022] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082120.545577] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082120.547694] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/082120.552284] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/082120.556335] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082120.557072] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082120.557773] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082122.567980] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082122.569489] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/082122.586839] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/082122.596949] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082122.599613] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082122.601209] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082124.614512] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082124.624255] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/082124.644680] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/082124.653334] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082124.655841] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082124.656534] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082126.664501] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082126.665752] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/082126.666649] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/082126.667597] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082126.668247] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082126.668970] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082128.673280] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082128.676039] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/082128.677549] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/082128.687362] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082128.702944] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082128.704202] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082128.705793] [INFO:cleanup_previous_update_action.cc(403)] Waiting for merge to complete: 41%.
+[0619/082130.710310] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082130.713600] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/082130.714845] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/082130.716199] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082130.716974] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082130.717822] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082132.729446] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082132.733989] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/082132.735955] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/082132.738007] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082132.739366] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082132.740772] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082134.744663] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082134.747984] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/082134.751551] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/082134.755780] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082134.759729] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082134.761800] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082136.774162] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082136.781832] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/082136.792646] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/082136.803410] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082136.807441] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082136.813190] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082138.819741] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082138.823668] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/082138.832221] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/082138.835670] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082138.839368] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082138.848282] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082140.860693] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082140.861849] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/082140.862743] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/082140.863776] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082140.865254] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082140.872451] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082142.892223] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082142.893359] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/082142.894346] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/082142.895691] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082142.896964] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082142.900560] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082142.905043] [INFO:cleanup_previous_update_action.cc(403)] Waiting for merge to complete: 42%.
+[0619/082144.917358] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082144.918557] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/082144.919648] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/082144.920534] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082144.921031] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082144.921911] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082146.925869] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082146.927243] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/082146.928841] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/082146.930453] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082146.943499] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082146.944454] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082148.954609] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082148.964632] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/082148.972908] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/082148.973894] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082148.975883] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082148.983840] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082150.988564] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082150.989908] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/082150.990679] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/082150.991525] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082150.992031] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082150.992475] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082152.998084] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082152.999685] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/082153.007773] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/082153.008880] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082153.009504] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082153.016511] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082155.021403] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082155.022818] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/082155.024163] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/082155.027058] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082155.027640] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082155.028281] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082157.035677] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082157.044952] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/082157.048034] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/082157.049420] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082157.051292] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082157.051874] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082157.053397] [INFO:cleanup_previous_update_action.cc(403)] Waiting for merge to complete: 43%.
+[0619/082159.058755] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082159.059791] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/082159.061385] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/082159.062181] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082159.062605] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082159.063714] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082201.069362] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082201.077054] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/082201.080385] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/082201.087249] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082201.089754] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082201.092691] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082201.110129] [INFO:update_attempter_android.cc(1466)] Already processing an update. CleanupPreviousUpdate should be done when the current update finishes.
+[0619/082203.101927] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082203.110888] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/082203.112783] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/082203.114490] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082203.115263] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082203.116984] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082205.126719] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082205.132288] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/082205.137592] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/082205.144341] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082205.146817] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082205.148157] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082207.154823] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082207.215548] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/082207.217501] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/082207.218827] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082207.229630] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082207.233217] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082207.236702] [INFO:cleanup_previous_update_action.cc(403)] Waiting for merge to complete: 44%.
+[0619/082209.241170] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082209.243860] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/082209.246879] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/082209.254005] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082209.262160] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082209.268083] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082211.278360] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082211.282762] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/082211.284583] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/082211.292694] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082211.301094] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082211.306359] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082213.318179] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082213.328403] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/082213.336457] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/082213.340066] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082213.352909] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082213.363568] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082215.379785] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082215.417028] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/082215.477910] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/082215.752089] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082215.756033] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082215.757475] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082215.768498] [INFO:cleanup_previous_update_action.cc(403)] Waiting for merge to complete: 45%.
+[0619/082217.772183] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082217.777853] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/082217.785528] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/082217.789641] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082217.793238] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082217.797022] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082219.807348] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082219.819738] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/082219.828362] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/082219.831662] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082219.840192] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082219.848481] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082221.866396] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082221.871005] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/082221.875610] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/082221.893778] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082221.896125] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082221.899914] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082221.905066] [INFO:cleanup_previous_update_action.cc(403)] Waiting for merge to complete: 46%.
+[0619/082223.912761] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082223.913953] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/082223.914828] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/082223.915923] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082223.918173] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082223.919772] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082225.924315] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082226.008028] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/082226.014779] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/082226.026089] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082226.026723] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082226.027239] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082228.051173] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082228.052089] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/082228.052764] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/082228.053423] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082228.053861] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082228.054248] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082230.065294] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082230.066861] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/082230.067986] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/082230.072171] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082230.078830] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082230.085282] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082230.094485] [INFO:cleanup_previous_update_action.cc(403)] Waiting for merge to complete: 47%.
+[0619/082232.101404] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082232.104195] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/082232.108507] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/082232.110356] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082232.110872] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082232.111448] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082234.118561] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082234.130497] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/082234.132568] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/082234.146972] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082234.148521] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082234.167669] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082236.179745] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082236.183904] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/082236.185828] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/082236.187642] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082236.189113] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082236.195066] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082236.198834] [INFO:cleanup_previous_update_action.cc(403)] Waiting for merge to complete: 48%.
+[0619/082238.203263] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082238.206237] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/082238.209054] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/082238.211726] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082238.213009] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082238.214917] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082238.219620] [INFO:cleanup_previous_update_action.cc(403)] Waiting for merge to complete: 49%.
+[0619/082240.224845] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082240.227955] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/082240.229828] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/082240.233786] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082240.235987] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082240.237508] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082242.243450] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082242.247014] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/082242.249474] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/082242.252422] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082242.253954] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082242.254903] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082242.258200] [INFO:cleanup_previous_update_action.cc(403)] Waiting for merge to complete: 50%.
+[0619/082244.264279] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082244.269633] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/082244.272102] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/082244.273695] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082244.274669] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082244.276023] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082244.277775] [INFO:cleanup_previous_update_action.cc(403)] Waiting for merge to complete: 51%.
+[0619/082246.300592] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082246.302942] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/082246.304480] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/082246.313782] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082246.315260] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082246.316703] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082246.318169] [INFO:cleanup_previous_update_action.cc(403)] Waiting for merge to complete: 52%.
+[0619/082248.323580] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082248.327038] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/082248.333091] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/082248.335120] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082248.336261] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082248.337327] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082248.339007] [INFO:cleanup_previous_update_action.cc(403)] Waiting for merge to complete: 53%.
+[0619/082250.343736] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082250.347600] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/082250.349448] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/082250.351024] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082250.352317] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082250.353321] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082250.354884] [INFO:cleanup_previous_update_action.cc(403)] Waiting for merge to complete: 54%.
+[0619/082252.359407] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082252.360435] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: Merging
+[0619/082252.361403] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/082252.362189] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082252.363432] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082252.364136] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082252.365054] [INFO:cleanup_previous_update_action.cc(403)] Waiting for merge to complete: 56%.
+[0619/082254.370290] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082254.777427] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_b returned: MergeCompleted
+[0619/082254.778975] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/082254.779934] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082254.780603] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082254.781142] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082254.782241] [INFO:cleanup_previous_update_action.cc(403)] Waiting for merge to complete: 57%.
+[0619/082256.786101] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082256.788941] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/082256.789882] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082256.790462] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082256.791023] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082256.792339] [INFO:cleanup_previous_update_action.cc(403)] Waiting for merge to complete: 60%.
+[0619/082258.796715] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082258.798432] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/082258.799449] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082258.800062] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082258.800641] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082258.801907] [INFO:cleanup_previous_update_action.cc(403)] Waiting for merge to complete: 65%.
+[0619/082300.808328] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082300.809658] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: Merging
+[0619/082300.810520] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082300.811149] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082300.811761] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082300.812943] [INFO:cleanup_previous_update_action.cc(403)] Waiting for merge to complete: 72%.
+[0619/082302.817450] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082303.218967] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for system_ext_b returned: MergeCompleted
+[0619/082303.223458] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082303.224722] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082303.225996] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082303.228224] [INFO:cleanup_previous_update_action.cc(403)] Waiting for merge to complete: 75%.
+[0619/082305.232425] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082305.250050] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082305.259842] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082305.268584] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082305.270088] [INFO:cleanup_previous_update_action.cc(403)] Waiting for merge to complete: 76%.
+[0619/082307.274286] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082307.291685] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082307.292549] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082307.293256] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082307.294959] [INFO:cleanup_previous_update_action.cc(403)] Waiting for merge to complete: 78%.
+[0619/082309.310155] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082309.312357] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082309.336321] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082309.348767] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082309.350742] [INFO:cleanup_previous_update_action.cc(403)] Waiting for merge to complete: 80%.
+[0619/082311.356513] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082311.360481] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082311.361437] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082311.362023] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082311.363528] [INFO:cleanup_previous_update_action.cc(403)] Waiting for merge to complete: 81%.
+[0619/082313.367589] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082313.368545] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082313.368985] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082313.369413] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082313.370597] [INFO:cleanup_previous_update_action.cc(403)] Waiting for merge to complete: 84%.
+[0619/082315.372214] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082315.374011] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082315.374395] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082315.374767] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082315.375717] [INFO:cleanup_previous_update_action.cc(403)] Waiting for merge to complete: 86%.
+[0619/082317.379415] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082317.380397] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082317.380873] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082317.381269] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082317.382122] [INFO:cleanup_previous_update_action.cc(403)] Waiting for merge to complete: 89%.
+[0619/082319.384679] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082319.388317] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082319.395855] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082319.404836] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082319.409061] [INFO:cleanup_previous_update_action.cc(403)] Waiting for merge to complete: 91%.
+[0619/082322.253675] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082322.255131] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082322.256052] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082322.256388] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082322.257685] [INFO:cleanup_previous_update_action.cc(403)] Waiting for merge to complete: 93%.
+[0619/082327.692266] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082327.694132] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: Merging
+[0619/082327.695587] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082327.696027] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082327.696861] [INFO:cleanup_previous_update_action.cc(403)] Waiting for merge to complete: 94%.
+[0619/082337.276192] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082339.826210] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for vendor_b returned: MergeCompleted
+[0619/082339.826852] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082339.827502] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082342.384985] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082342.387433] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082342.388241] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082342.440331] [INFO:cleanup_previous_update_action.cc(403)] Waiting for merge to complete: 95%.
+[0619/082349.232032] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082357.297007] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082357.303751] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082359.318073] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082359.318850] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082359.319646] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082404.093105] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082404.094820] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082404.095958] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082406.101737] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082406.102879] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082406.103587] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082406.104982] [INFO:cleanup_previous_update_action.cc(403)] Waiting for merge to complete: 96%.
+[0619/082408.110250] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082408.112565] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082408.113315] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082410.494199] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082410.495313] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082410.495942] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082422.633676] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082422.636941] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082422.639873] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082422.643344] [INFO:cleanup_previous_update_action.cc(403)] Waiting for merge to complete: 97%.
+[0619/082430.075124] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082430.077392] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082430.078014] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082432.085627] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082432.087207] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082432.088129] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082437.815432] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082437.815898] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082437.816198] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082437.816810] [INFO:cleanup_previous_update_action.cc(403)] Waiting for merge to complete: 98%.
+[0619/082451.329554] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082451.333763] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082451.334456] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082509.113346] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082509.115681] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082509.116520] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082511.125247] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082511.127891] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082511.129095] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082513.134836] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082513.135870] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082513.136668] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082513.138200] [INFO:cleanup_previous_update_action.cc(403)] Waiting for merge to complete: 99%.
+[0619/082519.235102] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082519.236475] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082519.237265] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082551.549683] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: Merging
+[0619/082551.550376] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: Merging
+[0619/082551.550734] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: Merging
+[0619/082603.685037] [INFO:snapshot.cpp(1255)] CheckTargetMergeState for product_b returned: MergeCompleted
+[0619/082603.686278] [INFO:snapshot.cpp(1190)] CheckMergeState for snapshots returned: MergeCompleted
+[0619/082603.689529] [INFO:snapshot.cpp(352)] Removing all update state.
+[0619/082603.883845] [INFO:snapshot.cpp(1155)] ProcessUpdateState handling state: MergeCompleted
+[0619/082603.888436] [INFO:cleanup_previous_update_action.cc(361)] Merge finished with state MergeCompleted.
+[0619/082603.918125] [INFO:cleanup_previous_update_action.cc(133)] Stopping/suspending/completing CleanupPreviousUpdateAction
+[0619/082603.934254] [INFO:cleanup_previous_update_action.cc(545)] Reporting merge stats: MergeCompleted in 302431ms (resumed 0 times), using 690466816 bytes of COW image.
+[0619/082603.937399] [INFO:cleanup_previous_update_action.cc(133)] Stopping/suspending/completing CleanupPreviousUpdateAction
+[0619/082603.939296] [INFO:action_processor.cc(116)] ActionProcessor: finished last action CleanupPreviousUpdateAction with code ErrorCode::kSuccess
+[0619/082603.940235] [INFO:update_attempter_android.cc(733)] Processing Done.
+[0619/082604.067680] [INFO:dynamic_partition_control_android.cc(354)] Destroying [] from device mapper
+[0619/082604.069051] [INFO:dynamic_partition_control_android.cc(358)] UnmapAllPartitions done
+[0619/082604.071586] [INFO:update_attempter_android.cc(985)] Clearing update complete marker.
+[0619/082604.074196] [INFO:update_attempter_android.cc(882)] Terminating cleanup previous update.
+[0619/082604.084465] [ERROR:update_attempter_android.cc(92)] Replying with failure: system/update_engine/aosp/update_attempter_android.cc 499: No ongoing update to cancel.
+[0628/025446.789395] [ERROR:BootControlClient.cpp(95)] boot control service AIDL died. Attempting to reconnect...

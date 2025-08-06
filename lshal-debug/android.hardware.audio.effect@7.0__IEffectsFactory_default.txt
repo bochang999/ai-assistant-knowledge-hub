@@ -1,0 +1,106 @@
+Libraries NOT loaded:
+Libraries loaded:
+ Library spatializer
+  path: /vendor/lib64/soundfx/libspatialaudio.so
+  Multichannel Spatializer (0.3.1) / Google
+    UUID: cc4677de-ff72-11eb-9a03-0242ac130003
+    TYPE: ccd4cf09-a79d-46c2-9aae-06a1698d6c8f
+    apiVersion: 00020000
+    flags: 00000208
+ Library haptic_generator
+  path: /vendor/lib64/soundfx/libhapticgenerator.so
+  Haptic Generator / The Android Open Source Project
+    UUID: 97c4acd1-8b82-4f2f-832e-c2fe5d7a9931
+    TYPE: 1411e6d6-aecd-4021-a1cf-a6aceb0d71e5
+    apiVersion: 00020000
+    flags: 00000008
+ Library offload_effect
+  path: /vendor/lib64/soundfx/liboffloadeffect.so
+  Noise Suppressor / Fortemedia
+    UUID: 62ff2836-d050-43c3-9c2d-94a73dad2c64
+    TYPE: 58b4b260-8e06-11e0-aa8e-0002a5d5c51b
+    apiVersion: 00020000
+    flags: 00820203
+  Acoustic Echo Canceler / Fortemedia
+    UUID: 28c28780-ec8b-48b6-8590-8c84557d797d
+    TYPE: 7b491460-8d4d-11e0-bd61-0002a5d5c51b
+    apiVersion: 00020000
+    flags: 00820203
+ Library proxy
+  path: /vendor/lib64/soundfx/libeffectproxy.so
+  Dynamics Processing / The Android Open Source Project
+    UUID: dcf01474-8982-11ec-a8a3-0242ac120002
+    TYPE: 7261676f-6d75-7369-6364-28e2fd3ac39e
+    apiVersion: 00020000
+    flags: 00400050
+  Visualizer / The Android Open Source Project
+    UUID: b27271d9-64d6-413c-b316-80005ad09008
+    TYPE: e46b26a0-dddd-11db-8afd-0002a5d5c51b
+    apiVersion: 00020000
+    flags: 00400008
+  Insert Preset Reverb / NXP Software Ltd.
+    UUID: c02d7dce-ca56-4aea-8c83-bbb53e5600e8
+    TYPE: 47382d60-ddd8-11db-bf3a-0002a5d5c51b
+    apiVersion: 00020000
+    flags: 00400048
+  Auxiliary Preset Reverb / NXP Software Ltd.
+    UUID: 80974a8b-b3be-4c21-8c0b-b392a54e13bc
+    TYPE: 47382d60-ddd8-11db-bf3a-0002a5d5c51b
+    apiVersion: 00020000
+    flags: 00400001
+  Insert Environmental Reverb / NXP Software Ltd.
+    UUID: ba0f19fe-8790-4831-a58b-1f3299dd0bae
+    TYPE: c2e5d5f0-94bd-4763-9cac-4e234d06839e
+    apiVersion: 00020000
+    flags: 00400048
+  Auxiliary Environmental Reverb / NXP Software Ltd.
+    UUID: b8154738-a0a1-4fc0-bb79-c845a3197739
+    TYPE: c2e5d5f0-94bd-4763-9cac-4e234d06839e
+    apiVersion: 00020000
+    flags: 00400001
+  Equalizer / NXP Software Ltd.
+    UUID: 49004f03-3391-4c44-97dd-a043d526ea7d
+    TYPE: 0bed4300-ddd6-11db-8f34-0002a5d5c51b
+    apiVersion: 00020000
+    flags: 00400048
+  Virtualizer / NXP Software Ltd.
+    UUID: 626499c6-647e-455e-8c45-2d106e23c755
+    TYPE: 37cc2c00-dddd-11db-8577-0002a5d5c51b
+    apiVersion: 00020000
+    flags: 00400250
+  Dynamic Bass Boost / NXP Software Ltd.
+    UUID: 2f0871a2-c93c-4824-9664-42eb2909f2ef
+    TYPE: 0634f220-ddd4-11db-a0fc-0002a5d5c51b
+    apiVersion: 00020000
+    flags: 00400248
+ Library loudness_enhancer
+  path: /vendor/lib64/soundfx/libldnhncr.so
+  Loudness Enhancer / The Android Open Source Project
+    UUID: fa415329-2034-4bea-b5dc-5b381c8d1e2c
+    TYPE: fe3199be-aed0-413f-87bb-11260eb63cf1
+    apiVersion: 00020000
+    flags: 00000008
+ Library dynamics_processing_sw
+  path: /vendor/lib64/soundfx/libdynproc.so
+  (no effects)
+ Library downmix
+  path: /vendor/lib64/soundfx/libdownmix.so
+  Multichannel Downmix To Stereo / The Android Open Source Project
+    UUID: 93f04452-e4fe-41cc-91f9-e475b6d1d69f
+    TYPE: 381e49cc-a858-4aa2-87f6-e8388e7601b2
+    apiVersion: 00020000
+    flags: 00000008
+ Library visualizer_sw
+  path: /vendor/lib64/soundfx/libvisualizer.so
+  (no effects)
+ Library reverb
+  path: /vendor/lib64/soundfx/libreverbwrapper.so
+  (no effects)
+ Library bundle
+  path: /vendor/lib64/soundfx/libbundlewrapper.so
+  Volume / NXP Software Ltd.
+    UUID: 119341a0-8469-11df-81f9-0002a5d5c51b
+    TYPE: 09e8ede0-ddde-11db-b4f6-0002a5d5c51b
+    apiVersion: 00020000
+    flags: 00000050
+XML effect configuration loaded successfully.

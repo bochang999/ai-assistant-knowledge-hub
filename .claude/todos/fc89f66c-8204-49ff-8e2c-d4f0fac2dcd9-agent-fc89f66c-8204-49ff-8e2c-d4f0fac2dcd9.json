@@ -1,0 +1,44 @@
+[
+  {
+    "content": "hello-world-app専用フォルダを作成",
+    "status": "completed",
+    "priority": "high",
+    "id": "1"
+  },
+  {
+    "content": "要件定義書(requirements.md)を作成",
+    "status": "completed",
+    "priority": "high",
+    "id": "2"
+  },
+  {
+    "content": "仕様書(spec.md)を作成",
+    "status": "completed",
+    "priority": "high",
+    "id": "3"
+  },
+  {
+    "content": "HTML/CSS/JavaScriptでアプリを実装",
+    "status": "completed",
+    "priority": "high",
+    "id": "4"
+  },
+  {
+    "content": "http-serverで自動実行・テスト",
+    "status": "completed",
+    "priority": "high",
+    "id": "5"
+  },
+  {
+    "content": "エラーがあれば自動修正",
+    "status": "completed",
+    "priority": "medium",
+    "id": "6"
+  },
+  {
+    "content": "開発ログ(devlog.md)を作成",
+    "status": "completed",
+    "priority": "medium",
+    "id": "7"
+  }
+]

@@ -1,0 +1,38 @@
+# Cache directories
+.cache/
+__pycache__/
+*.pyc
+*.pyo
+
+# Build directories
+build/
+dist/
+*.egg-info/
+
+# IDE files
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Embedded git repositories
+DeepDanbooru/.git/
+.cache/briefcase/templates/*/
+
+# Large binary files
+*.apk
+*.so
+*.dylib
+*.dll
+
+# Model files
+*.bin
+*.ggml
+models/
+
+# Temporary files
+*.tmp
+*.temp
+*.log

@@ -1,0 +1,26 @@
+[
+  {
+    "content": "Notion APIトークンの取得",
+    "status": "completed",
+    "priority": "high",
+    "id": "1"
+  },
+  {
+    "content": "MCPサーバーの設定確認と修正",
+    "status": "completed",
+    "priority": "high",
+    "id": "2"
+  },
+  {
+    "content": "接続テストと動作確認",
+    "status": "completed",
+    "priority": "medium",
+    "id": "3"
+  },
+  {
+    "content": "Claude Codeを再起動して環境変数を有効化",
+    "status": "pending",
+    "priority": "high",
+    "id": "4"
+  }
+]
