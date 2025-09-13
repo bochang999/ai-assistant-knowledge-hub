@@ -1,37 +1,66 @@
 #!/bin/bash
 
 # Knowledge Loader Script for AI Assistant Knowledge Hub
-# Usage: bash run.sh [project-name] "[user-instruction]"
+# Usage: bash run.sh [project-name] "[ai-command]" "[user-instruction]" [--debug]
 
 set -e
 
-# Check arguments
-if [ $# -lt 2 ]; then
-    echo "Usage: $0 <project-name> <user-instruction>"
-    echo "Example: $0 project-A \"ビルドエラーが発生したので、build_error_correctionワークフローを開始して\""
+# Initialize variables
+DEBUG=false
+
+# Parse arguments and options
+ARGS=()
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        --debug)
+            DEBUG=true
+            shift
+            ;;
+        *)
+            ARGS+=("$1")
+            shift
+            ;;
+    esac
+done
+
+# Check required arguments
+if [ ${#ARGS[@]} -lt 3 ]; then
+    echo "Usage: $0 <project-name> <ai-command> <user-instruction> [--debug]"
+    echo "Example: $0 knowledge_hub_mng \"claude-cli\" \"タスクを洗い出して\" --debug"
+    echo "Example: $0 project-A \"gemini-cli\" \"ビルドエラーが発生したので、build_error_correctionワークフローを開始して\""
     exit 1
 fi
 
-PROJECT_NAME="$1"
-USER_INSTRUCTION="$2"
+PROJECT_NAME="${ARGS[0]}"
+AI_COMMAND="${ARGS[1]}"
+USER_INSTRUCTION="${ARGS[2]}"
 
 # Get script directory to handle relative paths
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
+# Check if AI command exists in system PATH
+if ! command -v "$AI_COMMAND" &> /dev/null; then
+    echo "Error: AI command '$AI_COMMAND' not found in system PATH."
+    echo "Please ensure the specified AI command is installed and accessible."
+    exit 1
+fi
+
 # Initialize prompt string
 PROMPT=""
 
-# 1. Always load commons/constitution.md
+# 1. Always load commons/constitution.md (required file)
 CONSTITUTION_FILE="$SCRIPT_DIR/commons/constitution.md"
 if [ -f "$CONSTITUTION_FILE" ]; then
     echo "Loading constitution..."
     PROMPT+="# Constitutional Principles"$'\n\n'
     PROMPT+="$(cat "$CONSTITUTION_FILE")"$'\n\n'
 else
-    echo "Warning: constitution.md not found at $CONSTITUTION_FILE"
+    echo "Error: Required file 'constitution.md' not found at $CONSTITUTION_FILE"
+    echo "Please ensure the constitutional principles file exists in the commons/ directory."
+    exit 1
 fi
 
-# 2. Load project context
+# 2. Load project context (required file)
 PROJECT_CONTEXT_FILE="$SCRIPT_DIR/projects/$PROJECT_NAME/context.md"
 if [ -f "$PROJECT_CONTEXT_FILE" ]; then
     echo "Loading project context for $PROJECT_NAME..."
@@ -74,21 +103,34 @@ if [ -f "$PROJECT_CONTEXT_FILE" ]; then
     fi
 
 else
-    echo "Warning: Project context not found at $PROJECT_CONTEXT_FILE"
+    echo "Error: Project context file not found at $PROJECT_CONTEXT_FILE"
     echo "Available projects:"
     ls -1 "$SCRIPT_DIR/projects/" 2>/dev/null | grep -v '.gitkeep' || echo "No projects found"
+    echo "Please ensure the project '$PROJECT_NAME' exists with a context.md file."
+    exit 1
 fi
 
 # 4. Add user instruction
 PROMPT+="# User Instruction"$'\n\n'
 PROMPT+="$USER_INSTRUCTION"$'\n'
 
-# 5. Execute claude-cli with the assembled prompt
-echo "Executing claude-cli with assembled knowledge..."
+# 5. Debug output (if enabled)
+if [ "$DEBUG" = true ]; then
+    echo "=========================================="
+    echo "DEBUG: Final assembled prompt:"
+    echo "=========================================="
+    echo "$PROMPT"
+    echo "=========================================="
+    echo "DEBUG: Executing AI command: $AI_COMMAND"
+    echo "=========================================="
+fi
+
+# 6. Execute AI command with the assembled prompt
+echo "Executing $AI_COMMAND with assembled knowledge..."
 echo "=========================================="
 
-# Pass the prompt to claude-cli via stdin
-echo "$PROMPT" | claude-cli
+# Pass the prompt to the AI command via stdin
+echo "$PROMPT" | "$AI_COMMAND"
 
 echo "=========================================="
 echo "Knowledge loader execution completed."
