@@ -316,7 +316,9 @@ echo "=========================================="
 
 # Execute the knowledge loader
 cd "$SCRIPT_DIR"
-exec bash run.sh "$PROJECT_NAME" "$AI_COMMAND" "$USER_INSTRUCTION"
+AI_RESPONSE=$(bash run.sh "$PROJECT_NAME" "$AI_COMMAND" "$USER_INSTRUCTION")
+
+log "==========================================
 
 # Note: exec replaces the current process, so cleanup code here won't run
 # Cleanup would need to be handled by the called script if needed

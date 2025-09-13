@@ -110,8 +110,47 @@ else
     exit 1
 fi
 
-# 4. Add user instruction
-PROMPT+="# User Instruction"$'\n\n'
+# 4. Add executor.py instructions
+PROMPT+="""# Executor.py Usage Instructions
+
+To perform file system operations or Git actions, you MUST use the `executor.py` script. Do NOT use direct shell commands like `echo > file`, `git add`, `git commit`, `git push`, `mkdir`, `rm`, etc.
+
+Here are the available functions in `executor.py` and how to use them:
+
+## 1. write_file(path, content)
+Writes the given content to the specified file path.
+
+**Usage:**
+`python executor.py write_file "path/to/file.txt" "Content to write"`
+
+**Example:**
+`python executor.py write_file "report.md" "## Daily Report\n- Task A completed\n- Task B in progress"`
+
+## 2. run_command(command_string)
+Executes a shell command. Use this for any command that is not a file write or Git operation.
+
+**Usage:**
+`python executor.py run_command "ls -la"`
+
+**Example:**
+`python executor.py run_command "npm install"`
+
+## 3. git_push(commit_message)
+Performs `git add .`, `git commit -m "commit_message"`, and `git push`.
+
+**Usage:**
+`python executor.py git_push "Your commit message"`
+
+**Example:**
+`python executor.py git_push "feat: Add new report generation logic"`
+
+**IMPORTANT:**
+- Always enclose path and content arguments in double quotes.
+- Ensure the `executor.py` script is in the same directory as `agent.sh` (which is the current working directory when these commands are executed).
+- The `executor.py` script will print "SUCCESS" or "ERROR" to stdout. You should capture and report these results.
+
+"""
+PROMPT+=# User Instruction"$'\n\n'
 PROMPT+="$USER_INSTRUCTION"$'\n'
 
 # 5. Debug output (if enabled)
