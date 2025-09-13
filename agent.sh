@@ -30,14 +30,42 @@ warn() {
     echo -e "${YELLOW}[WARNING]${NC} $1"
 }
 
-# Check command line arguments
-if [[ $# -ne 2 ]] || [[ "$1" != "do" ]]; then
-    error "Usage: $0 do [ISSUE_ID]"
+# Parse command line arguments
+COMMAND=""
+ISSUE_ID=""
+SPECIFIED_AI_COMMAND=""
+
+# Parse arguments
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        do)
+            COMMAND="$1"
+            shift
+            ;;
+        --ai-command)
+            SPECIFIED_AI_COMMAND="$2"
+            shift 2
+            ;;
+        *)
+            if [[ -z "$ISSUE_ID" ]] && [[ -n "$COMMAND" ]]; then
+                ISSUE_ID="$1"
+            else
+                error "Unknown argument: $1"
+                exit 1
+            fi
+            shift
+            ;;
+    esac
+done
+
+# Validate arguments
+if [[ "$COMMAND" != "do" ]] || [[ -z "$ISSUE_ID" ]]; then
+    error "Usage: $0 do [ISSUE_ID] [--ai-command <command>]"
     error "Example: $0 do BOC-65"
+    error "Example: $0 do BOC-65 --ai-command gpt-cli"
     exit 1
 fi
 
-ISSUE_ID="$2"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 log "Starting self-contained agent for issue: $ISSUE_ID"
@@ -87,6 +115,63 @@ fi
 LINEAR_API_KEY=$(cat "$LINEAR_API_KEY_FILE")
 
 success "Environment diagnosis completed - all requirements satisfied"
+
+# ========================================
+# AI Command Detection and Selection
+# ========================================
+
+# A6: Auto-detect available AI commands
+log "Step A6: Detecting available AI commands"
+
+# List of known AI commands in priority order (highest to lowest)
+KNOWN_AI_COMMANDS=("claude-cli" "gemini-cli" "gpt-cli" "openai-cli" "anthropic-cli")
+AVAILABLE_AI_COMMANDS=()
+
+# Detect available commands
+for cmd in "${KNOWN_AI_COMMANDS[@]}"; do
+    if command -v "$cmd" &> /dev/null; then
+        AVAILABLE_AI_COMMANDS+=("$cmd")
+        log "Found: $cmd"
+    fi
+done
+
+# Check if any AI commands are available
+if [[ ${#AVAILABLE_AI_COMMANDS[@]} -eq 0 ]]; then
+    error "No AI commands found in system PATH"
+    error "Please install at least one of the following AI CLI tools:"
+    for cmd in "${KNOWN_AI_COMMANDS[@]}"; do
+        error "  - $cmd"
+    done
+    exit 1
+fi
+
+# Select AI command based on user specification or priority
+SELECTED_AI_COMMAND=""
+if [[ -n "$SPECIFIED_AI_COMMAND" ]]; then
+    # User specified a command - validate it exists
+    COMMAND_FOUND=false
+    for available_cmd in "${AVAILABLE_AI_COMMANDS[@]}"; do
+        if [[ "$available_cmd" == "$SPECIFIED_AI_COMMAND" ]]; then
+            SELECTED_AI_COMMAND="$SPECIFIED_AI_COMMAND"
+            COMMAND_FOUND=true
+            log "Using user-specified AI command: $SELECTED_AI_COMMAND"
+            break
+        fi
+    done
+
+    if [[ "$COMMAND_FOUND" == false ]]; then
+        error "Specified AI command '$SPECIFIED_AI_COMMAND' is not available"
+        error "Available commands: ${AVAILABLE_AI_COMMANDS[*]}"
+        exit 1
+    fi
+else
+    # Auto-select highest priority available command
+    SELECTED_AI_COMMAND="${AVAILABLE_AI_COMMANDS[0]}"
+    log "Auto-selected AI command: $SELECTED_AI_COMMAND (highest priority available)"
+fi
+
+log "Available AI commands: ${AVAILABLE_AI_COMMANDS[*]}"
+success "AI command selection completed: $SELECTED_AI_COMMAND"
 
 # ========================================
 # Linear API Functions
@@ -174,15 +259,9 @@ fi
 
 log "Detected project: $PROJECT_NAME"
 
-# B4: Extract AI command preference (default to claude-cli if not specified)
-AI_COMMAND="claude-cli"
-if echo "$ISSUE_DESCRIPTION" | grep -qi "gemini"; then
-    AI_COMMAND="gemini-cli"
-elif echo "$ISSUE_DESCRIPTION" | grep -qi "gpt\|chatgpt"; then
-    AI_COMMAND="gpt-cli"
-fi
-
-log "AI Command: $AI_COMMAND"
+# B4: Use the dynamically selected AI command
+AI_COMMAND="$SELECTED_AI_COMMAND"
+log "AI Command: $AI_COMMAND (from dynamic selection)"
 
 # B5: Prepare user instruction from issue description
 USER_INSTRUCTION="$ISSUE_TITLE"$'\n\n'"$ISSUE_DESCRIPTION"
@@ -214,16 +293,8 @@ if [[ ! -f "$PROJECT_CONTEXT_FILE" ]]; then
     fi
 fi
 
-# C2: Check if AI command exists
-if ! command -v "$AI_COMMAND" &> /dev/null; then
-    warn "AI command '$AI_COMMAND' not found, trying claude-cli as fallback"
-    AI_COMMAND="claude-cli"
-    if ! command -v "$AI_COMMAND" &> /dev/null; then
-        error "No suitable AI command found (tried: claude-cli, $AI_COMMAND)"
-        error "Please install at least one AI CLI tool"
-        exit 1
-    fi
-fi
+# C2: AI command validation already completed in dynamic selection step
+log "Using validated AI command: $AI_COMMAND"
 
 # C3: Update Linear issue status to "In Progress"
 log "Updating issue status to 'In Progress'"
