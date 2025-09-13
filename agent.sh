@@ -83,15 +83,43 @@ if ! git config --get user.email &> /dev/null; then
     git config --global user.name "AI Agent"
 fi
 
-# A5: Check Linear utility script
-LINEAR_UTILS="$HOME/.linear-utils.sh"
-if [[ ! -f "$LINEAR_UTILS" ]]; then
-    error "Linear utilities script not found at $LINEAR_UTILS"
-    error "This is required for Linear API interactions"
-    exit 1
-fi
+# A5: Set up Linear API key
+LINEAR_API_KEY=$(cat "$LINEAR_API_KEY_FILE")
 
 success "Environment diagnosis completed - all requirements satisfied"
+
+# ========================================
+# Linear API Functions
+# ========================================
+
+# Function to get issue details from Linear API
+get_linear_issue() {
+    local issue_id="$1"
+    local query='{
+        "query": "query($id: String!) { issue(id: $id) { id title description state { name } } }",
+        "variables": { "id": "'"$issue_id"'" }
+    }'
+
+    curl -s -X POST "https://api.linear.app/graphql" \
+        -H "Authorization: $LINEAR_API_KEY" \
+        -H "Content-Type: application/json" \
+        -d "$query"
+}
+
+# Function to post comment to Linear issue
+post_linear_comment() {
+    local issue_id="$1"
+    local comment_text="$2"
+    local mutation='{
+        "query": "mutation($id: String!, $body: String!) { commentCreate(input: { issueId: $id, body: $body }) { success comment { id } } }",
+        "variables": { "id": "'"$issue_id"'", "body": "'"$comment_text"'" }
+    }'
+
+    curl -s -X POST "https://api.linear.app/graphql" \
+        -H "Authorization: $LINEAR_API_KEY" \
+        -H "Content-Type: application/json" \
+        -d "$mutation"
+}
 
 # ========================================
 # STEP B: Task Details Retrieval
@@ -99,9 +127,11 @@ success "Environment diagnosis completed - all requirements satisfied"
 
 log "Step B: Retrieving task details from Linear for $ISSUE_ID"
 
-# B1: Get issue details using Linear utilities
-ISSUE_DATA_FILE="/tmp/agent_issue_${ISSUE_ID}.json"
-if ! "$LINEAR_UTILS" get "$ISSUE_ID" > "$ISSUE_DATA_FILE" 2>/dev/null; then
+# B1: Get issue details using direct API calls
+# Create local temp directory if it doesn't exist
+mkdir -p "${SCRIPT_DIR}/temp"
+ISSUE_DATA_FILE="${SCRIPT_DIR}/temp/agent_issue_${ISSUE_ID}.json"
+if ! get_linear_issue "$ISSUE_ID" > "$ISSUE_DATA_FILE" 2>/dev/null; then
     error "Failed to retrieve issue $ISSUE_ID from Linear"
     error "Please check that the issue ID is correct and accessible"
     exit 1
