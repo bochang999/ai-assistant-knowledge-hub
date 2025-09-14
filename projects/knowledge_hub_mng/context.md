@@ -6,7 +6,11 @@
 
 - **現在の進捗**: Milestone 3に着手。Knowledge Loaderスクリプトが完成し、システムが稼働開始した段階。
 
-## 2. 参照すべき作業マニュアル
+## 2. 実行環境
+
+- **作業ディレクトリ**: `~/ai-assistant-knowledge-hub`
+
+## 3. 参照すべき作業マニュアル
 
 - workflows/milestone_creation.md
 
@@ -14,7 +18,7 @@
 
 - workflows/git_push_troubleshooting.md
 
-## 3. 作業報告ルール
+## 4. 作業報告ルール
 
 - **報告先**: Linear Project "AI Assistant Knowledge Hub Project"
 
@@ -24,7 +28,7 @@
 
   - templates/final_completion_report.md
 
-## 4. このプロジェクト固有のルール
+## 5. このプロジェクト固有のルール
 
 - コミットメッセージは `feat:`, `fix:`, `docs:`, `chore:` などを適切に使い分けること。
 

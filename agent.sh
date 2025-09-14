@@ -293,7 +293,45 @@ if [[ ! -f "$PROJECT_CONTEXT_FILE" ]]; then
     fi
 fi
 
-# C2: AI command validation already completed in dynamic selection step
+# C2: Read working directory from context.md and navigate there
+PROJECT_CONTEXT_FILE="$SCRIPT_DIR/projects/$PROJECT_NAME/context.md"
+WORKING_DIR=""
+
+if [[ -f "$PROJECT_CONTEXT_FILE" ]]; then
+    log "Reading context.md to determine working directory..."
+
+    # Extract working directory from context.md
+    WORKING_DIR_LINE=$(grep "作業ディレクトリ" "$PROJECT_CONTEXT_FILE" | head -1)
+    if [[ -n "$WORKING_DIR_LINE" ]]; then
+        # Extract everything after the colon and clean it up
+        AFTER_COLON=$(echo "$WORKING_DIR_LINE" | cut -d':' -f2)
+        WORKING_DIR=$(echo "$AFTER_COLON" | sed 's/`//g' | sed 's/^ *//' | sed 's/ *$//')
+    fi
+
+    if [[ -n "$WORKING_DIR" ]] && [[ "$WORKING_DIR" != "作業ディレクトリ:" ]]; then
+        # Expand tilde to home directory if needed
+        WORKING_DIR_EXPANDED="${WORKING_DIR/#\~/$HOME}"
+
+        log "Found working directory in context.md: $WORKING_DIR"
+        log "Expanded path: $WORKING_DIR_EXPANDED"
+
+        if [[ -d "$WORKING_DIR_EXPANDED" ]]; then
+            log "Navigating to working directory: $WORKING_DIR_EXPANDED"
+            cd "$WORKING_DIR_EXPANDED"
+            success "Successfully changed to working directory: $(pwd)"
+        else
+            warn "Working directory $WORKING_DIR_EXPANDED does not exist"
+            warn "Staying in current directory: $(pwd)"
+        fi
+    else
+        log "No working directory specified in context.md"
+        log "Staying in agent script directory: $(pwd)"
+    fi
+else
+    log "No context.md found, staying in agent script directory"
+fi
+
+# C2b: AI command validation already completed in dynamic selection step
 log "Using validated AI command: $AI_COMMAND"
 
 # C3: Update Linear issue status to "In Progress"
@@ -314,9 +352,9 @@ echo "=========================================="
 success "Agent initialization complete - starting task execution"
 echo "=========================================="
 
-# Execute the knowledge loader
-cd "$SCRIPT_DIR"
-AI_RESPONSE=$(bash run.sh "$PROJECT_NAME" "$AI_COMMAND" "$USER_INSTRUCTION")
+# Execute the knowledge loader from the script directory
+# (Note: We may have changed to a working directory above, so we need to reference run.sh with full path)
+AI_RESPONSE=$(bash "$SCRIPT_DIR/run.sh" "$PROJECT_NAME" "$AI_COMMAND" "$USER_INSTRUCTION")
 
 log "==========================================
 
