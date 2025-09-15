@@ -247,7 +247,7 @@ import requests
 import json
 from datetime import datetime
 
-API_KEY = 'REDACTED_LEAKED_KEY'
+API_KEY = ''
 ISSUE_ID = '$issue_id'
 
 comment_body = '''---
