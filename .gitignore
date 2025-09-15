@@ -36,3 +36,33 @@ models/
 *.tmp
 *.temp
 *.log
+
+# Cargo registry and cache (全体除外)
+.cargo/
+
+# Claude Code settings and cache
+.claude/
+.claude.json.backup
+.cclsp-cache/
+
+# NPM cache
+.npm/
+
+# Git credentials and tokens
+.git-credentials
+.github-token
+.linear-*
+.gemini/
+
+# Config directories
+.config/
+.local/
+.gradle/
+.codex/
+.clasprc.json
+
+# Bash history and other user files
+.bash_history
+
+# Submodule that changes frequently
+tarot
