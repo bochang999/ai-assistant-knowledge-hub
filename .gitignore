@@ -95,3 +95,53 @@ Thumbs.db
 # Security scanning results
 .scannerwork/
 sonar-scanner.properties
+
+# ========================================
+# LARGE FILE EXCLUSIONS - BOC-82 Solution
+# ========================================
+
+# Package manager caches (major space consumers)
+.npm/
+.cargo/
+.gradle/
+node_modules/
+.cache/
+
+# Build outputs and artifacts
+target/
+build/
+dist/
+*.apk
+*.aab
+*.ipa
+
+# System caches and logs
+temp/
+tmp/
+myprofile/
+*.log
+
+# Large binary files and models
+*.bin
+*.pack
+*.modules
+bugreport-*.txt
+src/whisper.cpp/models/
+android-sdk/
+
+# Development tools and dependencies
+.local/jdk*/
+.cache/briefcase/
+downloads/
+extracted_bugreport/
+bug_report/
+
+# MCP and AI specific large files
+mcp-servers/
+.claude/
+.gemini/
+
+# Android development
+*.keystore
+*.jks
+capacitor.config.ts
