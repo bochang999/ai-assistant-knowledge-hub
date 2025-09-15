@@ -34,6 +34,7 @@ warn() {
 COMMAND=""
 ISSUE_ID=""
 SPECIFIED_AI_COMMAND=""
+INTERACTIVE_MODE=false
 
 # Parse arguments
 while [[ $# -gt 0 ]]; do
@@ -45,6 +46,10 @@ while [[ $# -gt 0 ]]; do
         --ai-command)
             SPECIFIED_AI_COMMAND="$2"
             shift 2
+            ;;
+        --interactive)
+            INTERACTIVE_MODE=true
+            shift
             ;;
         *)
             if [[ -z "$ISSUE_ID" ]] && [[ -n "$COMMAND" ]]; then
@@ -60,9 +65,10 @@ done
 
 # Validate arguments
 if [[ "$COMMAND" != "do" ]] || [[ -z "$ISSUE_ID" ]]; then
-    error "Usage: $0 do [ISSUE_ID] [--ai-command <command>]"
+    error "Usage: $0 do [ISSUE_ID] [--ai-command <command>] [--interactive]"
     error "Example: $0 do BOC-65"
     error "Example: $0 do BOC-65 --ai-command gpt-cli"
+    error "Example: $0 do BOC-65 --interactive"
     exit 1
 fi
 
@@ -352,11 +358,121 @@ echo "=========================================="
 success "Agent initialization complete - starting task execution"
 echo "=========================================="
 
-# Execute the knowledge loader from the script directory
-# (Note: We may have changed to a working directory above, so we need to reference run.sh with full path)
-AI_RESPONSE=$(bash "$SCRIPT_DIR/run.sh" "$PROJECT_NAME" "$AI_COMMAND" "$USER_INSTRUCTION")
+# Execute either interactive mode or normal mode
+if [[ "$INTERACTIVE_MODE" == true ]]; then
+    # ========================================
+    # INTERACTIVE MODE EXECUTION
+    # ========================================
+    log "INTERACTIVE MODE: Starting phase-by-phase execution"
+    log "Working directory: $(pwd)"
 
-log "==========================================
+    # Detect workflow type from issue description
+    WORKFLOW_TYPE=""
+    if echo "$ISSUE_DESCRIPTION" | grep -qi "build.*error\|error.*build\|ビルド.*エラー\|エラー.*ビルド"; then
+        WORKFLOW_TYPE="build_error_correction"
+    else
+        error "Could not detect workflow type from issue description"
+        error "Currently supported workflows: build_error_correction"
+        exit 1
+    fi
 
-# Note: exec replaces the current process, so cleanup code here won't run
-# Cleanup would need to be handled by the called script if needed
+    log "Detected workflow type: $WORKFLOW_TYPE"
+
+    # Find workflow directory
+    WORKFLOW_DIR=""
+    if [[ -d "$SCRIPT_DIR/workflows/$WORKFLOW_TYPE" ]]; then
+        WORKFLOW_DIR="$SCRIPT_DIR/workflows/$WORKFLOW_TYPE"
+    elif [[ -d "workflows/$WORKFLOW_TYPE" ]]; then
+        WORKFLOW_DIR="workflows/$WORKFLOW_TYPE"
+    else
+        error "Workflow directory not found: $WORKFLOW_TYPE"
+        error "Expected: $SCRIPT_DIR/workflows/$WORKFLOW_TYPE or workflows/$WORKFLOW_TYPE"
+        exit 1
+    fi
+
+    log "Using workflow directory: $WORKFLOW_DIR"
+
+    # Get list of phase files
+    PHASE_FILES=($(ls "$WORKFLOW_DIR"/phase*.md | sort))
+    if [[ ${#PHASE_FILES[@]} -eq 0 ]]; then
+        error "No phase files found in $WORKFLOW_DIR"
+        exit 1
+    fi
+
+    log "Found ${#PHASE_FILES[@]} phase files:"
+    for phase_file in "${PHASE_FILES[@]}"; do
+        log "  - $(basename "$phase_file")"
+    done
+
+    # Interactive phase-by-phase execution
+    CURRENT_PHASE=0
+    TOTAL_PHASES=${#PHASE_FILES[@]}
+
+    while [[ $CURRENT_PHASE -lt $TOTAL_PHASES ]]; do
+        PHASE_FILE="${PHASE_FILES[$CURRENT_PHASE]}"
+        PHASE_NAME=$(basename "$PHASE_FILE" .md)
+        NEXT_PHASE=$((CURRENT_PHASE + 1))
+
+        echo ""
+        echo "=========================================="
+        success "PHASE $((CURRENT_PHASE + 1))/$TOTAL_PHASES: $PHASE_NAME"
+        echo "=========================================="
+
+        # Create phase-specific instruction
+        PHASE_INSTRUCTION="Execute ${ISSUE_ID} ${PHASE_NAME} only.
+
+Read and follow the instructions from: ${PHASE_FILE}
+
+Original Issue:
+${USER_INSTRUCTION}
+
+IMPORTANT: Execute ONLY this phase. Do not proceed to other phases."
+
+        log "Executing phase: $PHASE_NAME"
+        log "Phase file: $PHASE_FILE"
+
+        # Execute this phase
+        bash "$SCRIPT_DIR/run.sh" "$PROJECT_NAME" "$AI_COMMAND" "$PHASE_INSTRUCTION"
+
+        # Wait for user approval before continuing
+        if [[ $NEXT_PHASE -lt $TOTAL_PHASES ]]; then
+            echo ""
+            echo "=========================================="
+            log "Phase $((CURRENT_PHASE + 1)) completed"
+            read -p "$(echo -e "${YELLOW}[AGENT]${NC} Proceed to Phase $((NEXT_PHASE + 1)) ($(basename "${PHASE_FILES[$NEXT_PHASE]}" .md))? (y/N): ")" USER_RESPONSE
+            echo "=========================================="
+
+            if [[ "$USER_RESPONSE" =~ ^[Yy]$ ]]; then
+                CURRENT_PHASE=$NEXT_PHASE
+                log "Proceeding to next phase..."
+            else
+                warn "Interactive execution stopped by user"
+                log "Completed phases: $((CURRENT_PHASE + 1))/$TOTAL_PHASES"
+                exit 0
+            fi
+        else
+            CURRENT_PHASE=$NEXT_PHASE
+        fi
+    done
+
+    echo ""
+    echo "=========================================="
+    success "ALL PHASES COMPLETED!"
+    success "Interactive workflow execution finished for $ISSUE_ID"
+    echo "=========================================="
+
+else
+    # ========================================
+    # NORMAL MODE EXECUTION (Original behavior)
+    # ========================================
+    log "NORMAL MODE: Executing full workflow"
+
+    # Execute the knowledge loader from the script directory
+    # (Note: We may have changed to a working directory above, so we need to reference run.sh with full path)
+    AI_RESPONSE=$(bash "$SCRIPT_DIR/run.sh" "$PROJECT_NAME" "$AI_COMMAND" "$USER_INSTRUCTION")
+
+    log "=========================================="
+
+    # Note: exec replaces the current process, so cleanup code here won't run
+    # Cleanup would need to be handled by the called script if needed
+fi
