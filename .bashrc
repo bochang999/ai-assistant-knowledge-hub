@@ -1,6 +1,5 @@
-export NOTION_API_KEY="${NOTION_API_KEY}"
-export NOTION_API_KEY="REDACTED_LEAKED_KEY"
-export NOTION_API_KEY="REDACTED_LEAKED_KEY"
+# Load Notion API key from a separate, untracked file for security
+source /data/data/com.termux/files/home/.notion-api-key
 export PATH=$HOME/codex/codex-rs/target/release:$PATH
 
 # Created by `pipx` on 2025-08-15 22:06:08
