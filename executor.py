@@ -1,9 +1,10 @@
 import subprocess
 import sys
 
+
 def write_file(path, content):
     try:
-        with open(path, 'w') as f:
+        with open(path, "w") as f:
             f.write(content)
         print("SUCCESS: File written successfully.")
         return True
@@ -11,17 +12,25 @@ def write_file(path, content):
         print(f"ERROR: Failed to write file: {e}")
         return False
 
+
 def run_command(command_string):
     try:
-        result = subprocess.run(command_string, shell=True, check=True, capture_output=True, text=True)
-        print(f"SUCCESS: Command executed successfully.\nStdout: {result.stdout}\nStderr: {result.stderr}")
+        result = subprocess.run(
+            command_string, shell=True, check=True, capture_output=True, text=True
+        )
+        print(
+            f"SUCCESS: Command executed successfully.\nStdout: {result.stdout}\nStderr: {result.stderr}"
+        )
         return True
     except subprocess.CalledProcessError as e:
-        print(f"ERROR: Command failed with exit code {e.returncode}.\nStdout: {e.stdout}\nStderr: {e.stderr}")
+        print(
+            f"ERROR: Command failed with exit code {e.returncode}.\nStdout: {e.stdout}\nStderr: {e.stderr}"
+        )
         return False
     except Exception as e:
         print(f"ERROR: Failed to run command: {e}")
         return False
+
 
 def git_push(commit_message):
     try:
@@ -36,6 +45,7 @@ def git_push(commit_message):
     except Exception as e:
         print(f"ERROR: Git push failed: {e}")
         return False
+
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:

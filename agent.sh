@@ -269,8 +269,22 @@ log "Detected project: $PROJECT_NAME"
 AI_COMMAND="$SELECTED_AI_COMMAND"
 log "AI Command: $AI_COMMAND (from dynamic selection)"
 
-# B5: Prepare user instruction from issue description
-USER_INSTRUCTION="$ISSUE_TITLE"$'\n\n'"$ISSUE_DESCRIPTION"
+# B5: Load constitution and prepare user instruction with forced injection
+log "Loading AI Assistant Constitutional Principles..."
+CONSTITUTION_FILE="$SCRIPT_DIR/commons/constitution.md"
+
+if [[ -f "$CONSTITUTION_FILE" ]]; then
+    CONSTITUTION=$(cat "$CONSTITUTION_FILE")
+    log "Constitution loaded successfully ($(wc -l < "$CONSTITUTION_FILE") lines)"
+else
+    warn "Constitution file not found at $CONSTITUTION_FILE"
+    CONSTITUTION="# AI Assistant Constitutional Principles - File not found"
+fi
+
+# Combine constitution with user instruction as specified in BOC-88
+USER_INSTRUCTION_WITH_CONSTITUTION="$CONSTITUTION"$'\n\n'"---"$'\n\n'"## 本日のタスク"$'\n\n'"$ISSUE_TITLE"$'\n\n'"$ISSUE_DESCRIPTION"
+
+USER_INSTRUCTION="$USER_INSTRUCTION_WITH_CONSTITUTION"
 
 success "Task details retrieved and parsed successfully"
 
@@ -418,15 +432,17 @@ if [[ "$INTERACTIVE_MODE" == true ]]; then
         success "PHASE $((CURRENT_PHASE + 1))/$TOTAL_PHASES: $PHASE_NAME"
         echo "=========================================="
 
-        # Create phase-specific instruction
-        PHASE_INSTRUCTION="Execute ${ISSUE_ID} ${PHASE_NAME} only.
+        # Create phase-specific instruction with constitution injection
+        PHASE_INSTRUCTION_WITH_CONSTITUTION="$CONSTITUTION"$'\n\n'"---"$'\n\n'"Execute ${ISSUE_ID} ${PHASE_NAME} only.
 
 Read and follow the instructions from: ${PHASE_FILE}
 
 Original Issue:
-${USER_INSTRUCTION}
+${ISSUE_TITLE}"$'\n\n'"${ISSUE_DESCRIPTION}
 
 IMPORTANT: Execute ONLY this phase. Do not proceed to other phases."
+
+        PHASE_INSTRUCTION="$PHASE_INSTRUCTION_WITH_CONSTITUTION"
 
         log "Executing phase: $PHASE_NAME"
         log "Phase file: $PHASE_FILE"

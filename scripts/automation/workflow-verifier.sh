@@ -144,11 +144,11 @@ verify_with_curl_api() {
     echo "🌐 GitHub API (curl) でワークフロー確認中..."
 
     # GitHub token確認
-    local github_token=""
+    local auth_token=""
     if [ -f ~/.github-token ]; then
-        github_token=$(cat ~/.github-token)
-    elif [ -n "$GITHUB_TOKEN" ]; then
-        github_token="$GITHUB_TOKEN"
+        auth_token=$(cat ~/.github-token)
+    elif [ -n "${API_TOKEN}" ]; then
+        auth_token="${API_TOKEN}"
     else
         echo "❌ GitHub tokenが見つかりません"
         echo "💡 ~/.github-token にPersonal Access Tokenを保存してください"
@@ -156,7 +156,7 @@ verify_with_curl_api() {
     fi
 
     # API呼び出し
-    local response=$(curl -s -H "Authorization: token $github_token" \
+    local response=$(curl -s -H "Authorization: token $auth_token" \
         "https://api.github.com/repos/$repo/actions/runs?branch=$branch&per_page=3")
 
     # レスポンス確認
