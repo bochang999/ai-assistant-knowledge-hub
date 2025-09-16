@@ -1,0 +1,971 @@
+﻿2025-09-15T19:04:49.3927327Z Current runner version: '2.328.0'
+2025-09-15T19:04:49.3951864Z ##[group]Runner Image Provisioner
+2025-09-15T19:04:49.3953077Z Hosted Compute Agent
+2025-09-15T19:04:49.3953878Z Version: 20250829.383
+2025-09-15T19:04:49.3954539Z Commit: 27cb235aab5b0e52e153a26cd86b4742e89dac5d
+2025-09-15T19:04:49.3955266Z Build Date: 2025-08-29T13:48:48Z
+2025-09-15T19:04:49.3956008Z ##[endgroup]
+2025-09-15T19:04:49.3956522Z ##[group]Operating System
+2025-09-15T19:04:49.3957086Z Ubuntu
+2025-09-15T19:04:49.3957651Z 24.04.3
+2025-09-15T19:04:49.3958145Z LTS
+2025-09-15T19:04:49.3958579Z ##[endgroup]
+2025-09-15T19:04:49.3959201Z ##[group]Runner Image
+2025-09-15T19:04:49.3959771Z Image: ubuntu-24.04
+2025-09-15T19:04:49.3960351Z Version: 20250907.24.1
+2025-09-15T19:04:49.3961397Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20250907.24/images/ubuntu/Ubuntu2404-Readme.md
+2025-09-15T19:04:49.3963388Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20250907.24
+2025-09-15T19:04:49.3964532Z ##[endgroup]
+2025-09-15T19:04:49.3965725Z ##[group]GITHUB_TOKEN Permissions
+2025-09-15T19:04:49.3967914Z Contents: read
+2025-09-15T19:04:49.3968469Z Metadata: read
+2025-09-15T19:04:49.3969084Z Packages: read
+2025-09-15T19:04:49.3969651Z ##[endgroup]
+2025-09-15T19:04:49.3971756Z Secret source: Actions
+2025-09-15T19:04:49.3972898Z Prepare workflow directory
+2025-09-15T19:04:49.4379452Z Prepare all required actions
+2025-09-15T19:04:49.4418398Z Getting action download info
+2025-09-15T19:04:49.9787087Z Download action repository 'actions/checkout@v4' (SHA:08eba0b27e820071cde6df949e0beb9ba4906955)
+2025-09-15T19:04:50.1837207Z Download action repository 'actions/setup-node@v4' (SHA:49933ea5288caeca8642d1e84afbd3f7d6820020)
+2025-09-15T19:04:50.3514641Z Download action repository 'actions/setup-java@v4' (SHA:c5195efecf7bdfc987ee8bae7a71cb8b11521c00)
+2025-09-15T19:04:50.8655583Z Download action repository 'actions/cache@v3' (SHA:2f8e54208210a422b2efd51efaa6bd6d7ca8920f)
+2025-09-15T19:04:51.1628650Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2025-09-15T19:04:51.2748375Z Download action repository 'actions/create-release@v1' (SHA:0cb9c9b65d5d1901c1f53e5e66eaf4afd303e70e)
+2025-09-15T19:04:51.6983008Z Complete job name: build
+2025-09-15T19:04:51.7951635Z ##[group]Run actions/checkout@v4
+2025-09-15T19:04:51.7953526Z with:
+2025-09-15T19:04:51.7954431Z   fetch-depth: 0
+2025-09-15T19:04:51.7955418Z   repository: bochang999/petit-recipe
+2025-09-15T19:04:51.7956880Z   token: ***
+2025-09-15T19:04:51.7957824Z   ssh-strict: true
+2025-09-15T19:04:51.7958736Z   ssh-user: git
+2025-09-15T19:04:51.7959720Z   persist-credentials: true
+2025-09-15T19:04:51.7960707Z   clean: true
+2025-09-15T19:04:51.7961625Z   sparse-checkout-cone-mode: true
+2025-09-15T19:04:51.7962964Z   fetch-tags: false
+2025-09-15T19:04:51.7963887Z   show-progress: true
+2025-09-15T19:04:51.7964764Z   lfs: false
+2025-09-15T19:04:51.7965678Z   submodules: false
+2025-09-15T19:04:51.7966610Z   set-safe-directory: true
+2025-09-15T19:04:51.7967929Z env:
+2025-09-15T19:04:51.7968863Z   JAVA_VERSION: 21
+2025-09-15T19:04:51.7969764Z   NODE_VERSION: 20
+2025-09-15T19:04:51.7970630Z ##[endgroup]
+2025-09-15T19:04:51.9185527Z Syncing repository: bochang999/petit-recipe
+2025-09-15T19:04:51.9188634Z ##[group]Getting Git version info
+2025-09-15T19:04:51.9190052Z Working directory is '/home/runner/work/petit-recipe/petit-recipe'
+2025-09-15T19:04:51.9192241Z [command]/usr/bin/git version
+2025-09-15T19:04:51.9196009Z git version 2.51.0
+2025-09-15T19:04:51.9223874Z ##[endgroup]
+2025-09-15T19:04:51.9246568Z Temporarily overriding HOME='/home/runner/work/_temp/38864b87-a356-4c4d-8688-1614447de092' before making global git config changes
+2025-09-15T19:04:51.9249242Z Adding repository directory to the temporary git global config as a safe directory
+2025-09-15T19:04:51.9251919Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/petit-recipe/petit-recipe
+2025-09-15T19:04:51.9290921Z Deleting the contents of '/home/runner/work/petit-recipe/petit-recipe'
+2025-09-15T19:04:51.9294644Z ##[group]Initializing the repository
+2025-09-15T19:04:51.9298761Z [command]/usr/bin/git init /home/runner/work/petit-recipe/petit-recipe
+2025-09-15T19:04:51.9403913Z hint: Using 'master' as the name for the initial branch. This default branch name
+2025-09-15T19:04:51.9408129Z hint: is subject to change. To configure the initial branch name to use in all
+2025-09-15T19:04:51.9410746Z hint: of your new repositories, which will suppress this warning, call:
+2025-09-15T19:04:51.9412382Z hint:
+2025-09-15T19:04:51.9413370Z hint: 	git config --global init.defaultBranch <name>
+2025-09-15T19:04:51.9414910Z hint:
+2025-09-15T19:04:51.9416119Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2025-09-15T19:04:51.9418036Z hint: 'development'. The just-created branch can be renamed via this command:
+2025-09-15T19:04:51.9419535Z hint:
+2025-09-15T19:04:51.9420528Z hint: 	git branch -m <name>
+2025-09-15T19:04:51.9421643Z hint:
+2025-09-15T19:04:51.9423109Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2025-09-15T19:04:51.9425128Z Initialized empty Git repository in /home/runner/work/petit-recipe/petit-recipe/.git/
+2025-09-15T19:04:51.9428382Z [command]/usr/bin/git remote add origin https://github.com/bochang999/petit-recipe
+2025-09-15T19:04:51.9464640Z ##[endgroup]
+2025-09-15T19:04:51.9466116Z ##[group]Disabling automatic garbage collection
+2025-09-15T19:04:51.9468123Z [command]/usr/bin/git config --local gc.auto 0
+2025-09-15T19:04:51.9499104Z ##[endgroup]
+2025-09-15T19:04:51.9500506Z ##[group]Setting up auth
+2025-09-15T19:04:51.9505822Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-09-15T19:04:51.9538669Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-09-15T19:04:51.9898617Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-09-15T19:04:51.9934608Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-09-15T19:04:52.0158629Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2025-09-15T19:04:52.0197406Z ##[endgroup]
+2025-09-15T19:04:52.0198900Z ##[group]Fetching the repository
+2025-09-15T19:04:52.0207269Z [command]/usr/bin/git -c protocol.version=2 fetch --prune --no-recurse-submodules origin +refs/heads/*:refs/remotes/origin/* +refs/tags/*:refs/tags/*
+2025-09-15T19:04:52.4133279Z From https://github.com/bochang999/petit-recipe
+2025-09-15T19:04:52.4137688Z  * [new branch]      feature/milestone-1-complete -> origin/feature/milestone-1-complete
+2025-09-15T19:04:52.4140601Z  * [new branch]      main       -> origin/main
+2025-09-15T19:04:52.4190466Z [command]/usr/bin/git branch --list --remote origin/feature/milestone-1-complete
+2025-09-15T19:04:52.4216689Z   origin/feature/milestone-1-complete
+2025-09-15T19:04:52.4230937Z [command]/usr/bin/git rev-parse refs/remotes/origin/feature/milestone-1-complete
+2025-09-15T19:04:52.4254684Z 2acabbefebdc19392d2ba0f78a9402fcd86c3752
+2025-09-15T19:04:52.4262877Z ##[endgroup]
+2025-09-15T19:04:52.4265321Z ##[group]Determining the checkout info
+2025-09-15T19:04:52.4268223Z ##[endgroup]
+2025-09-15T19:04:52.4269872Z [command]/usr/bin/git sparse-checkout disable
+2025-09-15T19:04:52.4312927Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2025-09-15T19:04:52.4343807Z ##[group]Checking out the ref
+2025-09-15T19:04:52.4349262Z [command]/usr/bin/git checkout --progress --force -B feature/milestone-1-complete refs/remotes/origin/feature/milestone-1-complete
+2025-09-15T19:04:52.4442955Z Switched to a new branch 'feature/milestone-1-complete'
+2025-09-15T19:04:52.4447868Z branch 'feature/milestone-1-complete' set up to track 'origin/feature/milestone-1-complete'.
+2025-09-15T19:04:52.4455108Z ##[endgroup]
+2025-09-15T19:04:52.4493089Z [command]/usr/bin/git log -1 --format=%H
+2025-09-15T19:04:52.4519815Z 2acabbefebdc19392d2ba0f78a9402fcd86c3752
+2025-09-15T19:04:52.4805725Z ##[group]Run actions/setup-node@v4
+2025-09-15T19:04:52.4806732Z with:
+2025-09-15T19:04:52.4807447Z   node-version: 20
+2025-09-15T19:04:52.4808212Z   cache: npm
+2025-09-15T19:04:52.4808945Z   always-auth: false
+2025-09-15T19:04:52.4809753Z   check-latest: false
+2025-09-15T19:04:52.4810809Z   token: ***
+2025-09-15T19:04:52.4811518Z env:
+2025-09-15T19:04:52.4812501Z   JAVA_VERSION: 21
+2025-09-15T19:04:52.4813303Z   NODE_VERSION: 20
+2025-09-15T19:04:52.4814072Z ##[endgroup]
+2025-09-15T19:04:52.7173524Z Found in cache @ /opt/hostedtoolcache/node/20.19.5/x64
+2025-09-15T19:04:52.7180961Z ##[group]Environment details
+2025-09-15T19:04:56.5743355Z node: v20.19.5
+2025-09-15T19:04:56.5744237Z npm: 10.8.2
+2025-09-15T19:04:56.5744682Z yarn: 1.22.22
+2025-09-15T19:04:56.5745934Z ##[endgroup]
+2025-09-15T19:04:56.5765556Z [command]/opt/hostedtoolcache/node/20.19.5/x64/bin/npm config get cache
+2025-09-15T19:04:57.0886208Z /home/runner/.npm
+2025-09-15T19:04:57.2817988Z npm cache is not found
+2025-09-15T19:04:57.3016811Z ##[group]Run actions/setup-java@v4
+2025-09-15T19:04:57.3017128Z with:
+2025-09-15T19:04:57.3017323Z   distribution: temurin
+2025-09-15T19:04:57.3017541Z   java-version: 21
+2025-09-15T19:04:57.3017751Z   java-package: jdk
+2025-09-15T19:04:57.3017955Z   check-latest: false
+2025-09-15T19:04:57.3018162Z   server-id: github
+2025-09-15T19:04:57.3018387Z   server-username: GITHUB_ACTOR
+2025-09-15T19:04:57.3018653Z   server-password: GITHUB_TOKEN
+2025-09-15T19:04:57.3018886Z   overwrite-settings: true
+2025-09-15T19:04:57.3019114Z   job-status: success
+2025-09-15T19:04:57.3019446Z   token: ***
+2025-09-15T19:04:57.3019646Z env:
+2025-09-15T19:04:57.3019825Z   JAVA_VERSION: 21
+2025-09-15T19:04:57.3020018Z   NODE_VERSION: 20
+2025-09-15T19:04:57.3020224Z ##[endgroup]
+2025-09-15T19:04:57.5114204Z ##[group]Installed distributions
+2025-09-15T19:04:57.5585557Z Resolved Java 21.0.8+9 from tool-cache
+2025-09-15T19:04:57.5586142Z Setting Java 21.0.8+9 as the default
+2025-09-15T19:04:57.5592880Z Creating toolchains.xml for JDK version 21 from temurin
+2025-09-15T19:04:57.5671772Z Writing to /home/runner/.m2/toolchains.xml
+2025-09-15T19:04:57.5672532Z
+2025-09-15T19:04:57.5672836Z Java configuration:
+2025-09-15T19:04:57.5673338Z   Distribution: temurin
+2025-09-15T19:04:57.5673885Z   Version: 21.0.8+9
+2025-09-15T19:04:57.5674643Z   Path: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.8-9/x64
+2025-09-15T19:04:57.5675095Z
+2025-09-15T19:04:57.5676163Z ##[endgroup]
+2025-09-15T19:04:57.5680104Z Creating settings.xml with server-id: github
+2025-09-15T19:04:57.5697133Z Writing to /home/runner/.m2/settings.xml
+2025-09-15T19:04:57.6577363Z ##[group]Run actions/cache@v3
+2025-09-15T19:04:57.6577685Z with:
+2025-09-15T19:04:57.6577920Z   path: ~/.gradle/caches
+~/.gradle/wrapper
+
+2025-09-15T19:04:57.6578394Z   key: Linux-gradle-87c0fd25e50fc88d976d9f4308950eed943aaae9004c0fdaac5715b35e06ecbc
+2025-09-15T19:04:57.6578857Z   restore-keys: Linux-gradle-
+
+2025-09-15T19:04:57.6579119Z   enableCrossOsArchive: false
+2025-09-15T19:04:57.6579359Z   fail-on-cache-miss: false
+2025-09-15T19:04:57.6579593Z   lookup-only: false
+2025-09-15T19:04:57.6579794Z env:
+2025-09-15T19:04:57.6579974Z   JAVA_VERSION: 21
+2025-09-15T19:04:57.6580173Z   NODE_VERSION: 20
+2025-09-15T19:04:57.6580476Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.8-9/x64
+2025-09-15T19:04:57.6580932Z   JAVA_HOME_21_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.8-9/x64
+2025-09-15T19:04:57.6581288Z ##[endgroup]
+2025-09-15T19:04:57.9063774Z Cache not found for input keys: Linux-gradle-87c0fd25e50fc88d976d9f4308950eed943aaae9004c0fdaac5715b35e06ecbc, Linux-gradle-
+2025-09-15T19:04:57.9152914Z ##[group]Run echo "📦 依存関係インストール開始"
+2025-09-15T19:04:57.9153303Z [36;1mecho "📦 依存関係インストール開始"[0m
+2025-09-15T19:04:57.9153556Z [36;1mnpm ci[0m
+2025-09-15T19:04:57.9153986Z [36;1mnpm install -g @capacitor/cli[0m
+2025-09-15T19:04:57.9154372Z [36;1m# CI環境でのみ@capacitor/assetsをインストール (Sharp依存関係がCI環境で利用可能)[0m
+2025-09-15T19:04:57.9154741Z [36;1mnpm install @capacitor/assets@^3.0.5[0m
+2025-09-15T19:04:57.9155024Z [36;1mecho "✅ 依存関係インストール完了"[0m
+2025-09-15T19:04:57.9344390Z shell: /usr/bin/bash -e {0}
+2025-09-15T19:04:57.9344743Z env:
+2025-09-15T19:04:57.9344971Z   JAVA_VERSION: 21
+2025-09-15T19:04:57.9345208Z   NODE_VERSION: 20
+2025-09-15T19:04:57.9345563Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.8-9/x64
+2025-09-15T19:04:57.9346121Z   JAVA_HOME_21_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.8-9/x64
+2025-09-15T19:04:57.9346547Z ##[endgroup]
+2025-09-15T19:04:57.9424584Z 📦 依存関係インストール開始
+2025-09-15T19:05:07.5974182Z
+2025-09-15T19:05:07.5975177Z added 367 packages, and audited 368 packages in 10s
+2025-09-15T19:05:07.5975626Z
+2025-09-15T19:05:07.5975909Z 138 packages are looking for funding
+2025-09-15T19:05:07.5976475Z   run `npm fund` for details
+2025-09-15T19:05:07.5985486Z
+2025-09-15T19:05:07.5986040Z found 0 vulnerabilities
+2025-09-15T19:05:11.3145912Z
+2025-09-15T19:05:11.3146646Z added 108 packages in 4s
+2025-09-15T19:05:11.3147043Z
+2025-09-15T19:05:11.3147411Z 19 packages are looking for funding
+2025-09-15T19:05:11.3148041Z   run `npm fund` for details
+2025-09-15T19:05:21.1054302Z npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+2025-09-15T19:05:21.9235548Z npm warn deprecated q@1.5.1: You or someone you depend on is using Q, the JavaScript Promise library that gave JavaScript developers strong feelings about promises. They can almost certainly migrate to the native JavaScript promise now. Thank you literally everyone for joining me in this bet against the odds. Be excellent to each other.
+2025-09-15T19:05:21.9237739Z npm warn deprecated
+2025-09-15T19:05:21.9238680Z npm warn deprecated (For a CapTP with native promises, see @endo/eventual-send and @endo/captp)
+2025-09-15T19:05:22.0437172Z npm warn deprecated rimraf@3.0.2: Rimraf versions prior to v4 are no longer supported
+2025-09-15T19:05:22.0440272Z npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
+2025-09-15T19:05:22.3506831Z npm warn deprecated @xmldom/xmldom@0.7.13: this version is no longer supported, please update to at least 0.8.*
+2025-09-15T19:05:22.3535451Z npm warn deprecated @xmldom/xmldom@0.7.13: this version is no longer supported, please update to at least 0.8.*
+2025-09-15T19:05:24.2780891Z
+2025-09-15T19:05:24.2781730Z added 314 packages, and audited 682 packages in 13s
+2025-09-15T19:05:24.2782446Z
+2025-09-15T19:05:24.2785012Z 177 packages are looking for funding
+2025-09-15T19:05:24.2785570Z   run `npm fund` for details
+2025-09-15T19:05:24.2795884Z
+2025-09-15T19:05:24.2796203Z found 0 vulnerabilities
+2025-09-15T19:05:24.3058208Z ✅ 依存関係インストール完了
+2025-09-15T19:05:24.3123394Z ##[group]Run npm run lint
+2025-09-15T19:05:24.3123689Z [36;1mnpm run lint[0m
+2025-09-15T19:05:24.3123925Z [36;1mnpm run format -- --check[0m
+2025-09-15T19:05:24.3155395Z shell: /usr/bin/bash -e {0}
+2025-09-15T19:05:24.3155633Z env:
+2025-09-15T19:05:24.3155818Z   JAVA_VERSION: 21
+2025-09-15T19:05:24.3156017Z   NODE_VERSION: 20
+2025-09-15T19:05:24.3156319Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.8-9/x64
+2025-09-15T19:05:24.3156774Z   JAVA_HOME_21_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.8-9/x64
+2025-09-15T19:05:24.3157133Z   ESLINT_USE_FLAT_CONFIG: false
+2025-09-15T19:05:24.3157363Z ##[endgroup]
+2025-09-15T19:05:24.4371512Z
+2025-09-15T19:05:24.4372249Z > petit-recipe@1.0.0 lint
+2025-09-15T19:05:24.4372907Z > eslint "**/*.{ts,js}" --fix
+2025-09-15T19:05:24.4373149Z
+2025-09-15T19:05:25.6152941Z
+2025-09-15T19:05:25.6153845Z /home/runner/work/petit-recipe/petit-recipe/scripts/ai-analyzer.js
+2025-09-15T19:05:25.6180652Z ##[warning]  8:7  warning  'fs' is assigned a value but never used    @typescript-eslint/no-unused-vars
+2025-09-15T19:05:25.6190167Z ##[warning]  9:7  warning  'path' is assigned a value but never used  @typescript-eslint/no-unused-vars
+2025-09-15T19:05:25.6191031Z
+2025-09-15T19:05:25.6191522Z ✖ 2 problems (0 errors, 2 warnings)
+2025-09-15T19:05:25.6191835Z
+2025-09-15T19:05:25.6194289Z (node:2234) ESLintRCWarning: You are using an eslintrc configuration file, which is deprecated and support will be removed in v10.0.0. Please migrate to an eslint.config.js file. See https://eslint.org/docs/latest/use/configure/migration-guide for details. An eslintrc configuration file is used because you have the ESLINT_USE_FLAT_CONFIG environment variable set to false. If you want to use an eslint.config.js file, remove the environment variable. If you want to find the location of the eslintrc configuration file, use the --debug flag.
+2025-09-15T19:05:25.6196222Z (Use `node --trace-warnings ...` to show where the warning was created)
+2025-09-15T19:05:25.7544011Z
+2025-09-15T19:05:25.7544780Z > petit-recipe@1.0.0 format
+2025-09-15T19:05:25.7545431Z > prettier --write "**/*.{ts,js}" --check
+2025-09-15T19:05:25.7545699Z
+2025-09-15T19:05:25.8423703Z Checking formatting...
+2025-09-15T19:05:25.9495425Z [[33mwarn[39m] capacitor.config.ts
+2025-09-15T19:05:26.0304288Z [[33mwarn[39m] recipes-data.js
+2025-09-15T19:05:26.1296175Z [[33mwarn[39m] script.js
+2025-09-15T19:05:26.1916793Z [[33mwarn[39m] scripts/ai-analyzer.js
+2025-09-15T19:05:26.2327209Z [[33mwarn[39m] Code style issues fixed in 4 files.
+2025-09-15T19:05:26.2731290Z ##[group]Run echo "🔍 PWA設定ファイル確認"
+2025-09-15T19:05:26.2731657Z [36;1mecho "🔍 PWA設定ファイル確認"[0m
+2025-09-15T19:05:26.2731953Z [36;1mif [ -f "manifest.json" ]; then[0m
+2025-09-15T19:05:26.2732565Z [36;1m  echo "✅ manifest.json 存在確認"[0m
+2025-09-15T19:05:26.2732924Z [36;1m  cat manifest.json | jq '.' > /dev/null && echo "✅ JSON形式正常" || exit 1[0m
+2025-09-15T19:05:26.2733248Z [36;1melse[0m
+2025-09-15T19:05:26.2733487Z [36;1m  echo "❌ manifest.json が見つかりません"[0m
+2025-09-15T19:05:26.2733732Z [36;1m  exit 1[0m
+2025-09-15T19:05:26.2733912Z [36;1mfi[0m
+2025-09-15T19:05:26.2734080Z [36;1m[0m
+2025-09-15T19:05:26.2734267Z [36;1mif [ -f "sw.js" ]; then[0m
+2025-09-15T19:05:26.2734511Z [36;1m  echo "✅ Service Worker存在確認"[0m
+2025-09-15T19:05:26.2734774Z [36;1melse[0m
+2025-09-15T19:05:26.2734984Z [36;1m  echo "⚠️ Service Workerがありません（オプション）"[0m
+2025-09-15T19:05:26.2735237Z [36;1mfi[0m
+2025-09-15T19:05:26.2765956Z shell: /usr/bin/bash -e {0}
+2025-09-15T19:05:26.2766243Z env:
+2025-09-15T19:05:26.2766419Z   JAVA_VERSION: 21
+2025-09-15T19:05:26.2766628Z   NODE_VERSION: 20
+2025-09-15T19:05:26.2766931Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.8-9/x64
+2025-09-15T19:05:26.2767401Z   JAVA_HOME_21_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.8-9/x64
+2025-09-15T19:05:26.2767753Z ##[endgroup]
+2025-09-15T19:05:26.2821144Z 🔍 PWA設定ファイル確認
+2025-09-15T19:05:26.2821648Z ✅ manifest.json 存在確認
+2025-09-15T19:05:26.2870537Z ✅ JSON形式正常
+2025-09-15T19:05:26.2870997Z ✅ Service Worker存在確認
+2025-09-15T19:05:26.2896782Z ##[group]Run VERSION_TAG="1.0.68"
+2025-09-15T19:05:26.2897083Z [36;1mVERSION_TAG="1.0.68"[0m
+2025-09-15T19:05:26.2897373Z [36;1mecho "VERSION_TAG=${VERSION_TAG}" >> $GITHUB_ENV[0m
+2025-09-15T19:05:26.2897697Z [36;1mecho "🏷️ バージョンタグ: ${VERSION_TAG}"[0m
+2025-09-15T19:05:26.2927116Z shell: /usr/bin/bash -e {0}
+2025-09-15T19:05:26.2927356Z env:
+2025-09-15T19:05:26.2927536Z   JAVA_VERSION: 21
+2025-09-15T19:05:26.2927738Z   NODE_VERSION: 20
+2025-09-15T19:05:26.2928035Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.8-9/x64
+2025-09-15T19:05:26.2928502Z   JAVA_HOME_21_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.8-9/x64
+2025-09-15T19:05:26.2928864Z ##[endgroup]
+2025-09-15T19:05:26.2981542Z 🏷️ バージョンタグ: 1.0.68
+2025-09-15T19:05:26.3010061Z ##[group]Run echo "📝 アプリバージョン更新開始"
+2025-09-15T19:05:26.3010374Z [36;1mecho "📝 アプリバージョン更新開始"[0m
+2025-09-15T19:05:26.3010839Z [36;1m# package.jsonのバージョン更新[0m
+2025-09-15T19:05:26.3011235Z [36;1mjq --arg version "1.0.68" '.version = $version' package.json > package.json.tmp[0m
+2025-09-15T19:05:26.3011655Z [36;1mmv package.json.tmp package.json[0m
+2025-09-15T19:05:26.3011932Z [36;1m[0m
+2025-09-15T19:05:26.3012465Z [36;1m# manifestのバージョン更新[0m
+2025-09-15T19:05:26.3012838Z [36;1mjq --arg version "1.0.68" '.version = $version' manifest.json > manifest.json.tmp[0m
+2025-09-15T19:05:26.3013229Z [36;1mmv manifest.json.tmp manifest.json[0m
+2025-09-15T19:05:26.3013492Z [36;1m[0m
+2025-09-15T19:05:26.3013679Z [36;1mecho "✅ バージョン 1.0.68 に更新完了"[0m
+2025-09-15T19:05:26.3042669Z shell: /usr/bin/bash -e {0}
+2025-09-15T19:05:26.3042908Z env:
+2025-09-15T19:05:26.3043092Z   JAVA_VERSION: 21
+2025-09-15T19:05:26.3043289Z   NODE_VERSION: 20
+2025-09-15T19:05:26.3043631Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.8-9/x64
+2025-09-15T19:05:26.3044115Z   JAVA_HOME_21_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.8-9/x64
+2025-09-15T19:05:26.3044479Z   VERSION_TAG: 1.0.68
+2025-09-15T19:05:26.3044687Z ##[endgroup]
+2025-09-15T19:05:26.3097728Z 📝 アプリバージョン更新開始
+2025-09-15T19:05:26.3187018Z ✅ バージョン 1.0.68 に更新完了
+2025-09-15T19:05:26.3213570Z ##[group]Run echo "🔑 キーストア設定開始"
+2025-09-15T19:05:26.3213958Z [36;1mecho "🔑 キーストア設定開始"[0m
+2025-09-15T19:05:26.3214186Z [36;1m[0m
+2025-09-15T19:05:26.3233543Z [36;1mif [ -z "***" ]; then[0m
+2025-09-15T19:05:26.3233988Z [36;1m  echo "⚠️ GitHub Secrets未設定 - PWAテンプレート固定キーストア生成"[0m
+2025-09-15T19:05:26.3234346Z [36;1m  keytool -genkeypair -v \[0m
+2025-09-15T19:05:26.3234651Z [36;1m    -keystore template-release.keystore \[0m
+2025-09-15T19:05:26.3234958Z [36;1m    -alias pwa-template-key \[0m
+2025-09-15T19:05:26.3235227Z [36;1m    -keyalg RSA \[0m
+2025-09-15T19:05:26.3235454Z [36;1m    -keysize 2048 \[0m
+2025-09-15T19:05:26.3235687Z [36;1m    -validity 10000 \[0m
+2025-09-15T19:05:26.3236072Z [36;1m    -dname "CN=PWA Template,OU=PWA Template,O=PWA Template App,L=Tokyo,ST=Tokyo,C=JP" \[0m
+2025-09-15T19:05:26.3236512Z [36;1m    -storepass template2024 \[0m
+2025-09-15T19:05:26.3236778Z [36;1m    -keypass template2024[0m
+2025-09-15T19:05:26.3237011Z [36;1m  [0m
+2025-09-15T19:05:26.3237305Z [36;1m  echo "KEYSTORE_PASSWORD=template2024" >> $GITHUB_ENV[0m
+2025-09-15T19:05:26.3237661Z [36;1m  echo "KEY_ALIAS=pwa-template-key" >> $GITHUB_ENV[0m
+2025-09-15T19:05:26.3237996Z [36;1m  echo "KEY_PASSWORD=template2024" >> $GITHUB_ENV[0m
+2025-09-15T19:05:26.3238274Z [36;1melse[0m
+2025-09-15T19:05:26.3238521Z [36;1m  echo "✅ GitHub Secrets設定済み - 本番キーストア使用"[0m
+2025-09-15T19:05:26.3257602Z [36;1m  echo "***" | base64 --decode > ***store.jks[0m
+2025-09-15T19:05:26.3257883Z [36;1m  [0m
+2025-09-15T19:05:26.3258196Z [36;1m  echo "KEYSTORE_PASSWORD=***" >> $GITHUB_ENV[0m
+2025-09-15T19:05:26.3258550Z [36;1m  echo "KEY_ALIAS=***" >> $GITHUB_ENV[0m
+2025-09-15T19:05:26.3258901Z [36;1m  echo "KEY_PASSWORD=***" >> $GITHUB_ENV[0m
+2025-09-15T19:05:26.3259158Z [36;1mfi[0m
+2025-09-15T19:05:26.3259358Z [36;1m[0m
+2025-09-15T19:05:26.3259538Z [36;1mecho "🔐 キーストア設定完了"[0m
+2025-09-15T19:05:26.3291175Z shell: /usr/bin/bash -e {0}
+2025-09-15T19:05:26.3291435Z env:
+2025-09-15T19:05:26.3291637Z   JAVA_VERSION: 21
+2025-09-15T19:05:26.3291843Z   NODE_VERSION: 20
+2025-09-15T19:05:26.3292269Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.8-9/x64
+2025-09-15T19:05:26.3292754Z   JAVA_HOME_21_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.8-9/x64
+2025-09-15T19:05:26.3293096Z   VERSION_TAG: 1.0.68
+2025-09-15T19:05:26.3293323Z ##[endgroup]
+2025-09-15T19:05:26.3347792Z 🔑 キーストア設定開始
+2025-09-15T19:05:26.3353266Z ✅ GitHub Secrets設定済み - 本番キーストア使用
+2025-09-15T19:05:26.3376630Z 🔐 キーストア設定完了
+2025-09-15T19:05:26.3401889Z ##[group]Run echo "🏧️ ウェブアセットビルド開始"
+2025-09-15T19:05:26.3402472Z [36;1mecho "🏧️ ウェブアセットビルド開始"[0m
+2025-09-15T19:05:26.3402725Z [36;1m[0m
+2025-09-15T19:05:26.3402932Z [36;1m# distディレクトリ作成とファイルコピー[0m
+2025-09-15T19:05:26.3403189Z [36;1mmkdir -p dist[0m
+2025-09-15T19:05:26.3403741Z [36;1mcp index.html style.css script.js manifest.json sw.js recipes-data.js dist/[0m
+2025-09-15T19:05:26.3404122Z [36;1m[0m
+2025-09-15T19:05:26.3404310Z [36;1m# iconsディレクトリも含める[0m
+2025-09-15T19:05:26.3404548Z [36;1mif [ -d "icons" ]; then[0m
+2025-09-15T19:05:26.3404781Z [36;1m  cp -r icons dist/[0m
+2025-09-15T19:05:26.3404993Z [36;1mfi[0m
+2025-09-15T19:05:26.3405169Z [36;1m[0m
+2025-09-15T19:05:26.3405392Z [36;1mecho "✅ ウェブアセット準備完了（recipes-data.js含む）"[0m
+2025-09-15T19:05:26.3435104Z shell: /usr/bin/bash -e {0}
+2025-09-15T19:05:26.3435350Z env:
+2025-09-15T19:05:26.3435540Z   JAVA_VERSION: 21
+2025-09-15T19:05:26.3435731Z   NODE_VERSION: 20
+2025-09-15T19:05:26.3436088Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.8-9/x64
+2025-09-15T19:05:26.3436578Z   JAVA_HOME_21_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.8-9/x64
+2025-09-15T19:05:26.3436928Z   VERSION_TAG: 1.0.68
+2025-09-15T19:05:26.3437247Z   KEYSTORE_PASSWORD: ***
+2025-09-15T19:05:26.3437515Z   KEY_ALIAS: ***
+2025-09-15T19:05:26.3437759Z   KEY_PASSWORD: ***
+2025-09-15T19:05:26.3437966Z ##[endgroup]
+2025-09-15T19:05:26.3489853Z 🏧️ ウェブアセットビルド開始
+2025-09-15T19:05:26.3541705Z ✅ ウェブアセット準備完了（recipes-data.js含む）
+2025-09-15T19:05:26.3566584Z ##[group]Run echo "🔄 Capacitorプロジェクト準備開始"
+2025-09-15T19:05:26.3566945Z [36;1mecho "🔄 Capacitorプロジェクト準備開始"[0m
+2025-09-15T19:05:26.3567221Z [36;1mnpx cap sync android[0m
+2025-09-15T19:05:26.3567461Z [36;1mecho "✅ Capacitorプロジェクト準備完了"[0m
+2025-09-15T19:05:26.3596936Z shell: /usr/bin/bash -e {0}
+2025-09-15T19:05:26.3597178Z env:
+2025-09-15T19:05:26.3597359Z   JAVA_VERSION: 21
+2025-09-15T19:05:26.3597558Z   NODE_VERSION: 20
+2025-09-15T19:05:26.3597861Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.8-9/x64
+2025-09-15T19:05:26.3598329Z   JAVA_HOME_21_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.8-9/x64
+2025-09-15T19:05:26.3598668Z   VERSION_TAG: 1.0.68
+2025-09-15T19:05:26.3598997Z   KEYSTORE_PASSWORD: ***
+2025-09-15T19:05:26.3599291Z   KEY_ALIAS: ***
+2025-09-15T19:05:26.3599584Z   KEY_PASSWORD: ***
+2025-09-15T19:05:26.3599785Z ##[endgroup]
+2025-09-15T19:05:26.3651746Z 🔄 Capacitorプロジェクト準備開始
+2025-09-15T19:05:27.2318841Z ✔ Copying web assets from dist to android/app/src/main/assets/public in 7.53ms
+2025-09-15T19:05:27.2330466Z ✔ Creating capacitor.config.json in android/app/src/main/assets in 924.91μs
+2025-09-15T19:05:27.2372215Z ✔ copy android in 21.82ms
+2025-09-15T19:05:27.2460786Z ✔ Updating Android plugins in 2.33ms
+2025-09-15T19:05:27.2483592Z [info] Found 3 Capacitor plugins for android:
+2025-09-15T19:05:27.2484176Z        @capacitor/filesystem@7.1.4
+2025-09-15T19:05:27.2484594Z        @capacitor/preferences@7.0.2
+2025-09-15T19:05:27.2484912Z        @capacitor/status-bar@7.0.2
+2025-09-15T19:05:27.2751398Z ✔ update android in 34.48ms
+2025-09-15T19:05:27.2785162Z [info] Sync finished in 0.071s
+2025-09-15T19:05:27.3053255Z ✅ Capacitorプロジェクト準備完了
+2025-09-15T19:05:27.3078642Z ##[group]Run echo "🎨 Androidアダプティブアイコン生成開始 (Capacitor公式ツール)"
+2025-09-15T19:05:27.3079293Z [36;1mecho "🎨 Androidアダプティブアイコン生成開始 (Capacitor公式ツール)"[0m
+2025-09-15T19:05:27.3079586Z [36;1m[0m
+2025-09-15T19:05:27.3079799Z [36;1m# Capacitor公式アセットツールでアダプティブアイコン生成[0m
+2025-09-15T19:05:27.3080105Z [36;1mnpx @capacitor/assets generate --android[0m
+2025-09-15T19:05:27.3080373Z [36;1m[0m
+2025-09-15T19:05:27.3080541Z [36;1m# 生成結果確認[0m
+2025-09-15T19:05:27.3080748Z [36;1mecho "✅ アダプティブアイコン生成完了! 生成ファイル:"[0m
+2025-09-15T19:05:27.3081148Z [36;1mfind android/app/src/main/res -name "*ic_launcher*" -o -name "*adaptive*" | sort[0m
+2025-09-15T19:05:27.3081542Z [36;1m[0m
+2025-09-15T19:05:27.3081719Z [36;1m# アダプティブアイコン仕様確認[0m
+2025-09-15T19:05:27.3082239Z [36;1mif [ -d "android/app/src/main/res/mipmap-anydpi-v26" ]; then[0m
+2025-09-15T19:05:27.3082614Z [36;1m  echo "✅ Android 8.0+ アダプティブアイコン対応完了"[0m
+2025-09-15T19:05:27.3082981Z [36;1m  ls -la android/app/src/main/res/mipmap-anydpi-v26/[0m
+2025-09-15T19:05:27.3083274Z [36;1melse[0m
+2025-09-15T19:05:27.3083480Z [36;1m  echo "⚠️ アダプティブアイコンディレクトリが生成されていません"[0m
+2025-09-15T19:05:27.3083733Z [36;1mfi[0m
+2025-09-15T19:05:27.3113834Z shell: /usr/bin/bash -e {0}
+2025-09-15T19:05:27.3114079Z env:
+2025-09-15T19:05:27.3114262Z   JAVA_VERSION: 21
+2025-09-15T19:05:27.3114455Z   NODE_VERSION: 20
+2025-09-15T19:05:27.3114766Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.8-9/x64
+2025-09-15T19:05:27.3115226Z   JAVA_HOME_21_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.8-9/x64
+2025-09-15T19:05:27.3115578Z   VERSION_TAG: 1.0.68
+2025-09-15T19:05:27.3115903Z   KEYSTORE_PASSWORD: ***
+2025-09-15T19:05:27.3116152Z   KEY_ALIAS: ***
+2025-09-15T19:05:27.3116387Z   KEY_PASSWORD: ***
+2025-09-15T19:05:27.3116586Z ##[endgroup]
+2025-09-15T19:05:27.3167710Z 🎨 Androidアダプティブアイコン生成開始 (Capacitor公式ツール)
+2025-09-15T19:05:28.4293578Z Unable to load XML file [Error: ENOENT: no such file or directory, open '/home/runner/work/petit-recipe/petit-recipe/android/app/src/main/AndroidManifest.xml'] {
+2025-09-15T19:05:28.4294454Z   errno: -2,
+2025-09-15T19:05:28.4294751Z   code: 'ENOENT',
+2025-09-15T19:05:28.4295017Z   syscall: 'open',
+2025-09-15T19:05:28.4295584Z   path: '/home/runner/work/petit-recipe/petit-recipe/android/app/src/main/AndroidManifest.xml'
+2025-09-15T19:05:28.4296130Z }
+2025-09-15T19:05:28.4299034Z [log] xml(load) at /home/runner/work/petit-recipe/petit-recipe/android/app/src/main/AndroidManifest.xml
+2025-09-15T19:05:28.5007386Z Generating assets for android
+2025-09-15T19:05:29.1561276Z CREATE android adaptive-icon /home/runner/work/petit-recipe/petit-recipe/android/app/src/main/res/mipmap-ldpi/ic_launcher_foreground.png (8.66 KB)
+2025-09-15T19:05:29.1563558Z CREATE android adaptive-icon /home/runner/work/petit-recipe/petit-recipe/android/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml
+2025-09-15T19:05:29.1565551Z CREATE android adaptive-icon /home/runner/work/petit-recipe/petit-recipe/android/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml
+2025-09-15T19:05:29.1567638Z CREATE android adaptive-icon /home/runner/work/petit-recipe/petit-recipe/android/app/src/main/res/mipmap-mdpi/ic_launcher_foreground.png (14.31 KB)
+2025-09-15T19:05:29.1569655Z CREATE android adaptive-icon /home/runner/work/petit-recipe/petit-recipe/android/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml
+2025-09-15T19:05:29.1571573Z CREATE android adaptive-icon /home/runner/work/petit-recipe/petit-recipe/android/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml
+2025-09-15T19:05:29.1573789Z CREATE android adaptive-icon /home/runner/work/petit-recipe/petit-recipe/android/app/src/main/res/mipmap-hdpi/ic_launcher_foreground.png (27.5 KB)
+2025-09-15T19:05:29.1575738Z CREATE android adaptive-icon /home/runner/work/petit-recipe/petit-recipe/android/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml
+2025-09-15T19:05:29.1577621Z CREATE android adaptive-icon /home/runner/work/petit-recipe/petit-recipe/android/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml
+2025-09-15T19:05:29.1580101Z CREATE android adaptive-icon /home/runner/work/petit-recipe/petit-recipe/android/app/src/main/res/mipmap-xhdpi/ic_launcher_foreground.png (46.26 KB)
+2025-09-15T19:05:29.1582507Z CREATE android adaptive-icon /home/runner/work/petit-recipe/petit-recipe/android/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml
+2025-09-15T19:05:29.1584372Z CREATE android adaptive-icon /home/runner/work/petit-recipe/petit-recipe/android/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml
+2025-09-15T19:05:29.1586397Z CREATE android adaptive-icon /home/runner/work/petit-recipe/petit-recipe/android/app/src/main/res/mipmap-xxhdpi/ic_launcher_foreground.png (94.32 KB)
+2025-09-15T19:05:29.1588287Z CREATE android adaptive-icon /home/runner/work/petit-recipe/petit-recipe/android/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml
+2025-09-15T19:05:29.1589950Z CREATE android adaptive-icon /home/runner/work/petit-recipe/petit-recipe/android/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml
+2025-09-15T19:05:29.1591719Z CREATE android adaptive-icon /home/runner/work/petit-recipe/petit-recipe/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_foreground.png (154.67 KB)
+2025-09-15T19:05:29.1593725Z CREATE android adaptive-icon /home/runner/work/petit-recipe/petit-recipe/android/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml
+2025-09-15T19:05:29.1595423Z CREATE android adaptive-icon /home/runner/work/petit-recipe/petit-recipe/android/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml
+2025-09-15T19:05:29.1597229Z CREATE android adaptive-icon /home/runner/work/petit-recipe/petit-recipe/android/app/src/main/res/mipmap-ldpi/ic_launcher_background.png (277 B)
+2025-09-15T19:05:29.1598954Z CREATE android adaptive-icon /home/runner/work/petit-recipe/petit-recipe/android/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml
+2025-09-15T19:05:29.1600646Z CREATE android adaptive-icon /home/runner/work/petit-recipe/petit-recipe/android/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml
+2025-09-15T19:05:29.1602624Z CREATE android adaptive-icon /home/runner/work/petit-recipe/petit-recipe/android/app/src/main/res/mipmap-mdpi/ic_launcher_background.png (350 B)
+2025-09-15T19:05:29.1604364Z CREATE android adaptive-icon /home/runner/work/petit-recipe/petit-recipe/android/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml
+2025-09-15T19:05:29.1606057Z CREATE android adaptive-icon /home/runner/work/petit-recipe/petit-recipe/android/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml
+2025-09-15T19:05:29.1607851Z CREATE android adaptive-icon /home/runner/work/petit-recipe/petit-recipe/android/app/src/main/res/mipmap-hdpi/ic_launcher_background.png (531 B)
+2025-09-15T19:05:29.1609593Z CREATE android adaptive-icon /home/runner/work/petit-recipe/petit-recipe/android/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml
+2025-09-15T19:05:29.1611292Z CREATE android adaptive-icon /home/runner/work/petit-recipe/petit-recipe/android/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml
+2025-09-15T19:05:29.1613276Z CREATE android adaptive-icon /home/runner/work/petit-recipe/petit-recipe/android/app/src/main/res/mipmap-xhdpi/ic_launcher_background.png (697 B)
+2025-09-15T19:05:29.1615025Z CREATE android adaptive-icon /home/runner/work/petit-recipe/petit-recipe/android/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml
+2025-09-15T19:05:29.1616793Z CREATE android adaptive-icon /home/runner/work/petit-recipe/petit-recipe/android/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml
+2025-09-15T19:05:29.1618602Z CREATE android adaptive-icon /home/runner/work/petit-recipe/petit-recipe/android/app/src/main/res/mipmap-xxhdpi/ic_launcher_background.png (1.02 KB)
+2025-09-15T19:05:29.1620362Z CREATE android adaptive-icon /home/runner/work/petit-recipe/petit-recipe/android/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml
+2025-09-15T19:05:29.1622238Z CREATE android adaptive-icon /home/runner/work/petit-recipe/petit-recipe/android/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml
+2025-09-15T19:05:29.1624369Z CREATE android adaptive-icon /home/runner/work/petit-recipe/petit-recipe/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_background.png (1.69 KB)
+2025-09-15T19:05:29.1626321Z CREATE android adaptive-icon /home/runner/work/petit-recipe/petit-recipe/android/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml
+2025-09-15T19:05:29.1628040Z CREATE android adaptive-icon /home/runner/work/petit-recipe/petit-recipe/android/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml
+2025-09-15T19:05:29.1629725Z CREATE android icon /home/runner/work/petit-recipe/petit-recipe/android/app/src/main/res/mipmap-ldpi/ic_launcher.png (1.05 KB)
+2025-09-15T19:05:29.1631335Z CREATE android icon /home/runner/work/petit-recipe/petit-recipe/android/app/src/main/res/mipmap-mdpi/ic_launcher.png (2.17 KB)
+2025-09-15T19:05:29.1633165Z CREATE android icon /home/runner/work/petit-recipe/petit-recipe/android/app/src/main/res/mipmap-hdpi/ic_launcher.png (5.51 KB)
+2025-09-15T19:05:29.1634807Z CREATE android icon /home/runner/work/petit-recipe/petit-recipe/android/app/src/main/res/mipmap-xhdpi/ic_launcher.png (9.8 KB)
+2025-09-15T19:05:29.1636444Z CREATE android icon /home/runner/work/petit-recipe/petit-recipe/android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png (21.68 KB)
+2025-09-15T19:05:29.1638097Z CREATE android icon /home/runner/work/petit-recipe/petit-recipe/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png (37.38 KB)
+2025-09-15T19:05:29.1639826Z CREATE android icon /home/runner/work/petit-recipe/petit-recipe/android/app/src/main/res/mipmap-ldpi/ic_launcher_round.png (2.54 KB)
+2025-09-15T19:05:29.1641570Z CREATE android icon /home/runner/work/petit-recipe/petit-recipe/android/app/src/main/res/mipmap-mdpi/ic_launcher_round.png (4.02 KB)
+2025-09-15T19:05:29.1643480Z CREATE android icon /home/runner/work/petit-recipe/petit-recipe/android/app/src/main/res/mipmap-hdpi/ic_launcher_round.png (7.73 KB)
+2025-09-15T19:05:29.1645194Z CREATE android icon /home/runner/work/petit-recipe/petit-recipe/android/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png (12.14 KB)
+2025-09-15T19:05:29.1646929Z CREATE android icon /home/runner/work/petit-recipe/petit-recipe/android/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png (23.36 KB)
+2025-09-15T19:05:29.1648456Z CREATE android icon /home/runner/work/petit-recipe/petit-recipe/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png (38.01 KB)
+2025-09-15T19:05:29.1650168Z CREATE android splash /home/runner/work/petit-recipe/petit-recipe/android/app/src/main/res/drawable/splash.png (9.19 KB)
+2025-09-15T19:05:29.1651698Z CREATE android splash /home/runner/work/petit-recipe/petit-recipe/android/app/src/main/res/drawable-land-ldpi/splash.png (8.15 KB)
+2025-09-15T19:05:29.1653523Z CREATE android splash /home/runner/work/petit-recipe/petit-recipe/android/app/src/main/res/drawable-land-mdpi/splash.png (15.73 KB)
+2025-09-15T19:05:29.1655126Z CREATE android splash /home/runner/work/petit-recipe/petit-recipe/android/app/src/main/res/drawable-land-hdpi/splash.png (37.05 KB)
+2025-09-15T19:05:29.1656852Z CREATE android splash /home/runner/work/petit-recipe/petit-recipe/android/app/src/main/res/drawable-land-xhdpi/splash.png (83.52 KB)
+2025-09-15T19:05:29.1658580Z CREATE android splash /home/runner/work/petit-recipe/petit-recipe/android/app/src/main/res/drawable-land-xxhdpi/splash.png (121.12 KB)
+2025-09-15T19:05:29.1660537Z CREATE android splash /home/runner/work/petit-recipe/petit-recipe/android/app/src/main/res/drawable-land-xxxhdpi/splash.png (167.21 KB)
+2025-09-15T19:05:29.1661618Z CREATE android splash /home/runner/work/petit-recipe/petit-recipe/android/app/src/main/res/drawable-port-ldpi/splash.png (5.65 KB)
+2025-09-15T19:05:29.1662830Z CREATE android splash /home/runner/work/petit-recipe/petit-recipe/android/app/src/main/res/drawable-port-mdpi/splash.png (9.19 KB)
+2025-09-15T19:05:29.1663848Z CREATE android splash /home/runner/work/petit-recipe/petit-recipe/android/app/src/main/res/drawable-port-hdpi/splash.png (18.24 KB)
+2025-09-15T19:05:29.1665058Z CREATE android splash /home/runner/work/petit-recipe/petit-recipe/android/app/src/main/res/drawable-port-xhdpi/splash.png (36.25 KB)
+2025-09-15T19:05:29.1666075Z CREATE android splash /home/runner/work/petit-recipe/petit-recipe/android/app/src/main/res/drawable-port-xxhdpi/splash.png (56.38 KB)
+2025-09-15T19:05:29.1667204Z CREATE android splash /home/runner/work/petit-recipe/petit-recipe/android/app/src/main/res/drawable-port-xxxhdpi/splash.png (90.3 KB)
+2025-09-15T19:05:29.1668209Z CREATE android splash-dark /home/runner/work/petit-recipe/petit-recipe/android/app/src/main/res/drawable-night/splash.png (9.25 KB)
+2025-09-15T19:05:29.1669260Z CREATE android splash-dark /home/runner/work/petit-recipe/petit-recipe/android/app/src/main/res/drawable-land-night-ldpi/splash.png (9.25 KB)
+2025-09-15T19:05:29.1670352Z CREATE android splash-dark /home/runner/work/petit-recipe/petit-recipe/android/app/src/main/res/drawable-land-night-mdpi/splash.png (18.39 KB)
+2025-09-15T19:05:29.1671481Z CREATE android splash-dark /home/runner/work/petit-recipe/petit-recipe/android/app/src/main/res/drawable-land-night-hdpi/splash.png (43.51 KB)
+2025-09-15T19:05:29.1672770Z CREATE android splash-dark /home/runner/work/petit-recipe/petit-recipe/android/app/src/main/res/drawable-land-night-xhdpi/splash.png (97.63 KB)
+2025-09-15T19:05:29.1673887Z CREATE android splash-dark /home/runner/work/petit-recipe/petit-recipe/android/app/src/main/res/drawable-land-night-xxhdpi/splash.png (144.23 KB)
+2025-09-15T19:05:29.1675026Z CREATE android splash-dark /home/runner/work/petit-recipe/petit-recipe/android/app/src/main/res/drawable-land-night-xxxhdpi/splash.png (203.62 KB)
+2025-09-15T19:05:29.1676121Z CREATE android splash-dark /home/runner/work/petit-recipe/petit-recipe/android/app/src/main/res/drawable-port-night-ldpi/splash.png (6.87 KB)
+2025-09-15T19:05:29.1677199Z CREATE android splash-dark /home/runner/work/petit-recipe/petit-recipe/android/app/src/main/res/drawable-port-night-mdpi/splash.png (11.4 KB)
+2025-09-15T19:05:29.1678278Z CREATE android splash-dark /home/runner/work/petit-recipe/petit-recipe/android/app/src/main/res/drawable-port-night-hdpi/splash.png (25.14 KB)
+2025-09-15T19:05:29.1679345Z CREATE android splash-dark /home/runner/work/petit-recipe/petit-recipe/android/app/src/main/res/drawable-port-night-xhdpi/splash.png (53 KB)
+2025-09-15T19:05:29.1680435Z CREATE android splash-dark /home/runner/work/petit-recipe/petit-recipe/android/app/src/main/res/drawable-port-night-xxhdpi/splash.png (80.01 KB)
+2025-09-15T19:05:29.1681540Z CREATE android splash-dark /home/runner/work/petit-recipe/petit-recipe/android/app/src/main/res/drawable-port-night-xxxhdpi/splash.png (128.06 KB)
+2025-09-15T19:05:29.1682231Z
+2025-09-15T19:05:29.1682246Z
+2025-09-15T19:05:29.1682342Z Totals:
+2025-09-15T19:05:29.1682597Z android: 74 generated, 1.96 MB total
+2025-09-15T19:05:29.1858531Z ✅ アダプティブアイコン生成完了! 生成ファイル:
+2025-09-15T19:05:29.1888061Z android/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml
+2025-09-15T19:05:29.1888938Z android/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml
+2025-09-15T19:05:29.1889799Z android/app/src/main/res/mipmap-hdpi/ic_launcher.png
+2025-09-15T19:05:29.1890568Z android/app/src/main/res/mipmap-hdpi/ic_launcher_background.png
+2025-09-15T19:05:29.1891402Z android/app/src/main/res/mipmap-hdpi/ic_launcher_foreground.png
+2025-09-15T19:05:29.1892331Z android/app/src/main/res/mipmap-hdpi/ic_launcher_round.png
+2025-09-15T19:05:29.1893039Z android/app/src/main/res/mipmap-ldpi/ic_launcher.png
+2025-09-15T19:05:29.1893615Z android/app/src/main/res/mipmap-ldpi/ic_launcher_background.png
+2025-09-15T19:05:29.1894107Z android/app/src/main/res/mipmap-ldpi/ic_launcher_foreground.png
+2025-09-15T19:05:29.1894586Z android/app/src/main/res/mipmap-ldpi/ic_launcher_round.png
+2025-09-15T19:05:29.1895018Z android/app/src/main/res/mipmap-mdpi/ic_launcher.png
+2025-09-15T19:05:29.1895472Z android/app/src/main/res/mipmap-mdpi/ic_launcher_background.png
+2025-09-15T19:05:29.1895968Z android/app/src/main/res/mipmap-mdpi/ic_launcher_foreground.png
+2025-09-15T19:05:29.1896419Z android/app/src/main/res/mipmap-mdpi/ic_launcher_round.png
+2025-09-15T19:05:29.1897110Z android/app/src/main/res/mipmap-xhdpi/ic_launcher.png
+2025-09-15T19:05:29.1897602Z android/app/src/main/res/mipmap-xhdpi/ic_launcher_background.png
+2025-09-15T19:05:29.1898247Z android/app/src/main/res/mipmap-xhdpi/ic_launcher_foreground.png
+2025-09-15T19:05:29.1898722Z android/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png
+2025-09-15T19:05:29.1899316Z android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png
+2025-09-15T19:05:29.1899779Z android/app/src/main/res/mipmap-xxhdpi/ic_launcher_background.png
+2025-09-15T19:05:29.1900289Z android/app/src/main/res/mipmap-xxhdpi/ic_launcher_foreground.png
+2025-09-15T19:05:29.1900764Z android/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png
+2025-09-15T19:05:29.1901195Z android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png
+2025-09-15T19:05:29.1901666Z android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_background.png
+2025-09-15T19:05:29.1902448Z android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_foreground.png
+2025-09-15T19:05:29.1902975Z android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png
+2025-09-15T19:05:29.1903554Z ✅ Android 8.0+ アダプティブアイコン対応完了
+2025-09-15T19:05:29.1904910Z total 16
+2025-09-15T19:05:29.1905401Z drwxr-xr-x  2 runner runner 4096 Sep 15 19:05 .
+2025-09-15T19:05:29.1905967Z drwxr-xr-x 36 runner runner 4096 Sep 15 19:05 ..
+2025-09-15T19:05:29.1906401Z -rw-r--r--  1 runner runner  380 Sep 15 19:05 ic_launcher.xml
+2025-09-15T19:05:29.1906857Z -rw-r--r--  1 runner runner  380 Sep 15 19:05 ic_launcher_round.xml
+2025-09-15T19:05:29.1934720Z ##[group]Run echo "🏧️ Android APK ビルド開始 (ワーキングディレクトリ: $(pwd))"
+2025-09-15T19:05:29.1935141Z [36;1mecho "🏧️ Android APK ビルド開始 (ワーキングディレクトリ: $(pwd))"[0m
+2025-09-15T19:05:29.1935457Z [36;1mecho "JAVA_HOME: $JAVA_HOME"[0m
+2025-09-15T19:05:29.1935765Z [36;1mecho "Java version: $(java -version 2>&1 | head -1)"[0m
+2025-09-15T19:05:29.1936074Z [36;1m[0m
+2025-09-15T19:05:29.1936260Z [36;1mecho "ファイル一覧:"[0m
+2025-09-15T19:05:29.1936469Z [36;1mls -la[0m
+2025-09-15T19:05:29.1936645Z [36;1m[0m
+2025-09-15T19:05:29.1936846Z [36;1mecho "Gradleラッパーに実行権限を付与します..."[0m
+2025-09-15T19:05:29.1937109Z [36;1mchmod +x ./gradlew[0m
+2025-09-15T19:05:29.1937342Z [36;1m[0m
+2025-09-15T19:05:29.1937520Z [36;1mecho "Gradleバージョン確認:"[0m
+2025-09-15T19:05:29.1937787Z [36;1m./gradlew --version[0m
+2025-09-15T19:05:29.1938001Z [36;1m[0m
+2025-09-15T19:05:29.1938180Z [36;1mecho "APKビルドを実行します..."[0m
+2025-09-15T19:05:29.1938471Z [36;1m./gradlew assembleRelease --stacktrace --no-daemon[0m
+2025-09-15T19:05:29.1938835Z [36;1m[0m
+2025-09-15T19:05:29.1939016Z [36;1mecho "✅ APK ビルド完了"[0m
+2025-09-15T19:05:29.1969721Z shell: /usr/bin/bash -e {0}
+2025-09-15T19:05:29.1969972Z env:
+2025-09-15T19:05:29.1970148Z   JAVA_VERSION: 21
+2025-09-15T19:05:29.1970350Z   NODE_VERSION: 20
+2025-09-15T19:05:29.1970649Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.8-9/x64
+2025-09-15T19:05:29.1971126Z   JAVA_HOME_21_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.8-9/x64
+2025-09-15T19:05:29.1971478Z   VERSION_TAG: 1.0.68
+2025-09-15T19:05:29.1971808Z   KEYSTORE_PASSWORD: ***
+2025-09-15T19:05:29.1972290Z   KEY_ALIAS: ***
+2025-09-15T19:05:29.1972560Z   KEY_PASSWORD: ***
+2025-09-15T19:05:29.1972765Z ##[endgroup]
+2025-09-15T19:05:29.2031819Z 🏧️ Android APK ビルド開始 (ワーキングディレクトリ: /home/runner/work/petit-recipe/petit-recipe/android)
+2025-09-15T19:05:29.2032763Z JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.8-9/x64
+2025-09-15T19:05:31.3065779Z Java version: openjdk version "21.0.8" 2025-07-15 LTS
+2025-09-15T19:05:31.3066570Z ファイル一覧:
+2025-09-15T19:05:31.3081107Z total 56
+2025-09-15T19:05:31.3081508Z drwxr-xr-x  5 runner runner 4096 Sep 15 19:05 .
+2025-09-15T19:05:31.3081997Z drwxr-xr-x 11 runner runner 4096 Sep 15 19:05 ..
+2025-09-15T19:05:31.3082671Z drwxr-xr-x  3 runner runner 4096 Sep 15 19:05 app
+2025-09-15T19:05:31.3083241Z -rw-r--r--  1 runner runner  636 Sep 15 19:04 build.gradle
+2025-09-15T19:05:31.3084024Z drwxr-xr-x  3 runner runner 4096 Sep 15 19:05 capacitor-cordova-android-plugins
+2025-09-15T19:05:31.3084708Z -rw-r--r--  1 runner runner  621 Sep 15 19:05 capacitor.settings.gradle
+2025-09-15T19:05:31.3085579Z drwxr-xr-x  3 runner runner 4096 Sep 15 19:04 gradle
+2025-09-15T19:05:31.3086110Z -rw-r--r--  1 runner runner 1123 Sep 15 19:04 gradle.properties
+2025-09-15T19:05:31.3086617Z -rwxr-xr-x  1 runner runner 8762 Sep 15 19:04 gradlew
+2025-09-15T19:05:31.3087106Z -rw-r--r--  1 runner runner 2966 Sep 15 19:04 gradlew.bat
+2025-09-15T19:05:31.3087628Z -rw-r--r--  1 runner runner  621 Sep 15 19:04 settings.gradle
+2025-09-15T19:05:31.3088156Z -rw-r--r--  1 runner runner  497 Sep 15 19:04 variables.gradle
+2025-09-15T19:05:31.3088704Z Gradleラッパーに実行権限を付与します...
+2025-09-15T19:05:31.3094966Z Gradleバージョン確認:
+2025-09-15T19:05:32.1779776Z Downloading https://services.gradle.org/distributions/gradle-8.11.1-all.zip
+2025-09-15T19:05:37.2706361Z .....................10%......................20%......................30%......................40%......................50%......................60%......................70%......................80%......................90%......................100%
+2025-09-15T19:05:41.3280741Z
+2025-09-15T19:05:41.3282704Z Welcome to Gradle 8.11.1!
+2025-09-15T19:05:41.3283065Z
+2025-09-15T19:05:41.3283478Z Here are the highlights of this release:
+2025-09-15T19:05:41.3284760Z  - Parallel load and store for Configuration Cache
+2025-09-15T19:05:41.3285828Z  - Java compilation errors at the end of the build output
+2025-09-15T19:05:41.3287361Z  - Consolidated report for warnings and deprecations
+2025-09-15T19:05:41.3287775Z
+2025-09-15T19:05:41.3288537Z For more details see https://docs.gradle.org/8.11.1/release-notes.html
+2025-09-15T19:05:41.3289081Z
+2025-09-15T19:05:41.3384524Z
+2025-09-15T19:05:41.3385501Z ------------------------------------------------------------
+2025-09-15T19:05:41.3386480Z Gradle 8.11.1
+2025-09-15T19:05:41.3387304Z ------------------------------------------------------------
+2025-09-15T19:05:41.3388014Z
+2025-09-15T19:05:41.3388773Z Build time:    2024-11-20 16:56:46 UTC
+2025-09-15T19:05:41.3389743Z Revision:      481cb05a490e0ef9f8620f7873b83bd8a72e7c39
+2025-09-15T19:05:41.3390346Z
+2025-09-15T19:05:41.3390860Z Kotlin:        2.0.20
+2025-09-15T19:05:41.3391480Z Groovy:        3.0.22
+2025-09-15T19:05:41.3394522Z Ant:           Apache Ant(TM) version 1.10.14 compiled on August 16 2023
+2025-09-15T19:05:41.3395281Z Launcher JVM:  21.0.8 (Eclipse Adoptium 21.0.8+9-LTS)
+2025-09-15T19:05:41.3396230Z Daemon JVM:    /usr/lib/jvm/temurin-21-jdk-amd64 (no JDK specified, using current Java home)
+2025-09-15T19:05:41.3397389Z OS:            Linux 6.11.0-1018-azure amd64
+2025-09-15T19:05:41.3399152Z
+2025-09-15T19:05:41.3613224Z APKビルドを実行します...
+2025-09-15T19:05:42.0326337Z To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.11.1/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+2025-09-15T19:05:44.0299997Z Daemon will be stopped at the end of the build
+2025-09-15T19:06:46.3351807Z > Task :capacitor-android:preBuild UP-TO-DATE
+2025-09-15T19:06:46.3362672Z > Task :capacitor-android:preReleaseBuild UP-TO-DATE
+2025-09-15T19:06:46.4303749Z > Task :capacitor-android:mergeReleaseJniLibFolders
+2025-09-15T19:06:46.5302942Z > Task :capacitor-android:mergeReleaseNativeLibs NO-SOURCE
+2025-09-15T19:06:46.5343181Z > Task :capacitor-android:stripReleaseDebugSymbols NO-SOURCE
+2025-09-15T19:06:46.5344369Z > Task :capacitor-android:generateReleaseResValues
+2025-09-15T19:06:46.5345454Z > Task :capacitor-android:copyReleaseJniLibsProjectAndLocalJars
+2025-09-15T19:06:46.5346331Z > Task :capacitor-android:extractDeepLinksForAarRelease
+2025-09-15T19:06:46.5347035Z > Task :capacitor-android:generateReleaseResources
+2025-09-15T19:06:46.6299062Z > Task :capacitor-android:packageReleaseResources
+2025-09-15T19:06:48.9307122Z > Task :capacitor-android:javaPreCompileRelease
+2025-09-15T19:06:48.9307881Z > Task :capacitor-android:mergeReleaseShaders
+2025-09-15T19:06:48.9308733Z > Task :capacitor-android:compileReleaseShaders NO-SOURCE
+2025-09-15T19:06:48.9309547Z > Task :capacitor-android:generateReleaseAssets UP-TO-DATE
+2025-09-15T19:06:48.9311274Z > Task :capacitor-android:packageReleaseAssets
+2025-09-15T19:06:48.9311947Z > Task :capacitor-android:prepareReleaseArtProfile
+2025-09-15T19:06:48.9312876Z > Task :capacitor-android:prepareLintJarForPublish
+2025-09-15T19:06:48.9313608Z > Task :capacitor-android:processReleaseJavaRes NO-SOURCE
+2025-09-15T19:06:48.9314377Z > Task :capacitor-android:parseReleaseLocalResources
+2025-09-15T19:06:49.0303053Z > Task :capacitor-android:writeReleaseAarMetadata
+2025-09-15T19:06:49.0303560Z > Task :capacitor-android:generateReleaseRFile
+2025-09-15T19:06:49.0303968Z > Task :capacitor-android:mergeReleaseJavaResource
+2025-09-15T19:06:49.0304373Z > Task :capacitor-android:processReleaseManifest
+2025-09-15T19:06:58.9307002Z > Task :capacitor-android:mapReleaseSourceSetPaths
+2025-09-15T19:07:06.1298802Z > Task :capacitor-android:extractReleaseAnnotations
+2025-09-15T19:07:11.2303649Z
+2025-09-15T19:07:11.2305601Z Note: Some input files use unchecked or unsafe operations.
+2025-09-15T19:07:11.2306415Z Note: Recompile with -Xlint:unchecked for details.
+2025-09-15T19:07:11.2313297Z > Task :capacitor-android:compileReleaseJavaWithJavac
+2025-09-15T19:07:13.0299576Z
+2025-09-15T19:07:13.0303136Z > Task :capacitor-android:mergeReleaseGeneratedProguardFiles
+2025-09-15T19:07:13.0304364Z > Task :capacitor-android:mergeReleaseConsumerProguardFiles
+2025-09-15T19:07:13.0307813Z > Task :capacitor-android:syncReleaseLibJars
+2025-09-15T19:07:13.1333492Z > Task :capacitor-android:bundleReleaseAar
+2025-09-15T19:07:13.8299621Z > Task :capacitor-android:mergeReleaseResources
+2025-09-15T19:07:14.9305714Z > Task :capacitor-filesystem:preBuild UP-TO-DATE
+2025-09-15T19:07:14.9306943Z > Task :capacitor-filesystem:preReleaseBuild UP-TO-DATE
+2025-09-15T19:07:14.9307967Z > Task :capacitor-filesystem:mergeReleaseJniLibFolders
+2025-09-15T19:07:14.9308913Z > Task :capacitor-filesystem:mergeReleaseNativeLibs NO-SOURCE
+2025-09-15T19:07:14.9309906Z > Task :capacitor-filesystem:stripReleaseDebugSymbols NO-SOURCE
+2025-09-15T19:07:14.9311040Z > Task :capacitor-filesystem:copyReleaseJniLibsProjectAndLocalJars
+2025-09-15T19:07:14.9312297Z > Task :capacitor-filesystem:generateReleaseResValues
+2025-09-15T19:07:14.9313259Z > Task :capacitor-filesystem:extractDeepLinksForAarRelease
+2025-09-15T19:07:14.9314288Z > Task :capacitor-filesystem:checkKotlinGradlePluginConfigurationErrors
+2025-09-15T19:07:14.9315252Z > Task :capacitor-filesystem:generateReleaseResources
+2025-09-15T19:07:14.9316131Z > Task :capacitor-filesystem:packageReleaseResources
+2025-09-15T19:07:15.0325669Z > Task :capacitor-android:bundleLibCompileToJarRelease
+2025-09-15T19:07:15.3302005Z > Task :capacitor-filesystem:mergeReleaseShaders
+2025-09-15T19:07:15.3303334Z > Task :capacitor-filesystem:javaPreCompileRelease
+2025-09-15T19:07:15.3304536Z > Task :capacitor-filesystem:parseReleaseLocalResources
+2025-09-15T19:07:15.3314361Z > Task :capacitor-filesystem:compileReleaseShaders NO-SOURCE
+2025-09-15T19:07:15.3320554Z > Task :capacitor-filesystem:generateReleaseAssets UP-TO-DATE
+2025-09-15T19:07:15.3321657Z > Task :capacitor-filesystem:packageReleaseAssets
+2025-09-15T19:07:15.3322722Z > Task :capacitor-filesystem:prepareLintJarForPublish
+2025-09-15T19:07:15.3323614Z > Task :capacitor-filesystem:prepareReleaseArtProfile
+2025-09-15T19:07:15.3324453Z > Task :capacitor-filesystem:generateReleaseRFile
+2025-09-15T19:07:15.4300252Z > Task :capacitor-filesystem:processReleaseManifest
+2025-09-15T19:07:15.7299162Z > Task :capacitor-android:verifyReleaseResources
+2025-09-15T19:07:22.1318829Z > Task :capacitor-android:assembleRelease
+2025-09-15T19:07:22.1321451Z > Task :capacitor-filesystem:writeReleaseAarMetadata
+2025-09-15T19:07:22.1322678Z > Task :capacitor-android:compileReleaseLibraryResources
+2025-09-15T19:07:22.4299310Z > Task :capacitor-filesystem:mapReleaseSourceSetPaths
+2025-09-15T19:07:23.0309345Z > Task :capacitor-filesystem:mergeReleaseResources
+2025-09-15T19:07:23.1393038Z > Task :capacitor-preferences:preBuild UP-TO-DATE
+2025-09-15T19:07:23.1433452Z > Task :capacitor-preferences:preReleaseBuild UP-TO-DATE
+2025-09-15T19:07:23.1434629Z > Task :capacitor-preferences:mergeReleaseJniLibFolders
+2025-09-15T19:07:23.1435423Z > Task :capacitor-preferences:mergeReleaseNativeLibs NO-SOURCE
+2025-09-15T19:07:23.1436261Z > Task :capacitor-preferences:stripReleaseDebugSymbols NO-SOURCE
+2025-09-15T19:07:23.1437169Z > Task :capacitor-preferences:copyReleaseJniLibsProjectAndLocalJars
+2025-09-15T19:07:23.1437962Z > Task :capacitor-preferences:generateReleaseResValues
+2025-09-15T19:07:23.1438693Z > Task :capacitor-preferences:extractDeepLinksForAarRelease
+2025-09-15T19:07:23.1439420Z > Task :capacitor-preferences:generateReleaseResources
+2025-09-15T19:07:23.2299401Z > Task :capacitor-preferences:packageReleaseResources
+2025-09-15T19:07:23.5298801Z > Task :capacitor-preferences:javaPreCompileRelease
+2025-09-15T19:07:23.5300081Z > Task :capacitor-preferences:parseReleaseLocalResources
+2025-09-15T19:07:23.5301052Z > Task :capacitor-preferences:mergeReleaseShaders
+2025-09-15T19:07:23.5302316Z > Task :capacitor-preferences:compileReleaseShaders NO-SOURCE
+2025-09-15T19:07:23.5303420Z > Task :capacitor-preferences:generateReleaseAssets UP-TO-DATE
+2025-09-15T19:07:23.5304435Z > Task :capacitor-preferences:generateReleaseRFile
+2025-09-15T19:07:23.5305396Z > Task :capacitor-preferences:packageReleaseAssets
+2025-09-15T19:07:23.7299756Z > Task :capacitor-preferences:extractReleaseAnnotations
+2025-09-15T19:07:24.1319561Z > Task :capacitor-preferences:compileReleaseJavaWithJavac
+2025-09-15T19:07:24.1320941Z > Task :capacitor-preferences:mergeReleaseGeneratedProguardFiles
+2025-09-15T19:07:24.1322254Z > Task :capacitor-preferences:mergeReleaseConsumerProguardFiles
+2025-09-15T19:07:24.1323330Z > Task :capacitor-preferences:prepareLintJarForPublish
+2025-09-15T19:07:24.1324304Z > Task :capacitor-preferences:prepareReleaseArtProfile
+2025-09-15T19:07:24.1325233Z > Task :capacitor-filesystem:verifyReleaseResources
+2025-09-15T19:07:24.2302528Z > Task :capacitor-preferences:processReleaseJavaRes NO-SOURCE
+2025-09-15T19:07:24.2303781Z > Task :capacitor-preferences:processReleaseManifest
+2025-09-15T19:07:24.2304804Z > Task :capacitor-preferences:mergeReleaseJavaResource
+2025-09-15T19:07:24.2305652Z > Task :capacitor-preferences:writeReleaseAarMetadata
+2025-09-15T19:07:24.2306307Z > Task :capacitor-preferences:syncReleaseLibJars
+2025-09-15T19:07:24.2306909Z > Task :capacitor-preferences:bundleReleaseAar
+2025-09-15T19:07:24.3352588Z > Task :capacitor-preferences:mapReleaseSourceSetPaths
+2025-09-15T19:07:25.0306761Z > Task :capacitor-preferences:mergeReleaseResources
+2025-09-15T19:07:25.0308220Z > Task :capacitor-status-bar:preBuild UP-TO-DATE
+2025-09-15T19:07:25.0309118Z > Task :capacitor-status-bar:preReleaseBuild UP-TO-DATE
+2025-09-15T19:07:25.1317097Z > Task :capacitor-status-bar:mergeReleaseJniLibFolders
+2025-09-15T19:07:25.1374687Z > Task :capacitor-status-bar:mergeReleaseNativeLibs NO-SOURCE
+2025-09-15T19:07:25.1375546Z > Task :capacitor-status-bar:stripReleaseDebugSymbols NO-SOURCE
+2025-09-15T19:07:25.1376468Z > Task :capacitor-status-bar:copyReleaseJniLibsProjectAndLocalJars
+2025-09-15T19:07:25.1377333Z > Task :capacitor-status-bar:generateReleaseResValues
+2025-09-15T19:07:25.1378113Z > Task :capacitor-status-bar:extractDeepLinksForAarRelease
+2025-09-15T19:07:25.1378870Z > Task :capacitor-status-bar:generateReleaseResources
+2025-09-15T19:07:25.1379591Z > Task :capacitor-status-bar:packageReleaseResources
+2025-09-15T19:07:25.4300176Z > Task :capacitor-status-bar:parseReleaseLocalResources
+2025-09-15T19:07:25.4323153Z > Task :capacitor-status-bar:generateReleaseRFile
+2025-09-15T19:07:25.4323888Z > Task :capacitor-status-bar:javaPreCompileRelease
+2025-09-15T19:07:25.6335697Z > Task :capacitor-status-bar:extractReleaseAnnotations
+2025-09-15T19:07:25.9299219Z > Task :capacitor-preferences:verifyReleaseResources
+2025-09-15T19:07:26.0297405Z
+2025-09-15T19:07:26.0324407Z > Task :capacitor-status-bar:compileReleaseJavaWithJavac
+2025-09-15T19:07:26.0328521Z
+2025-09-15T19:07:26.0333564Z Note: /home/runner/work/petit-recipe/petit-recipe/node_modules/@capacitor/status-bar/android/src/main/java/com/capacitorjs/plugins/statusbar/StatusBar.java uses or overrides a deprecated API.
+2025-09-15T19:07:26.0336736Z Note: Recompile with -Xlint:deprecation for details.
+2025-09-15T19:07:26.0343231Z > Task :capacitor-preferences:assembleRelease
+2025-09-15T19:07:26.0366401Z > Task :capacitor-status-bar:mergeReleaseGeneratedProguardFiles
+2025-09-15T19:07:26.0367511Z > Task :capacitor-status-bar:mergeReleaseConsumerProguardFiles
+2025-09-15T19:07:26.0368537Z > Task :capacitor-status-bar:mergeReleaseShaders
+2025-09-15T19:07:26.0369633Z > Task :capacitor-status-bar:compileReleaseShaders NO-SOURCE
+2025-09-15T19:07:26.0370582Z > Task :capacitor-status-bar:generateReleaseAssets UP-TO-DATE
+2025-09-15T19:07:26.0371482Z > Task :capacitor-status-bar:packageReleaseAssets
+2025-09-15T19:07:26.1301770Z > Task :capacitor-status-bar:prepareLintJarForPublish
+2025-09-15T19:07:26.1307045Z > Task :capacitor-status-bar:prepareReleaseArtProfile
+2025-09-15T19:07:26.1308151Z > Task :capacitor-status-bar:processReleaseJavaRes NO-SOURCE
+2025-09-15T19:07:26.1314968Z > Task :capacitor-status-bar:processReleaseManifest
+2025-09-15T19:07:26.1315749Z > Task :capacitor-status-bar:mergeReleaseJavaResource
+2025-09-15T19:07:26.1322422Z > Task :capacitor-status-bar:syncReleaseLibJars
+2025-09-15T19:07:26.1323470Z > Task :capacitor-status-bar:writeReleaseAarMetadata
+2025-09-15T19:07:26.1324956Z > Task :capacitor-status-bar:mapReleaseSourceSetPaths
+2025-09-15T19:07:26.1325722Z > Task :capacitor-status-bar:bundleReleaseAar
+2025-09-15T19:07:26.8298815Z > Task :capacitor-status-bar:mergeReleaseResources
+2025-09-15T19:07:27.6320482Z > Task :capacitor-status-bar:verifyReleaseResources
+2025-09-15T19:07:27.6321552Z > Task :capacitor-status-bar:assembleRelease
+2025-09-15T19:07:33.6301958Z
+2025-09-15T19:07:33.6306596Z > Task :capacitor-filesystem:compileReleaseKotlin
+2025-09-15T19:07:33.6311104Z w: file:///home/runner/work/petit-recipe/petit-recipe/node_modules/@capacitor/filesystem/android/src/main/kotlin/com/capacitorjs/plugins/filesystem/FilesystemPlugin.kt:335:31 'downloadFile(PluginCall): Unit' is deprecated. Use @capacitor/file-transfer plugin instead
+2025-09-15T19:07:33.6320094Z w: file:///home/runner/work/petit-recipe/petit-recipe/node_modules/@capacitor/filesystem/android/src/main/kotlin/com/capacitorjs/plugins/filesystem/LegacyFilesystemImplementation.kt:66:29 Type mismatch: inferred type is String? but String was expected
+2025-09-15T19:07:33.6323974Z w: file:///home/runner/work/petit-recipe/petit-recipe/node_modules/@capacitor/filesystem/android/src/main/kotlin/com/capacitorjs/plugins/filesystem/LegacyFilesystemImplementation.kt:143:25 Unnecessary non-null assertion (!!) on a non-null receiver of type Boolean
+2025-09-15T19:07:33.6328073Z w: file:///home/runner/work/petit-recipe/petit-recipe/node_modules/@capacitor/filesystem/android/src/main/kotlin/com/capacitorjs/plugins/filesystem/LegacyFilesystemImplementation.kt:152:21 Unnecessary non-null assertion (!!) on a non-null receiver of type Boolean
+2025-09-15T19:07:33.8347405Z
+2025-09-15T19:07:33.8348297Z > Task :capacitor-filesystem:extractReleaseAnnotations
+2025-09-15T19:07:33.8349191Z > Task :capacitor-filesystem:compileReleaseJavaWithJavac NO-SOURCE
+2025-09-15T19:07:33.8350093Z > Task :capacitor-filesystem:mergeReleaseGeneratedProguardFiles
+2025-09-15T19:07:33.8350991Z > Task :capacitor-filesystem:mergeReleaseConsumerProguardFiles
+2025-09-15T19:07:33.8351804Z > Task :capacitor-filesystem:processReleaseJavaRes
+2025-09-15T19:07:33.8352759Z > Task :capacitor-filesystem:mergeReleaseJavaResource
+2025-09-15T19:07:33.8353399Z > Task :capacitor-filesystem:syncReleaseLibJars
+2025-09-15T19:07:33.8353977Z > Task :capacitor-filesystem:bundleReleaseAar
+2025-09-15T19:07:33.8354540Z > Task :capacitor-filesystem:assembleRelease
+2025-09-15T19:07:33.9300222Z [Incubating] Problems report is available at: file:///home/runner/work/petit-recipe/petit-recipe/android/build/reports/problems/problems-report.html
+2025-09-15T19:07:33.9301234Z
+2025-09-15T19:07:33.9301467Z BUILD SUCCESSFUL in 1m 52s
+2025-09-15T19:07:33.9302559Z 104 actionable tasks: 104 executed
+2025-09-15T19:07:34.2669100Z ✅ APK ビルド完了
+2025-09-15T19:07:34.2695788Z ##[group]Run echo "✅ ビルド完了。成果物（APKファイル）の場所を探します..."
+2025-09-15T19:07:34.2696179Z [36;1mecho "✅ ビルド完了。成果物（APKファイル）の場所を探します..."[0m
+2025-09-15T19:07:34.2696460Z [36;1mecho "📂 APK出力構造:"[0m
+2025-09-15T19:07:34.2696803Z [36;1mls -R app/build/outputs/apk 2>/dev/null || echo "⚠️ apk出力ディレクトリが見つかりません"[0m
+2025-09-15T19:07:34.2697158Z [36;1m[0m
+2025-09-15T19:07:34.2697343Z [36;1mecho "📂 全ての.apkファイル検索:"[0m
+2025-09-15T19:07:34.2697688Z [36;1mfind app/build -name "*.apk" -type f 2>/dev/null || echo "⚠️ APKファイルが見つかりません"[0m
+2025-09-15T19:07:34.2729517Z shell: /usr/bin/bash -e {0}
+2025-09-15T19:07:34.2729767Z env:
+2025-09-15T19:07:34.2729942Z   JAVA_VERSION: 21
+2025-09-15T19:07:34.2730138Z   NODE_VERSION: 20
+2025-09-15T19:07:34.2730446Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.8-9/x64
+2025-09-15T19:07:34.2730907Z   JAVA_HOME_21_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.8-9/x64
+2025-09-15T19:07:34.2731287Z   VERSION_TAG: 1.0.68
+2025-09-15T19:07:34.2731711Z   KEYSTORE_PASSWORD: ***
+2025-09-15T19:07:34.2731965Z   KEY_ALIAS: ***
+2025-09-15T19:07:34.2732506Z   KEY_PASSWORD: ***
+2025-09-15T19:07:34.2732708Z ##[endgroup]
+2025-09-15T19:07:34.2787430Z ✅ ビルド完了。成果物（APKファイル）の場所を探します...
+2025-09-15T19:07:34.2789093Z 📂 APK出力構造:
+2025-09-15T19:07:34.2803702Z ⚠️ apk出力ディレクトリが見つかりません
+2025-09-15T19:07:34.2805514Z 📂 全ての.apkファイル検索:
+2025-09-15T19:07:34.2820776Z ⚠️ APKファイルが見つかりません
+2025-09-15T19:07:34.2863328Z ##[group]Run echo "デバッグ情報：ワークフローが読み込んだエイリアス名は -> [***] です"
+2025-09-15T19:07:34.2864166Z [36;1mecho "デバッグ情報：ワークフローが読み込んだエイリアス名は -> [***] です"[0m
+2025-09-15T19:07:34.2864628Z [36;1m[0m
+2025-09-15T19:07:34.2864991Z [36;1mecho "✍️ APK署名開始 (Gemini推奨の動的探索バージョン)"[0m
+2025-09-15T19:07:34.2865435Z [36;1m[0m
+2025-09-15T19:07:34.2865778Z [36;1m# BOC-76: 柔軟なAPKファイル検索 - outputs全体から検索[0m
+2025-09-15T19:07:34.2866293Z [36;1m# Gradleバージョンによって出力先が変わる可能性があるため、より広範囲で検索[0m
+2025-09-15T19:07:34.2867289Z [36;1mAPK_PATH=$(find app/build/outputs -name "*-release-unsigned.apk" -o -name "*-release.apk" -o -name "*.apk" | head -n 1)[0m
+2025-09-15T19:07:34.2868171Z [36;1m[0m
+2025-09-15T19:07:34.2868552Z [36;1m# 2. APKファイルが見つかったかチェック[0m
+2025-09-15T19:07:34.2869022Z [36;1mif [ -z "$APK_PATH" ]; then[0m
+2025-09-15T19:07:34.2869532Z [36;1m  echo "❌ ビルド成果物(.apk)が見つかりません。ビルドが失敗した可能性があります。"[0m
+2025-09-15T19:07:34.2870058Z [36;1m  echo "📂 BOC-76対応: 詳細なディレクトリ構造を確認"[0m
+2025-09-15T19:07:34.2870643Z [36;1m  echo "📋 Directory structure:"[0m
+2025-09-15T19:07:34.2871236Z [36;1m  find app/build -type d || echo "Build directory not found"[0m
+2025-09-15T19:07:34.2871821Z [36;1m  echo "📋 Available APK files:"[0m
+2025-09-15T19:07:34.2872621Z [36;1m  find . -name "*.apk" -type f || echo "No APK files found anywhere"[0m
+2025-09-15T19:07:34.2873178Z [36;1m  exit 1[0m
+2025-09-15T19:07:34.2873496Z [36;1mfi[0m
+2025-09-15T19:07:34.2873840Z [36;1mecho "✅ APKファイルを検出しました: $APK_PATH"[0m
+2025-09-15T19:07:34.2874582Z [36;1m[0m
+2025-09-15T19:07:34.2874895Z [36;1m# 3. APKファイルが存在するディレクトリに移動[0m
+2025-09-15T19:07:34.2875327Z [36;1mAPK_DIR=$(dirname "$APK_PATH")[0m
+2025-09-15T19:07:34.2875748Z [36;1mcd "$APK_DIR"[0m
+2025-09-15T19:07:34.2876099Z [36;1mecho "📂 現在のディレクトリ: $(pwd)"[0m
+2025-09-15T19:07:34.2876514Z [36;1mecho "📄 ディレクトリ内のファイル:"[0m
+2025-09-15T19:07:34.2876897Z [36;1mls -la[0m
+2025-09-15T19:07:34.2877194Z [36;1m[0m
+2025-09-15T19:07:34.2877527Z [36;1m# 最新のAndroid build-toolsのパスを取得[0m
+2025-09-15T19:07:34.2878183Z [36;1mBUILD_TOOLS_PATH=$(ls -d $ANDROID_HOME/build-tools/* | sort -r | head -n 1)[0m
+2025-09-15T19:07:34.2878869Z [36;1mecho "🔧 使用build-tools: $BUILD_TOOLS_PATH"[0m
+2025-09-15T19:07:34.2879319Z [36;1m[0m
+2025-09-15T19:07:34.2879629Z [36;1m# キーストアファイル探索（絶対パス使用で確実性確保）[0m
+2025-09-15T19:07:34.2880037Z [36;1m# (プロジェクトルートの絶対パスで指定)[0m
+2025-09-15T19:07:34.2880867Z [36;1mif [ -f "/home/runner/work/petit-recipe/petit-recipe/***store.jks" ]; then[0m
+2025-09-15T19:07:34.2882432Z [36;1m  KEYSTORE_FILE="/home/runner/work/petit-recipe/petit-recipe/***store.jks"[0m
+2025-09-15T19:07:34.2883418Z [36;1melif [ -f "/home/runner/work/petit-recipe/petit-recipe/template-release.keystore" ]; then[0m
+2025-09-15T19:07:34.2884465Z [36;1m  KEYSTORE_FILE="/home/runner/work/petit-recipe/petit-recipe/template-release.keystore"[0m
+2025-09-15T19:07:34.2885191Z [36;1melse[0m
+2025-09-15T19:07:34.2885529Z [36;1m  echo "❌ キーストアファイルが見つかりません"[0m
+2025-09-15T19:07:34.2886672Z [36;1m  ls -la /home/runner/work/petit-recipe/petit-recipe/*.keystore /home/runner/work/petit-recipe/petit-recipe/*.jks 2>/dev/null || echo "キーストアファイルが存在しません"[0m
+2025-09-15T19:07:34.2887780Z [36;1m  exit 1[0m
+2025-09-15T19:07:34.2888132Z [36;1mfi[0m
+2025-09-15T19:07:34.2888434Z [36;1m[0m
+2025-09-15T19:07:34.2888774Z [36;1mecho "🔑 使用キーストア: $KEYSTORE_FILE"[0m
+2025-09-15T19:07:34.2889193Z [36;1m[0m
+2025-09-15T19:07:34.2889522Z [36;1m# 4. 署名済みか未署名かによって処理を分岐 (Gemini推奨)[0m
+2025-09-15T19:07:34.2889982Z [36;1mif [ -f "app-release.apk" ]; then[0m
+2025-09-15T19:07:34.2890539Z [36;1m  echo "✅ 署名済みAPK (app-release.apk) を検出。リネームします。"[0m
+2025-09-15T19:07:34.2891142Z [36;1m  mv app-release.apk "pwa-app_$VERSION_TAG.apk"[0m
+2025-09-15T19:07:34.2891759Z [36;1m  echo "🎯 APK準備完了: pwa-app_$VERSION_TAG.apk"[0m
+2025-09-15T19:07:34.2892520Z [36;1m[0m
+2025-09-15T19:07:34.2892922Z [36;1melif [ -f "app-release-unsigned.apk" ]; then[0m
+2025-09-15T19:07:34.2893520Z [36;1m  echo "✅ 未署名APK (app-release-unsigned.apk) を検出。署名します。"[0m
+2025-09-15T19:07:34.2894464Z [36;1m  $BUILD_TOOLS_PATH/apksigner sign \[0m
+2025-09-15T19:07:34.2894993Z [36;1m    --ks "$KEYSTORE_FILE" \[0m
+2025-09-15T19:07:34.2895471Z [36;1m    --ks-key-alias "$KEY_ALIAS" \[0m
+2025-09-15T19:07:34.2896078Z [36;1m    --ks-pass env:KEYSTORE_PASSWORD \[0m
+2025-09-15T19:07:34.2896737Z [36;1m    --key-pass env:KEY_PASSWORD \[0m
+2025-09-15T19:07:34.2897436Z [36;1m    --out "pwa-app_$VERSION_TAG.apk" \[0m
+2025-09-15T19:07:34.2898285Z [36;1m    app-release-unsigned.apk[0m
+2025-09-15T19:07:34.2898952Z [36;1m  [0m
+2025-09-15T19:07:34.2899364Z [36;1m  # 署名検証[0m
+2025-09-15T19:07:34.2900119Z [36;1m  $BUILD_TOOLS_PATH/apksigner verify "pwa-app_$VERSION_TAG.apk"[0m
+2025-09-15T19:07:34.2900913Z [36;1m  echo "🎯 署名完了: pwa-app_$VERSION_TAG.apk"[0m
+2025-09-15T19:07:34.2901548Z [36;1m[0m
+2025-09-15T19:07:34.2902286Z [36;1melse[0m
+2025-09-15T19:07:34.2903045Z [36;1m  echo "❌ 署名対象のAPKファイルが見つかりません (app-release.apk または app-release-unsigned.apk)"[0m
+2025-09-15T19:07:34.2903837Z [36;1m  echo "📂 現在のディレクトリ内のファイル一覧:"[0m
+2025-09-15T19:07:34.2904688Z [36;1m  ls -la *.apk 2>/dev/null || echo "APKファイルが存在しません"[0m
+2025-09-15T19:07:34.2905351Z [36;1m  exit 1[0m
+2025-09-15T19:07:34.2905734Z [36;1mfi[0m
+2025-09-15T19:07:34.3005526Z shell: /usr/bin/bash -e {0}
+2025-09-15T19:07:34.3005902Z env:
+2025-09-15T19:07:34.3006230Z   JAVA_VERSION: 21
+2025-09-15T19:07:34.3006581Z   NODE_VERSION: 20
+2025-09-15T19:07:34.3007088Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.8-9/x64
+2025-09-15T19:07:34.3008134Z   JAVA_HOME_21_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.8-9/x64
+2025-09-15T19:07:34.3008744Z   VERSION_TAG: 1.0.68
+2025-09-15T19:07:34.3009275Z   KEYSTORE_PASSWORD: ***
+2025-09-15T19:07:34.3009667Z   KEY_ALIAS: ***
+2025-09-15T19:07:34.3009906Z   KEY_PASSWORD: ***
+2025-09-15T19:07:34.3010110Z ##[endgroup]
+2025-09-15T19:07:34.3069844Z デバッグ情報：ワークフローが読み込んだエイリアス名は -> [***] です
+2025-09-15T19:07:34.3070585Z ✍️ APK署名開始 (Gemini推奨の動的探索バージョン)
+2025-09-15T19:07:34.3087666Z find: ‘app/build/outputs’: No such file or directory
+2025-09-15T19:07:34.3092862Z ❌ ビルド成果物(.apk)が見つかりません。ビルドが失敗した可能性があります。
+2025-09-15T19:07:34.3093496Z 📂 BOC-76対応: 詳細なディレクトリ構造を確認
+2025-09-15T19:07:34.3093987Z 📋 Directory structure:
+2025-09-15T19:07:34.3104735Z find: ‘app/build’: No such file or directory
+2025-09-15T19:07:34.3106729Z Build directory not found
+2025-09-15T19:07:34.3107236Z 📋 Available APK files:
+2025-09-15T19:07:34.3139288Z ##[error]Process completed with exit code 1.
+2025-09-15T19:07:34.3184166Z ##[group]Run echo "🚨 ビルドエラー検出 - 自動追跡システム起動"
+2025-09-15T19:07:34.3184521Z [36;1mecho "🚨 ビルドエラー検出 - 自動追跡システム起動"[0m
+2025-09-15T19:07:34.3184770Z [36;1m[0m
+2025-09-15T19:07:34.3184940Z [36;1m# エラー情報収集[0m
+2025-09-15T19:07:34.3185359Z [36;1mERROR_LOG=$(gh api repos/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID/logs --paginate || echo "ログ取得失敗")[0m
+2025-09-15T19:07:34.3185833Z [36;1mBUILD_CONTEXT=$(cat << EOF[0m
+2025-09-15T19:07:34.3186066Z [36;1m{[0m
+2025-09-15T19:07:34.3186258Z [36;1m  "workflow": "Build PWA APK",[0m
+2025-09-15T19:07:34.3186517Z [36;1m  "run_id": "17743751574",[0m
+2025-09-15T19:07:34.3186789Z [36;1m  "branch": "feature/milestone-1-complete",[0m
+2025-09-15T19:07:34.3187147Z [36;1m  "commit": "2acabbefebdc19392d2ba0f78a9402fcd86c3752",[0m
+2025-09-15T19:07:34.3187454Z [36;1m  "actor": "bochang999",[0m
+2025-09-15T19:07:34.3187725Z [36;1m  "java_version": "21",[0m
+2025-09-15T19:07:34.3187953Z [36;1m  "node_version": "20",[0m
+2025-09-15T19:07:34.3188236Z [36;1m  "event": "push"[0m
+2025-09-15T19:07:34.3188453Z [36;1m}[0m
+2025-09-15T19:07:34.3188623Z [36;1mEOF[0m
+2025-09-15T19:07:34.3188796Z [36;1m)[0m
+2025-09-15T19:07:34.3188963Z [36;1m[0m
+2025-09-15T19:07:34.3189132Z [36;1m# 自動エラー追跡スクリプト実行[0m
+2025-09-15T19:07:34.3189397Z [36;1mif [ -f "scripts/auto-error-tracker.sh" ]; then[0m
+2025-09-15T19:07:34.3189723Z [36;1m  chmod +x scripts/auto-error-tracker.sh[0m
+2025-09-15T19:07:34.3190019Z [36;1m  ./scripts/auto-error-tracker.sh \[0m
+2025-09-15T19:07:34.3190294Z [36;1m    --error-log="$ERROR_LOG" \[0m
+2025-09-15T19:07:34.3190562Z [36;1m    --build-context="$BUILD_CONTEXT" \[0m
+2025-09-15T19:07:34.3190877Z [36;1m    --run-id="17743751574" || echo "⚠️ エラー追跡スクリプト実行失敗"[0m
+2025-09-15T19:07:34.3191154Z [36;1melse[0m
+2025-09-15T19:07:34.3191430Z [36;1m  echo "⚠️ scripts/auto-error-tracker.sh が見つかりません - 手動対応が必要です"[0m
+2025-09-15T19:07:34.3191740Z [36;1mfi[0m
+2025-09-15T19:07:34.3222482Z shell: /usr/bin/bash -e {0}
+2025-09-15T19:07:34.3222934Z env:
+2025-09-15T19:07:34.3223120Z   JAVA_VERSION: 21
+2025-09-15T19:07:34.3223314Z   NODE_VERSION: 20
+2025-09-15T19:07:34.3223612Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.8-9/x64
+2025-09-15T19:07:34.3224067Z   JAVA_HOME_21_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.8-9/x64
+2025-09-15T19:07:34.3224411Z   VERSION_TAG: 1.0.68
+2025-09-15T19:07:34.3224734Z   KEYSTORE_PASSWORD: ***
+2025-09-15T19:07:34.3225016Z   KEY_ALIAS: ***
+2025-09-15T19:07:34.3225244Z   KEY_PASSWORD: ***
+2025-09-15T19:07:34.3225440Z   LINEAR_API_KEY:
+2025-09-15T19:07:34.3225621Z   LINEAR_TEAM_ID:
+2025-09-15T19:07:34.3225940Z   GITHUB_TOKEN: ***
+2025-09-15T19:07:34.3226143Z   OPENAI_API_KEY:
+2025-09-15T19:07:34.3226332Z   GEMINI_API_KEY:
+2025-09-15T19:07:34.3226513Z   ANTHROPIC_API_KEY:
+2025-09-15T19:07:34.3226715Z ##[endgroup]
+2025-09-15T19:07:34.3283879Z 🚨 ビルドエラー検出 - 自動追跡システム起動
+2025-09-15T19:07:37.7666144Z gh: Not Found (HTTP 404)
+2025-09-15T19:07:37.7767041Z 🚨 自動エラー追跡システム開始
+2025-09-15T19:07:37.7767698Z ==================================================
+2025-09-15T19:07:37.7768331Z 🔍 環境変数確認
+2025-09-15T19:07:37.7768845Z ❌ LINEAR_API_KEY が設定されていません
+2025-09-15T19:07:37.7770847Z ⚠️ エラー追跡スクリプト実行失敗
+2025-09-15T19:07:37.7829582Z Post job cleanup.
+2025-09-15T19:07:37.9552565Z Post job cleanup.
+2025-09-15T19:07:38.0513323Z [command]/usr/bin/git version
+2025-09-15T19:07:38.0552609Z git version 2.51.0
+2025-09-15T19:07:38.0601178Z Temporarily overriding HOME='/home/runner/work/_temp/dc0a88d7-cfb9-48fb-adf5-8b11ec182cea' before making global git config changes
+2025-09-15T19:07:38.0602742Z Adding repository directory to the temporary git global config as a safe directory
+2025-09-15T19:07:38.0607666Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/petit-recipe/petit-recipe
+2025-09-15T19:07:38.0648300Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-09-15T19:07:38.0682523Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-09-15T19:07:38.0920007Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-09-15T19:07:38.0942810Z http.https://github.com/.extraheader
+2025-09-15T19:07:38.0956061Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2025-09-15T19:07:38.0992453Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-09-15T19:07:38.1336289Z Cleaning up orphan processes

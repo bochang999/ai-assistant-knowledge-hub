@@ -1,11 +1,10 @@
 #!/bin/bash
-# Enhanced Doit Command System
-# BOC-83問題の再発防止: 統合された自動Issue処理システム
 
-set -e
+# Enhanced doit command with automatic project validation
+# Prevents workflow confusion by ensuring correct project identification
 
-# スクリプトディレクトリの取得
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+SCRIPT_DIR="$(dirname "$0")"
+QUERY_SCRIPT="$SCRIPT_DIR/enhanced-linear-query.sh"
 
 # カラー定義
 RED='\033[0;31m'

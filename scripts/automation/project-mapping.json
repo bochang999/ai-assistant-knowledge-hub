@@ -1,0 +1,90 @@
+{
+  "ai-assistant-knowledge-hub": {
+    "basePath": "~/ai-assistant-knowledge-hub",
+    "procedures": [
+      "README.md",
+      "workflows/build_error_correction.md",
+      "workflows/linear_issue_management.md"
+    ],
+    "buildCommand": "echo 'No build required for knowledge hub'",
+    "testCommand": "find . -name '*.md' -exec head -5 {} \\;",
+    "description": "Central AI assistant knowledge repository",
+    "technologies": ["markdown", "bash", "git"],
+    "validation": {
+      "requiredFiles": ["README.md", "workflows/", "commons/"],
+      "requiredDirs": ["workflows", "commons", "templates", "projects"]
+    }
+  },
+  "laminator-dashboard": {
+    "basePath": "~/laminator-dashboard",
+    "procedures": [
+      "devlog.md",
+      "requirements.md",
+      "spec.md"
+    ],
+    "buildCommand": "briefcase dev",
+    "testCommand": "http-server",
+    "description": "Web to APK dashboard application",
+    "technologies": ["html", "css", "javascript", "capacitor", "beeware"],
+    "validation": {
+      "requiredFiles": ["index.html", "script.js", "style.css", "package.json"],
+      "requiredDirs": ["android", "node_modules"]
+    }
+  },
+  "recipebox-web": {
+    "basePath": "~/recipebox-web",
+    "procedures": [
+      "README.md"
+    ],
+    "buildCommand": "npm run build",
+    "testCommand": "npm run test",
+    "description": "Recipe management web application",
+    "technologies": ["react", "javascript", "npm"],
+    "validation": {
+      "requiredFiles": ["package.json", "src/"],
+      "requiredDirs": ["src", "public", "node_modules"]
+    }
+  },
+  "petit-recipe": {
+    "basePath": "~/petit-recipe",
+    "procedures": [
+      "README.md"
+    ],
+    "buildCommand": "npm run build",
+    "testCommand": "npm run dev",
+    "description": "Small recipe application",
+    "technologies": ["vue", "javascript", "npm"],
+    "validation": {
+      "requiredFiles": ["package.json"],
+      "requiredDirs": ["src"]
+    }
+  },
+  "tarot": {
+    "basePath": "~/tarot",
+    "procedures": [
+      "README.md"
+    ],
+    "buildCommand": "npm run build",
+    "testCommand": "npm run dev",
+    "description": "Tarot reading application",
+    "technologies": ["javascript", "html", "css"],
+    "validation": {
+      "requiredFiles": ["index.html"],
+      "requiredDirs": []
+    }
+  },
+  "bochang-labo": {
+    "basePath": "~/",
+    "procedures": [
+      "CLAUDE.md"
+    ],
+    "buildCommand": "echo 'Team-wide project - no specific build'",
+    "testCommand": "ls -la",
+    "description": "Main team workspace",
+    "technologies": ["various"],
+    "validation": {
+      "requiredFiles": ["CLAUDE.md"],
+      "requiredDirs": []
+    }
+  }
+}

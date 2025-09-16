@@ -4,6 +4,8 @@
 # Usage: bash agent.sh do [ISSUE_ID]
 # Purpose: Complete task automation from clean environment to task execution
 
+echo "[PROOF] 'agent.sh' started for issue $2 at $(date)" >> ~/execution.log
+
 set -e
 
 # Color codes for output

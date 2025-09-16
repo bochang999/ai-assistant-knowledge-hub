@@ -3,6 +3,8 @@
 # Knowledge Loader Script for AI Assistant Knowledge Hub
 # Usage: bash run.sh [project-name] "[ai-command]" "[user-instruction]" [--debug]
 
+echo "[PROOF] 'run.sh' started for project $1 at $(date)" >> ~/execution.log
+
 set -e
 
 # Initialize variables
@@ -52,8 +54,12 @@ PROMPT=""
 CONSTITUTION_FILE="$SCRIPT_DIR/commons/constitution.md"
 if [ -f "$CONSTITUTION_FILE" ]; then
     echo "Loading constitution..."
-    PROMPT+="# Constitutional Principles"$'\n\n'
-    PROMPT+="$(cat "$CONSTITUTION_FILE")"$'\n\n'
+    PROMPT+="# Constitutional Principles"$'
+
+'
+    PROMPT+="$(cat "$CONSTITUTION_FILE")"$'
+
+'
 else
     echo "Error: Required file 'constitution.md' not found at $CONSTITUTION_FILE"
     echo "Please ensure the constitutional principles file exists in the commons/ directory."
@@ -64,8 +70,12 @@ fi
 PROJECT_CONTEXT_FILE="$SCRIPT_DIR/projects/$PROJECT_NAME/context.md"
 if [ -f "$PROJECT_CONTEXT_FILE" ]; then
     echo "Loading project context for $PROJECT_NAME..."
-    PROMPT+="# Project Context: $PROJECT_NAME"$'\n\n'
-    PROMPT+="$(cat "$PROJECT_CONTEXT_FILE")"$'\n\n'
+    PROMPT+="# Project Context: $PROJECT_NAME"$'
+
+'
+    PROMPT+="$(cat "$PROJECT_CONTEXT_FILE")"$'
+
+'
 
     # 3. Parse context.md for workflow and template references
     echo "Parsing context.md for workflow and template references..."
@@ -78,8 +88,12 @@ if [ -f "$PROJECT_CONTEXT_FILE" ]; then
             WORKFLOW_FILE="$SCRIPT_DIR/$workflow_ref"
             if [ -f "$WORKFLOW_FILE" ]; then
                 echo "Loading workflow: $workflow_ref"
-                PROMPT+="# Workflow: $(basename "$workflow_ref" .md)"$'\n\n'
-                PROMPT+="$(cat "$WORKFLOW_FILE")"$'\n\n'
+                PROMPT+="# Workflow: $(basename "$WORKFLOW_FILE" .md)"$'
+
+'
+                PROMPT+="$(cat "$WORKFLOW_FILE")"$'
+
+'
             else
                 echo "Warning: Referenced workflow not found: $WORKFLOW_FILE"
             fi
@@ -94,8 +108,12 @@ if [ -f "$PROJECT_CONTEXT_FILE" ]; then
             TEMPLATE_FILE="$SCRIPT_DIR/$template_ref"
             if [ -f "$TEMPLATE_FILE" ]; then
                 echo "Loading template: $template_ref"
-                PROMPT+="# Template: $(basename "$template_ref" .md)"$'\n\n'
-                PROMPT+="$(cat "$TEMPLATE_FILE")"$'\n\n'
+                PROMPT+="# Template: $(basename "$TEMPLATE_FILE" .md)"$'
+
+'
+                PROMPT+="$(cat "$TEMPLATE_FILE")"$'
+
+'
             else
                 echo "Warning: Referenced template not found: $TEMPLATE_FILE"
             fi
@@ -111,7 +129,7 @@ else
 fi
 
 # 4. Add executor.py instructions
-PROMPT+="""# Executor.py Usage Instructions
+PROMPT+='''# Executor.py Usage Instructions
 
 To perform file system operations or Git actions, you MUST use the `executor.py` script. Do NOT use direct shell commands like `echo > file`, `git add`, `git commit`, `git push`, `mkdir`, `rm`, etc.
 
@@ -121,37 +139,41 @@ Here are the available functions in `executor.py` and how to use them:
 Writes the given content to the specified file path.
 
 **Usage:**
-`python "$SCRIPT_DIR/executor.py" write_file "path/to/file.txt" "Content to write"`
+`"$SCRIPT_DIR/executor.py" write_file "path/to/file.txt" "Content to write"`
 
 **Example:**
-`python "$SCRIPT_DIR/executor.py" write_file "report.md" "## Daily Report\n- Task A completed\n- Task B in progress"`
+`"$SCRIPT_DIR/executor.py" write_file "report.md" "## Daily Report\n- Task A completed\n- Task B in progress"
 
 ## 2. run_command(command_string)
 Executes a shell command. Use this for any command that is not a file write or Git operation.
 
 **Usage:**
-`python "$SCRIPT_DIR/executor.py" run_command "ls -la"`
+`"$SCRIPT_DIR/executor.py" run_command "ls -la"`
 
 **Example:**
-`python "$SCRIPT_DIR/executor.py" run_command "npm install"`
+`"$SCRIPT_DIR/executor.py" run_command "npm install"
 
 ## 3. git_push(commit_message)
 Performs `git add .`, `git commit -m "commit_message"`, and `git push`.
 
 **Usage:**
-`python "$SCRIPT_DIR/executor.py" git_push "Your commit message"`
+`"$SCRIPT_DIR/executor.py" git_push "Your commit message"`
 
 **Example:**
-`python "$SCRIPT_DIR/executor.py" git_push "feat: Add new report generation logic"`
+`"$SCRIPT_DIR/executor.py" git_push "feat: Add new report generation logic"
 
 **IMPORTANT:**
 - Always enclose path and content arguments in double quotes.
-- Always use the full path `"$SCRIPT_DIR/executor.py"` when calling the executor script.
+- Always use `"$SCRIPT_DIR/executor.py"` when calling the executor script.
 - The executor.py script will print "SUCCESS" or "ERROR" to stdout. You should capture and report these results.
 
-"""
-PROMPT+=# User Instruction"$'\n\n'
-PROMPT+="$USER_INSTRUCTION"$'\n'
+'''
+
+PROMPT+="# User Instruction"$'
+
+'
+PROMPT+="$USER_INSTRUCTION"$'
+'
 
 # 5. Debug output (if enabled)
 if [ "$DEBUG" = true ]; then
