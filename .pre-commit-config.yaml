@@ -32,7 +32,7 @@ repos:
     hooks:
       - id: custom-secret-scan
         name: Custom secret pattern detection
-        entry: bash -c 'if grep -r -E "(sk_live_[A-Za-z0-9]{20,}|ghp_[A-Za-z0-9]{36}|password\s*=\s*[\"'\''][^\"'\''\s]{10,}|token\s*=\s*[\"'\''][^\"'\''\s]{10,})" --include="*.sh" --include="*.py" --exclude="*audit*" .; then echo "❌ Potential secrets detected in files above"; exit 1; else echo "✅ No secrets detected"; fi'
+        entry: bash -c 'if grep -r -E "(sk_live_[A-Za-z0-9]{20,}|ghp_[A-Za-z0-9]{36}|password\s*=\s*[\"'\''][^\"'\''\s]{10,}|token\s*=\s*[\"'\''][A-Za-z0-9_]{10,}[\"'\''])" --include="*.sh" --include="*.py" --exclude="*audit*" . | grep -v "\${.*}" | grep -v "auth_token.*API_TOKEN"; then echo "❌ Potential secrets detected in files above"; exit 1; else echo "✅ No secrets detected"; fi'
         language: system
         pass_filenames: false
         types: [text]

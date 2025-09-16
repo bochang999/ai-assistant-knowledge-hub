@@ -189,7 +189,7 @@ success "AI command selection completed: $SELECTED_AI_COMMAND"
 get_linear_issue() {
     local issue_id="$1"
     local query='{
-        "query": "query($id: String!) { issue(id: $id) { id title description state { name } } }",
+        "query": "query($id: String!) { issue(id: $id) { id title description state { name } project { name } labels { nodes { name } } } }",
         "variables": { "id": "'"$issue_id"'" }
     }'
 
@@ -239,6 +239,8 @@ fi
 ISSUE_TITLE=$(jq -r '.data.issue.title // "Unknown"' "$ISSUE_DATA_FILE")
 ISSUE_DESCRIPTION=$(jq -r '.data.issue.description // "No description"' "$ISSUE_DATA_FILE")
 ISSUE_STATE=$(jq -r '.data.issue.state.name // "Unknown"' "$ISSUE_DATA_FILE")
+PROJECT_NAME=$(jq -r '.data.issue.project.name // ""' "$ISSUE_DATA_FILE")
+ISSUE_LABELS=$(jq -r '.data.issue.labels.nodes[].name' "$ISSUE_DATA_FILE")
 
 if [[ "$ISSUE_TITLE" == "null" ]] || [[ "$ISSUE_TITLE" == "Unknown" ]]; then
     error "Could not parse issue title from Linear response"
@@ -249,23 +251,14 @@ fi
 log "Issue Title: $ISSUE_TITLE"
 log "Issue State: $ISSUE_STATE"
 
-# B3: Extract project context from issue description
-# Look for project patterns in the description
-PROJECT_NAME=""
-
-# Check if description contains project references
-if echo "$ISSUE_DESCRIPTION" | grep -q "knowledge.*hub"; then
-    PROJECT_NAME="knowledge_hub_mng"
-elif echo "$ISSUE_DESCRIPTION" | grep -qi "laminator\|dashboard"; then
-    PROJECT_NAME="laminator_dashboard"
-elif echo "$ISSUE_DESCRIPTION" | grep -qi "recipe\|app"; then
-    PROJECT_NAME="recipe_app"
-else
-    # Default to knowledge hub management if no specific project detected
-    PROJECT_NAME="knowledge_hub_mng"
+# B3: Log Project Info from Linear
+log "Labels: $ISSUE_LABELS"
+if [[ -z "$PROJECT_NAME" ]]; then
+    error "Project name not found in Linear issue."
+    error "Please associate this issue with a project in Linear."
+    exit 1
 fi
-
-log "Detected project: $PROJECT_NAME"
+log "Detected Project from Linear: $PROJECT_NAME"
 
 # B4: Use the dynamically selected AI command
 AI_COMMAND="$SELECTED_AI_COMMAND"
@@ -296,62 +289,35 @@ success "Task details retrieved and parsed successfully"
 
 log "Step C: Executing Knowledge Loader with assembled information"
 
-# C1: Check if the detected project exists
-PROJECT_CONTEXT_FILE="$SCRIPT_DIR/projects/$PROJECT_NAME/context.md"
-if [[ ! -f "$PROJECT_CONTEXT_FILE" ]]; then
-    warn "Project context not found at: $PROJECT_CONTEXT_FILE"
-    warn "Available projects:"
-    ls -1 "$SCRIPT_DIR/projects/" 2>/dev/null | grep -v '.gitkeep' || warn "No projects found"
-
-    # Try to use a fallback project or create a minimal one
-    FALLBACK_PROJECT="knowledge_hub_mng"
-    FALLBACK_CONTEXT="$SCRIPT_DIR/projects/$FALLBACK_PROJECT/context.md"
-    if [[ -f "$FALLBACK_CONTEXT" ]]; then
-        warn "Using fallback project: $FALLBACK_PROJECT"
-        PROJECT_NAME="$FALLBACK_PROJECT"
-    else
-        error "No suitable project context found. Cannot proceed."
-        exit 1
-    fi
+# C1: Navigate to Project Directory based on Project Map
+PROJECT_MAP_FILE="$SCRIPT_DIR/project_map.json"
+if [[ ! -f "$PROJECT_MAP_FILE" ]]; then
+    error "Project map file not found at $PROJECT_MAP_FILE"
+    error "Please create it and map project names to local directory paths."
+    exit 1
 fi
 
-# C2: Read working directory from context.md and navigate there
-PROJECT_CONTEXT_FILE="$SCRIPT_DIR/projects/$PROJECT_NAME/context.md"
-WORKING_DIR=""
+PROJECT_DIR=$(jq -r --arg proj "$PROJECT_NAME" '.[$proj]' "$PROJECT_MAP_FILE")
 
-if [[ -f "$PROJECT_CONTEXT_FILE" ]]; then
-    log "Reading context.md to determine working directory..."
-
-    # Extract working directory from context.md
-    WORKING_DIR_LINE=$(grep "作業ディレクトリ" "$PROJECT_CONTEXT_FILE" | head -1)
-    if [[ -n "$WORKING_DIR_LINE" ]]; then
-        # Extract everything after the colon and clean it up
-        AFTER_COLON=$(echo "$WORKING_DIR_LINE" | cut -d':' -f2)
-        WORKING_DIR=$(echo "$AFTER_COLON" | sed 's/`//g' | sed 's/^ *//' | sed 's/ *$//')
-    fi
-
-    if [[ -n "$WORKING_DIR" ]] && [[ "$WORKING_DIR" != "作業ディレクトリ:" ]]; then
-        # Expand tilde to home directory if needed
-        WORKING_DIR_EXPANDED="${WORKING_DIR/#\~/$HOME}"
-
-        log "Found working directory in context.md: $WORKING_DIR"
-        log "Expanded path: $WORKING_DIR_EXPANDED"
-
-        if [[ -d "$WORKING_DIR_EXPANDED" ]]; then
-            log "Navigating to working directory: $WORKING_DIR_EXPANDED"
-            cd "$WORKING_DIR_EXPANDED"
-            success "Successfully changed to working directory: $(pwd)"
-        else
-            warn "Working directory $WORKING_DIR_EXPANDED does not exist"
-            warn "Staying in current directory: $(pwd)"
-        fi
-    else
-        log "No working directory specified in context.md"
-        log "Staying in agent script directory: $(pwd)"
-    fi
-else
-    log "No context.md found, staying in agent script directory"
+if [[ -z "$PROJECT_DIR" ]] || [[ "$PROJECT_DIR" == "null" ]]; then
+    error "Project '$PROJECT_NAME' not found in $PROJECT_MAP_FILE"
+    exit 1
 fi
+
+# Expand tilde to home directory
+PROJECT_DIR_EXPANDED="${PROJECT_DIR/#\~/$HOME}"
+
+if [[ ! -d "$PROJECT_DIR_EXPANDED" ]]; then
+    error "Project directory '$PROJECT_DIR_EXPANDED' does not exist."
+    exit 1
+fi
+
+# IMPORTANT: This script is part of the ai-assistant-knowledge-hub repo.
+# We are now changing the working directory to the TARGET project directory.
+# The agent script's location ($SCRIPT_DIR) remains the same.
+log "Navigating to TARGET project directory: $PROJECT_DIR_EXPANDED"
+cd "$PROJECT_DIR_EXPANDED"
+success "Successfully changed to working directory: $(pwd)"
 
 # C2b: AI command validation already completed in dynamic selection step
 log "Using validated AI command: $AI_COMMAND"
@@ -382,13 +348,28 @@ if [[ "$INTERACTIVE_MODE" == true ]]; then
     log "INTERACTIVE MODE: Starting phase-by-phase execution"
     log "Working directory: $(pwd)"
 
-    # Detect workflow type from issue description
+    # Detect workflow type from issue labels
+    log "Detecting workflow type..."
     WORKFLOW_TYPE=""
-    if echo "$ISSUE_DESCRIPTION" | grep -qi "build.*error\|error.*build\|ビルド.*エラー\|エラー.*ビルド"; then
+    if echo "$ISSUE_LABELS" | grep -q "build-error"; then
         WORKFLOW_TYPE="build_error_correction"
-    else
-        error "Could not detect workflow type from issue description"
-        error "Currently supported workflows: build_error_correction"
+    # Add other label-to-workflow mappings here
+    # elif echo "$ISSUE_LABELS" | grep -q "new-feature"; then
+    #     WORKFLOW_TYPE="feature_development"
+    fi
+
+    # Fallback to description-based detection if no label matches
+    if [[ -z "$WORKFLOW_TYPE" ]]; then
+        log "No workflow label detected, falling back to description analysis."
+        if echo "$ISSUE_DESCRIPTION" | grep -qi "build.*error\|error.*build\|ビルド.*エラー\|エラー.*ビルド"; then
+            WORKFLOW_TYPE="build_error_correction"
+        fi
+    fi
+
+    if [[ -z "$WORKFLOW_TYPE" ]]; then
+        error "Could not detect workflow type from issue labels or description."
+        error "Supported labels: build-error"
+        error "Supported description keywords: build error, ビルドエラー"
         exit 1
     fi
 
