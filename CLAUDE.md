@@ -5,11 +5,23 @@
 ### 🔄 Linear Issue自動管理システム
 ```bash
 # Issue作業フロー (自動実行):
+0. 【必須】ai-assistant-knowledge-hubシステム構造確認
 1. Issue読み取り開始 → status: "In Progress"
 2. 作業実行・コード実装
 3. 作業完了 → 内容・コード記録 → status: "In Review"
 → 許可不要の完全自動管理
 ```
+
+### 🚫 MANDATORY: Issue作業前システム構造確認
+**doit実行後、Issue作業開始前に以下を必ず確認：**
+```bash
+# 自動確認項目（smart-doit.shで強制実行）
+1. ai-assistant-knowledge-hub/project_map.json → プロジェクト一覧確認
+2. temp/agent_issue_BOC-XX.json → Issue詳細・プロジェクトタグ確認
+3. 対象プロジェクトディレクトリ確認 → 構造把握
+4. ↑完了後のみPhase 2開始許可
+```
+**違反時:** 作業停止・システム確認強制実行
 
 ### 📋 Linear Status管理ルール
 **開始時:** Issue確認と同時に自動的に "In Progress" に変更
@@ -48,10 +60,8 @@ Linear        - プロジェクト管理・タスク・進捗・開発ログ・�
 
 ### ⚡ Development Commands
 ```bash
-# Current project: Laminator Dashboard
-briefcase dev                    # BeeWare development
-http-server                      # Web development
-git commit → AI-Gate automatic learning cycle
+# doit Command - Instant Issue Management
+doit BOC-XX --interactive        # AI: 即座に実行、探索不要
 
 # Linear: 常にGraphQL API使用 (CLIは動作しない)
 curl -X POST "https://api.linear.app/graphql" -H "Authorization: $(cat ~/.linear-api-key)"
@@ -106,15 +116,9 @@ npx eslint script.js --watch
 - ❌ **諦める**: find_definition, find_references等の高度LSP機能
 - 🎯 **結果**: Termux制約下での最適解、開発効率大幅向上
 
-## Current Project Context: Laminator Dashboard
-- **Type**: Web→APK (HTML/CSS/JS → GitHub Actions → Signed APK)
-- **Status**: Unified script.js architecture with CSV/Backup features
-- **Recent**: APK file saving system + Linear API integration
-- **Features**: Documents/{AppName}/ file saving, Capacitor Filesystem
-
 ## Emergency Patterns
 - **Boot Failure**: Check file loading order, undefined dependencies
-- **APK Signing**: Use RecipeBox proven signing system 
+- **APK Signing**: Use proven signing system patterns
 - **Build Errors**: Refer to Linear issue history for similar past solutions
 
 ---
