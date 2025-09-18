@@ -1,0 +1,146 @@
+{
+  "workflow_settings": {
+    "max_retries": 3,
+    "timeout_minutes": 30,
+    "quality_threshold": 0.8,
+    "auto_recovery": true,
+    "parallel_execution": false,
+    "backup_frequency": "per_phase",
+    "log_level": "INFO"
+  },
+  "phase_configuration": {
+    "phase1": {
+      "timeout_minutes": 10,
+      "retry_count": 2,
+      "quality_checks": ["issue_validity", "project_detection"],
+      "required_apis": ["linear"]
+    },
+    "phase2": {
+      "timeout_minutes": 15,
+      "retry_count": 2,
+      "quality_checks": ["structure_analysis", "tech_stack_detection"],
+      "scan_depth": "detailed"
+    },
+    "phase3": {
+      "timeout_minutes": 20,
+      "retry_count": 2,
+      "quality_checks": ["requirements_completeness", "impact_assessment"],
+      "analysis_mode": "comprehensive"
+    },
+    "phase4": {
+      "timeout_minutes": 25,
+      "retry_count": 3,
+      "quality_checks": ["strategic_completeness", "mcp_integration"],
+      "mcp_enabled": true,
+      "thinking_depth": "detailed"
+    },
+    "phase5": {
+      "timeout_minutes": 15,
+      "retry_count": 2,
+      "quality_checks": ["report_quality", "linear_integration"],
+      "report_format": "comprehensive"
+    },
+    "phase6": {
+      "timeout_minutes": 20,
+      "retry_count": 3,
+      "quality_checks": ["review_consensus", "technical_rationality"],
+      "ai_reviewers": ["gemini", "claude_secondary"],
+      "consensus_threshold": 0.7
+    },
+    "phase7": {
+      "timeout_minutes": 45,
+      "retry_count": 2,
+      "quality_checks": ["implementation_quality", "progress_tracking"],
+      "implementation_mode": "guided",
+      "testing_required": true
+    },
+    "phase8": {
+      "timeout_minutes": 20,
+      "retry_count": 2,
+      "quality_checks": ["documentation_completeness", "continuity_assurance"],
+      "git_auto_commit": true,
+      "linear_final_update": true
+    }
+  },
+  "quality_gates": {
+    "global_threshold": 0.8,
+    "phase_specific_thresholds": {
+      "phase4": 0.9,
+      "phase6": 0.85,
+      "phase7": 0.8
+    },
+    "mandatory_checks": [
+      "technical_rationality",
+      "long_term_impact",
+      "implementation_quality"
+    ]
+  },
+  "api_configuration": {
+    "linear": {
+      "endpoint": "https://api.linear.app/graphql",
+      "api_key_file": "~/.linear-api-key",
+      "team_id_file": "~/.linear-team-id"
+    },
+    "gemini": {
+      "endpoint": "https://generativelanguage.googleapis.com/v1beta/models",
+      "api_key_file": "~/.gemini-api-key",
+      "model": "gemini-1.5-pro"
+    }
+  },
+  "project_mapping": {
+    "project_map_path": "project_map.json",
+    "auto_detection": true,
+    "fallback_directory": ".",
+    "supported_project_types": [
+      "web",
+      "mobile",
+      "api",
+      "tool",
+      "analysis",
+      "mcp-server"
+    ]
+  },
+  "output_settings": {
+    "temp_directory": "temp",
+    "session_backup": true,
+    "detailed_logging": true,
+    "progress_reporting": true,
+    "final_report_format": "comprehensive"
+  },
+  "recovery_settings": {
+    "auto_recovery_enabled": true,
+    "max_recovery_attempts": 3,
+    "recovery_strategies": [
+      "retry_with_delay",
+      "alternative_approach",
+      "manual_intervention"
+    ],
+    "backup_preservation": "7_days"
+  },
+  "ai_collaboration": {
+    "sequential_thinking_mcp": {
+      "enabled": true,
+      "integration_point": "phase4",
+      "thinking_modes": ["strategic", "analytical", "creative"],
+      "decision_threshold": 0.8
+    },
+    "multi_ai_review": {
+      "enabled": true,
+      "reviewers": ["gemini", "claude_secondary"],
+      "consensus_method": "weighted_average",
+      "minimum_reviewers": 2
+    },
+    "long_term_vision": {
+      "emphasis": "high",
+      "architecture_focus": true,
+      "sustainability_priority": true
+    }
+  },
+  "boc95_integration": {
+    "lesson_application": true,
+    "staged_approach": true,
+    "comprehensive_analysis": true,
+    "quality_first": true,
+    "debugging_tools": true
+  }
+}
