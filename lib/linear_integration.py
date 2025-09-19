@@ -409,3 +409,278 @@ class ProjectMapper:
 
         else:
             return "unknown"
+
+
+class LinearJSONSafeUpdater:
+    """JSON エスケープ問題を回避するLinear更新ユーティリティ"""
+
+    def __init__(self, linear_integration: LinearIntegration):
+        self.linear = linear_integration
+
+        # 正しいGraphQL mutation templates
+        self.mutations = {
+            "update_issue": """
+            mutation IssueUpdate($id: String!, $input: IssueUpdateInput!) {
+                issueUpdate(id: $id, input: $input) {
+                    success
+                    issue {
+                        id
+                        title
+                        description
+                        state {
+                            name
+                        }
+                    }
+                }
+            }
+            """,
+            "add_comment": """
+            mutation CommentCreate($input: CommentCreateInput!) {
+                commentCreate(input: $input) {
+                    success
+                    comment {
+                        id
+                        body
+                        createdAt
+                    }
+                }
+            }
+            """,
+            "update_status": """
+            mutation IssueUpdate($id: String!, $input: IssueUpdateInput!) {
+                issueUpdate(id: $id, input: $input) {
+                    success
+                    issue {
+                        id
+                        state {
+                            name
+                            id
+                        }
+                    }
+                }
+            }
+            """,
+        }
+
+        # Linear State IDs (bochang's labチーム)
+        self.state_ids = {
+            "todo": "34c3b20c-ad8e-4b7f-864c-9e57bc5e0096",
+            "in_progress": "1cebb56e-524e-4de0-b676-0f574df9012a",
+            "in_review": "33feb1c9-3276-4e13-863a-0b93db032a0f",
+            "done": "bb58fd73-3cbf-4b03-ac3c-e1a40db9ad8c",
+        }
+
+    def safe_update_issue_description(
+        self, issue_id: str, new_description: str
+    ) -> bool:
+        """
+        JSON エスケープ問題を回避してIssue description を安全に更新
+
+        Args:
+            issue_id: Linear Issue ID
+            new_description: 新しい説明文
+
+        Returns:
+            bool: 更新成功の可否
+        """
+        import tempfile
+        import subprocess
+        import json
+
+        try:
+            # 一時ファイルに説明文を保存
+            with tempfile.NamedTemporaryFile(
+                mode="w", suffix=".txt", delete=False
+            ) as f:
+                f.write(new_description)
+                temp_file = f.name
+
+            # jqを使用してJSON-safe な GraphQL クエリを生成
+            query_template = {
+                "query": 'mutation($input: IssueUpdateInput!) { issueUpdate(id: "%s", input: $input) { success } }'
+                % issue_id,
+                "variables": {"input": {"description": None}},  # jq で置換される
+            }
+
+            # jqコマンドでJSON-safe に説明文をセット
+            jq_command = [
+                "jq",
+                "-n",
+                "--rawfile",
+                "desc",
+                temp_file,
+                json.dumps(query_template).replace(
+                    '"description":null', '"description":$desc'
+                ),
+            ]
+
+            # GraphQLクエリ生成
+            result = subprocess.run(jq_command, capture_output=True, text=True)
+            if result.returncode != 0:
+                print(f"❌ jq処理エラー: {result.stderr}")
+                return False
+
+            # Linear APIに送信
+            curl_command = [
+                "curl",
+                "-X",
+                "POST",
+                "https://api.linear.app/graphql",
+                "-H",
+                f"Authorization: {self.linear.api_key}",
+                "-H",
+                "Content-Type: application/json",
+                "-d",
+                result.stdout,
+            ]
+
+            api_result = subprocess.run(curl_command, capture_output=True, text=True)
+            response_data = json.loads(api_result.stdout)
+
+            # 結果確認
+            if (
+                "data" in response_data
+                and response_data["data"]["issueUpdate"]["success"]
+            ):
+                print(f"✅ Issue {issue_id} description 更新成功")
+                return True
+            else:
+                print(f"❌ Issue更新失敗: {response_data}")
+                return False
+
+        except Exception as e:
+            print(f"❌ JSON-safe更新エラー: {e}")
+            return False
+        finally:
+            # 一時ファイル削除
+            try:
+                import os
+
+                os.unlink(temp_file)
+            except:
+                pass
+
+    def safe_add_comment(self, issue_id: str, comment_body: str) -> bool:
+        """
+        JSON エスケープ問題を回避してコメントを安全に追加
+
+        Args:
+            issue_id: Linear Issue ID
+            comment_body: コメント内容
+
+        Returns:
+            bool: 追加成功の可否
+        """
+        import tempfile
+        import subprocess
+        import json
+
+        try:
+            # 一時ファイルにコメント内容を保存
+            with tempfile.NamedTemporaryFile(
+                mode="w", suffix=".txt", delete=False
+            ) as f:
+                f.write(comment_body)
+                temp_file = f.name
+
+            # jqを使用してJSON-safe な GraphQL クエリを生成
+            query_template = {
+                "query": 'mutation { commentCreate(input: { issueId: "%s", body: "PLACEHOLDER" }) { comment { id } } }'
+                % issue_id,
+            }
+
+            # jqコマンドでJSON-safe にコメント内容をセット
+            jq_command = [
+                "jq",
+                "-n",
+                "--rawfile",
+                "body",
+                temp_file,
+                "--arg",
+                "query",
+                query_template["query"],
+                '{"query": ($query | gsub("PLACEHOLDER"; $body))}',
+            ]
+
+            # GraphQLクエリ生成
+            result = subprocess.run(jq_command, capture_output=True, text=True)
+            if result.returncode != 0:
+                print(f"❌ jq処理エラー: {result.stderr}")
+                return False
+
+            # Linear APIに送信
+            curl_command = [
+                "curl",
+                "-X",
+                "POST",
+                "https://api.linear.app/graphql",
+                "-H",
+                f"Authorization: {self.linear.api_key}",
+                "-H",
+                "Content-Type: application/json",
+                "-d",
+                result.stdout,
+            ]
+
+            api_result = subprocess.run(curl_command, capture_output=True, text=True)
+            response_data = json.loads(api_result.stdout)
+
+            # 結果確認
+            if "data" in response_data and "commentCreate" in response_data["data"]:
+                comment_id = response_data["data"]["commentCreate"]["comment"]["id"]
+                print(f"✅ コメント追加成功: {comment_id}")
+                return True
+            else:
+                print(f"❌ コメント追加失敗: {response_data}")
+                return False
+
+        except Exception as e:
+            print(f"❌ JSON-safe コメント追加エラー: {e}")
+            return False
+        finally:
+            # 一時ファイル削除
+            try:
+                import os
+
+                os.unlink(temp_file)
+            except:
+                pass
+
+    def append_to_issue_description(
+        self, issue_id: str, additional_content: str
+    ) -> bool:
+        """
+        既存のIssue descriptionに内容を追記
+
+        Args:
+            issue_id: Linear Issue ID
+            additional_content: 追記する内容
+
+        Returns:
+            bool: 追記成功の可否
+        """
+        try:
+            # 現在の説明文を取得
+            current_issue = self.linear.get_issue(issue_id)
+            if not current_issue:
+                print(f"❌ Issue {issue_id} の取得に失敗")
+                return False
+
+            current_description = current_issue.get("description", "")
+
+            # 新しい説明文 = 既存 + 追記内容
+            new_description = current_description + "\n" + additional_content
+
+            # JSON-safe 更新
+            return self.safe_update_issue_description(issue_id, new_description)
+
+        except Exception as e:
+            print(f"❌ Issue description 追記エラー: {e}")
+            return False
+
+
+# 便利なヘルパー関数
+def create_json_safe_updater() -> LinearJSONSafeUpdater:
+    """JSON-safe updater インスタンス作成"""
+    linear = LinearIntegration()
+    return LinearJSONSafeUpdater(linear)
