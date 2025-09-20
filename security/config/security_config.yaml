@@ -1,0 +1,94 @@
+# Python Security Guard System Configuration
+# ai-assistant-knowledge-hub セキュリティ設定
+
+# 有効にするセキュリティルール
+rules_enabled:
+  # 危険API（PDF パターン1-3）
+  - eval_usage           # eval()使用
+  - exec_usage           # exec()使用
+  - shell_injection      # shell=True使用
+  - unsafe_yaml          # unsafe YAML loading
+  - pickle_usage         # Pickle deserialization
+  - ssl_disabled         # SSL検証無効化
+  - weak_random          # 弱い乱数使用
+  - mutable_default      # 可変デフォルト引数
+
+  # セキュリティ問題（PDF パターン4-7）
+  - sql_injection        # SQLインジェクション
+  - path_traversal       # パストラバーサル
+  - secrets_in_logs      # ログでの秘密情報
+  - naive_datetime       # タイムゾーン未指定
+
+  # 例外・リソース（PDF パターン8-10）
+  - bare_except          # 雑なexcept
+  - broad_except         # 広範囲except Exception
+  - resource_leak        # リソース未解放
+
+  # 設定・API（PDF パターン11-12）
+  - hardcoded_secrets    # ハードコード秘密情報
+  - hardcoded_config     # ハードコード設定
+  - api_hallucination    # 存在しないAPI
+
+  # パフォーマンス・ログ（PDF パターン13-15）
+  - performance_issue    # パフォーマンス問題
+  - logging_format_issue # ログf文字列
+  - float_comparison     # 浮動小数点比較
+
+# セキュリティレベル設定
+severity_threshold: "medium"  # この以上の問題のみ報告
+
+# 除外パターン
+exclude_patterns:
+  - "test_*.py"
+  - "*_test.py"
+  - "tests/**/*.py"
+  - "**/__pycache__/**"
+  - ".venv/**"
+  - "venv/**"
+
+# Linear Issue統合設定
+linear_integration:
+  enabled: true
+  auto_create_issues: true        # 自動Issue作成
+  severity_threshold: "high"      # この以上でIssue作成
+  create_summary_reports: true    # サマリーレポート作成
+
+# ワークフロー統合設定
+workflow_integration:
+  enabled: true
+  pre_commit_hook: true          # pre-commitフック有効化
+  phase_integration: true        # フェーズシステム統合
+  block_on_critical: true        # クリティカル問題でブロック
+
+# 報告設定
+reporting:
+  max_issues_per_file: 20        # ファイル毎の最大問題数
+  include_fix_suggestions: true  # 修正提案を含める
+  show_cwe_ids: true             # CWE IDを表示
+  verbose_output: false          # 詳細出力
+
+# パフォーマンス設定
+performance:
+  max_file_size_mb: 10           # 解析する最大ファイルサイズ
+  timeout_seconds: 30            # 解析タイムアウト
+  parallel_analysis: true        # 並列解析有効化
+  max_workers: 4                 # 最大ワーカー数
+
+# キャッシュ設定
+cache:
+  enabled: true
+  cache_dir: ".security_cache"
+  ttl_hours: 24                  # キャッシュ有効期間
+
+# 通知設定
+notifications:
+  console_output: true
+  linear_comments: true
+  summary_reports: true
+
+# 開発環境設定
+development:
+  debug_mode: false
+  log_level: "INFO"
+  save_reports: true
+  report_dir: "security_reports"

@@ -1,0 +1,171 @@
+{
+  "metadata": {
+    "version": "1.0.0",
+    "created": "2025-09-21",
+    "description": "Python Security Rules for AI-Generated Code Prevention System",
+    "maintainer": "ai-assistant-knowledge-hub",
+    "update_frequency": "quarterly"
+  },
+  "activation_triggers": {
+    "file_extensions": [".py", ".pyx", ".pyw"],
+    "keywords": ["python", "script", "automation", "import", "def", "class"],
+    "project_indicators": ["requirements.txt", "setup.py", "pyproject.toml", "__init__.py"],
+    "intent_patterns": [
+      "write python", "create script", "generate code", "build automation",
+      "data processing", "file handling", "web scraping", "api integration"
+    ]
+  },
+  "security_categories": {
+    "injection_attacks": {
+      "priority": "critical",
+      "patterns": [
+        {
+          "threat": "command_injection",
+          "description": "Executing user input as system commands",
+          "vulnerable_functions": ["os.system()", "subprocess.call()", "eval()", "exec()"],
+          "example_bad": "os.system(f'rm {user_input}')",
+          "example_good": "subprocess.run(['rm', user_input], check=True)",
+          "mitigation": "Use subprocess with argument lists, never string concatenation"
+        },
+        {
+          "threat": "sql_injection",
+          "description": "Unsafe SQL query construction",
+          "vulnerable_functions": ["cursor.execute(f'SELECT...')", "raw SQL concatenation"],
+          "example_bad": "cursor.execute(f'SELECT * FROM users WHERE id={user_id}')",
+          "example_good": "cursor.execute('SELECT * FROM users WHERE id=%s', (user_id,))",
+          "mitigation": "Always use parameterized queries or ORM"
+        },
+        {
+          "threat": "code_injection",
+          "description": "Dynamic code execution with user input",
+          "vulnerable_functions": ["eval()", "exec()", "compile()", "__import__()"],
+          "example_bad": "eval(user_formula)",
+          "example_good": "Use ast.literal_eval() for safe evaluation",
+          "mitigation": "Avoid dynamic code execution, use safe alternatives"
+        }
+      ]
+    },
+    "path_traversal": {
+      "priority": "high",
+      "patterns": [
+        {
+          "threat": "directory_traversal",
+          "description": "Accessing files outside intended directory",
+          "vulnerable_functions": ["open()", "os.path.join()", "pathlib.Path()"],
+          "example_bad": "open(f'/uploads/{filename}', 'r')",
+          "example_good": "safe_path = os.path.join(UPLOAD_DIR, os.path.basename(filename))",
+          "mitigation": "Validate and sanitize file paths, use os.path.basename()"
+        }
+      ]
+    },
+    "deserialization": {
+      "priority": "critical",
+      "patterns": [
+        {
+          "threat": "unsafe_deserialization",
+          "description": "Deserializing untrusted data",
+          "vulnerable_functions": ["pickle.loads()", "pickle.load()", "yaml.load()"],
+          "example_bad": "data = pickle.loads(user_data)",
+          "example_good": "data = json.loads(user_data)",
+          "mitigation": "Use JSON instead of pickle, use yaml.safe_load()"
+        }
+      ]
+    },
+    "crypto_weaknesses": {
+      "priority": "high",
+      "patterns": [
+        {
+          "threat": "weak_cryptography",
+          "description": "Using weak or deprecated crypto functions",
+          "vulnerable_functions": ["hashlib.md5()", "hashlib.sha1()", "random.random()"],
+          "example_bad": "hash = hashlib.md5(password.encode()).hexdigest()",
+          "example_good": "hash = hashlib.sha256(password.encode()).hexdigest()",
+          "mitigation": "Use SHA-256+ for hashing, secrets.SystemRandom for crypto"
+        }
+      ]
+    },
+    "file_handling": {
+      "priority": "medium",
+      "patterns": [
+        {
+          "threat": "unrestricted_file_upload",
+          "description": "Allowing dangerous file types or sizes",
+          "vulnerable_functions": ["open()", "shutil.copy()", "file.save()"],
+          "example_bad": "file.save(f'/uploads/{file.filename}')",
+          "example_good": "if file.filename.endswith(('.txt', '.csv')): file.save(...)",
+          "mitigation": "Validate file types, limit file sizes, scan for malware"
+        }
+      ]
+    },
+    "network_security": {
+      "priority": "medium",
+      "patterns": [
+        {
+          "threat": "ssrf_vulnerability",
+          "description": "Server-Side Request Forgery via user URLs",
+          "vulnerable_functions": ["requests.get()", "urllib.request.urlopen()"],
+          "example_bad": "response = requests.get(user_url)",
+          "example_good": "if is_allowed_domain(user_url): response = requests.get(user_url)",
+          "mitigation": "Validate URLs, whitelist allowed domains/IPs"
+        }
+      ]
+    }
+  },
+  "safe_coding_patterns": {
+    "input_validation": {
+      "pattern": "Always validate and sanitize user inputs",
+      "implementation": [
+        "Use type hints and validation libraries (pydantic, marshmallow)",
+        "Implement input length limits",
+        "Use regex for format validation",
+        "Escape special characters appropriately"
+      ]
+    },
+    "error_handling": {
+      "pattern": "Implement proper error handling without information leakage",
+      "implementation": [
+        "Use generic error messages for users",
+        "Log detailed errors securely",
+        "Don't expose stack traces to users",
+        "Handle exceptions gracefully"
+      ]
+    },
+    "logging_security": {
+      "pattern": "Secure logging practices",
+      "implementation": [
+        "Never log sensitive data (passwords, tokens, PII)",
+        "Use structured logging (JSON format)",
+        "Implement log rotation and retention",
+        "Monitor logs for security events"
+      ]
+    }
+  },
+  "context_injection_templates": {
+    "high_risk_project": {
+      "trigger": "web application, API development, file processing, data import",
+      "message": "🔒 SECURITY ALERT: This project involves high-risk operations. Please review Python security guidelines before generating code. Focus on: input validation, SQL injection prevention, and secure file handling."
+    },
+    "medium_risk_project": {
+      "trigger": "automation scripts, data processing, system integration",
+      "message": "⚠️ Security Notice: Please ensure generated code follows secure coding practices. Pay attention to: command injection prevention and path traversal protection."
+    },
+    "crypto_project": {
+      "trigger": "encryption, hashing, authentication, password",
+      "message": "🔐 CRYPTO SECURITY: Use strong cryptographic functions. Avoid: MD5, SHA1, weak random. Prefer: SHA-256+, secrets module, established crypto libraries."
+    }
+  },
+  "compliance_checklists": {
+    "before_code_generation": [
+      "Identify user input points",
+      "Assess data sensitivity level",
+      "Review required security controls",
+      "Plan input validation strategy"
+    ],
+    "after_code_generation": [
+      "Review for vulnerable function usage",
+      "Verify input validation implementation",
+      "Check error handling approach",
+      "Validate logging practices"
+    ]
+  }
+}
