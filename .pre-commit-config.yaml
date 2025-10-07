@@ -4,7 +4,7 @@
 repos:
   # Basic file checks
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v5.0.0
+    rev: v6.0.0
     hooks:
       - id: trailing-whitespace
       - id: end-of-file-fixer
@@ -32,14 +32,14 @@ repos:
     hooks:
       - id: custom-secret-scan
         name: Custom secret pattern detection
-        entry: bash -c 'if grep -r -E "(sk_live_[A-Za-z0-9]{20,}|ghp_[A-Za-z0-9]{36}|password\s*=\s*[\"'\''][^\"'\''\s]{10,}|token\s*=\s*[\"'\''][A-Za-z0-9_]{10,}[\"'\''])" --include="*.sh" --include="*.py" --exclude="*audit*" . | grep -v "\${.*}" | grep -v "auth_token.*API_TOKEN"; then echo "❌ Potential secrets detected in files above"; exit 1; else echo "✅ No secrets detected"; fi'
+        entry: bash -c 'if grep -r -E "(sk_live_[A-Za-z0-9]{20,}|ghp_[A-Za-z0-9]{36}|password\s*=\s*[\"\''][^\"\'\s]{10,}|token\s*=\s*[\"\''][A-Za-z0-9_]{10,}[\"\''])" --include="*.sh" --include="*.py" --exclude="*audit*" . | grep -v "\${.*}" | grep -v "auth_token.*API_TOKEN"; then echo "❌ Potential secrets detected in files above"; exit 1; else echo "✅ No secrets detected"; fi'
         language: system
         pass_filenames: false
         types: [text]
 
   # Python-specific checks
   - repo: https://github.com/psf/black
-    rev: 24.10.0
+    rev: 25.9.0
     hooks:
       - id: black
         name: Format Python code with black
@@ -54,6 +54,15 @@ repos:
         entry: bash -c 'for file in "$@"; do bash -n "$file" || exit 1; done'
         language: system
         types: [shell]
+
+  # Advanced secret scanning for pre-push
+  - repo: https://github.com/Yelp/detect-secrets
+    rev: v1.5.0
+    hooks:
+      - id: detect-secrets
+        name: Detect secrets before push
+        stages: [pre-push]
+        args: ['--baseline', '.secrets.baseline']
 
 # Global configuration
 default_language_version:
