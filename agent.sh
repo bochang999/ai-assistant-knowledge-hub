@@ -189,7 +189,7 @@ success "AI command selection completed: $SELECTED_AI_COMMAND"
 get_linear_issue() {
     local issue_id="$1"
     local query='{
-        "query": "query($id: String!) { issue(id: $id) { id title description state { name } project { name } labels { nodes { name } } } }",
+        "query": "query($id: String!) { issue(id: $id) { id title description project { name } labels { nodes { name } } } }",
         "variables": { "id": "'"$issue_id"'" }
     }'
 
@@ -229,6 +229,18 @@ if ! get_linear_issue "$ISSUE_ID" > "$ISSUE_DATA_FILE" 2>/dev/null; then
     error "Please check that the issue ID is correct and accessible"
     exit 1
 fi
+
+# ========================================
+# STEP 3-A: プロジェクト名の抽出 (Project Name Extraction)
+# ========================================
+log "Step 3-A: Extracting project name from Linear issue data..."
+LINEAR_PROJECT_NAME=$(jq -r '.data.issue.project.name // ""' "$ISSUE_DATA_FILE")
+
+if [[ -z "$LINEAR_PROJECT_NAME" ]] || [[ "$LINEAR_PROJECT_NAME" == "null" ]]; then
+    error "Could not extract project name from issue $ISSUE_ID. Please ensure the issue is assigned to a project in Linear."
+    exit 1
+fi
+log "Detected project from Linear API: $LINEAR_PROJECT_NAME"
 
 # B2: Parse issue details using jq
 if ! command -v jq &> /dev/null; then
@@ -284,40 +296,29 @@ USER_INSTRUCTION="$USER_INSTRUCTION_WITH_CONSTITUTION"
 success "Task details retrieved and parsed successfully"
 
 # ========================================
-# STEP C: Knowledge Loader Execution
+# STEP 3-B & 3-C: Project Directory Lookup and Forced Navigation
 # ========================================
+log "Step 3-B: Looking up directory for project: $LINEAR_PROJECT_NAME"
+TARGET_DIR=$(jq -r --arg proj "$LINEAR_PROJECT_NAME" '.[$proj]' "$SCRIPT_DIR/project_map.json")
 
-log "Step C: Executing Knowledge Loader with assembled information"
-
-# C1: Navigate to Project Directory based on Project Map
-PROJECT_MAP_FILE="$SCRIPT_DIR/project_map.json"
-if [[ ! -f "$PROJECT_MAP_FILE" ]]; then
-    error "Project map file not found at $PROJECT_MAP_FILE"
-    error "Please create it and map project names to local directory paths."
+log "Step 3-C: Navigating to target directory..."
+if [[ -n "$TARGET_DIR" ]] && [[ "$TARGET_DIR" != "null" ]]; then
+    log "Project dictionary match found. Target directory: $TARGET_DIR"
+    # Expand tilde (~) to home directory
+    TARGET_DIR_EXPANDED="${TARGET_DIR/#\~/$HOME}"
+    if [[ -d "$TARGET_DIR_EXPANDED" ]]; then
+        log "Navigating to working directory: $TARGET_DIR_EXPANDED"
+        cd "$TARGET_DIR_EXPANDED"
+        success "Successfully changed to working directory: $(pwd)"
+    else
+        error "Directory '$TARGET_DIR_EXPANDED' specified in project_map.json does not exist."
+        exit 1
+    fi
+else
+    warn "Could not find a matching directory in project_map.json for project: $LINEAR_PROJECT_NAME"
+    warn "Aborting task, as the correct working directory cannot be determined."
     exit 1
 fi
-
-PROJECT_DIR=$(jq -r --arg proj "$PROJECT_NAME" '.[$proj]' "$PROJECT_MAP_FILE")
-
-if [[ -z "$PROJECT_DIR" ]] || [[ "$PROJECT_DIR" == "null" ]]; then
-    error "Project '$PROJECT_NAME' not found in $PROJECT_MAP_FILE"
-    exit 1
-fi
-
-# Expand tilde to home directory
-PROJECT_DIR_EXPANDED="${PROJECT_DIR/#\~/$HOME}"
-
-if [[ ! -d "$PROJECT_DIR_EXPANDED" ]]; then
-    error "Project directory '$PROJECT_DIR_EXPANDED' does not exist."
-    exit 1
-fi
-
-# IMPORTANT: This script is part of the ai-assistant-knowledge-hub repo.
-# We are now changing the working directory to the TARGET project directory.
-# The agent script's location ($SCRIPT_DIR) remains the same.
-log "Navigating to TARGET project directory: $PROJECT_DIR_EXPANDED"
-cd "$PROJECT_DIR_EXPANDED"
-success "Successfully changed to working directory: $(pwd)"
 
 # C2b: AI command validation already completed in dynamic selection step
 log "Using validated AI command: $AI_COMMAND"
