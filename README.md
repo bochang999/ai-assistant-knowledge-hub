@@ -50,6 +50,29 @@ npx eslint <ファイル名>
 npx eslint <ファイル名> --fix
 ```
 
+## 便利なスクリプト (Useful Scripts)
+
+### フォルダパス変換 (`get_folder_path.sh`)
+
+長いファイルパスを毎回入力する代わりに、分かりやすい「エイリアス名」から実際のパスを取得するためのスクリプトです。
+
+#### 使い方
+
+```bash
+# "ダウンロードフォルダ"のパスを取得して、その中身をリスト表示する
+ls "$(/data/data/com.termux/files/home/ai-assistant-knowledge-hub/scripts/get_folder_path.sh ダウンロードフォルダ)"
+```
+
+#### 現在の対応表
+
+| 名前 | パス |
+| :--- | :--- |
+| `ドキュメントフォルダ` | `/storage/emulated/0/Documents/` |
+| `ダウンロードフォルダ` | `/storage/emulated/0/Download/` |
+| `スクリーンショットフォルダ` | `/storage/emulated/0/Pictures/Screenshots/`|
+| `ピクチャーフォルダ` | `/storage/emulated/0/Pictures/` |
+| `写真フォルダー` | `/storage/emulated/0/Pictures/` |
+
 ## 思想：ワークベンチ vs ファクトリー
 
 このプロジェクトでは、作業の役割を明確に分けています。
