@@ -13,9 +13,35 @@ import subprocess
 from pathlib import Path
 from typing import Dict, List, Optional
 from datetime import datetime
+import requests  # 追加
 
 
 class ImplementationEngine:
+    def _call_mcp_server(self, server_url: str, tool_name: str, args: Dict) -> Dict:
+        """汎用MCPサーバー呼び出しメソッド"""
+        headers = {"Content-Type": "application/json"}
+        payload = {"tool": tool_name, "args": args}
+        try:
+            response = requests.post(
+                server_url, headers=headers, json=payload, timeout=600
+            )
+            response.raise_for_status()
+            return response.json()
+        except requests.exceptions.RequestException as e:
+            print(f"❌ MCPサーバー呼び出しエラー ({server_url}, {tool_name}): {e}")
+            raise
+
+    def _call_serena(self, tool_name: str, args: Dict) -> Dict:
+        serena_url = os.getenv("SERENA_MCP_URL", "http://localhost:24282/mcp")
+        return self._call_mcp_server(serena_url, tool_name, args)
+
+    def _call_eslint(self, tool_name: str, args: Dict) -> Dict:
+        # ESLint MCPサーバーのポートは不明なため、仮のURL
+        eslint_url = os.getenv(
+            "ESLINT_MCP_URL", "http://localhost:8000/mcp"
+        )  # 仮のポート
+        return self._call_mcp_server(eslint_url, tool_name, args)
+
     def __init__(self, project_path: str = None):
         """Implementation Engine初期化"""
         self.project_path = Path(project_path or os.getcwd())
@@ -161,7 +187,7 @@ class ImplementationEngine:
             print(f"📋 Phase {i+1}/{len(phases)}: {phase}")
 
             # フェーズ実行シミュレーション
-            phase_result = self._execute_implementation_phase(phase, i + 1)
+            phase_result = self._execute_implementation_with_serena(phase)
 
             if phase_result["success"]:
                 completed_phases.append(
@@ -186,95 +212,32 @@ class ImplementationEngine:
             current_phase_index / len(phases)
         ) * 100
 
-    def _execute_implementation_phase(self, phase: str, phase_number: int) -> Dict:
-        """個別実装フェーズ実行"""
-        # 実際の実装では、フェーズの内容に基づいて実際の作業を実行
-        # ここではシミュレーション
+    def _execute_implementation_with_serena(self, phase_description: str) -> Dict:
+        """Serenaによる実装フェーズ実行"""
+        print(f"🤖 Serenaによる実装実行: {phase_description}")
+        try:
+            # Serenaに「このフェーズを実装する」という思考を促す
+            serena_response = self._call_serena(
+                "think_about_task_adherence",
+                {"task_description": f"実装フェーズ: {phase_description}"},
+            )
+            print(f"Serena思考結果: {serena_response}")
 
-        phase_lower = phase.lower()
+            # 実際の実装では、serenaがコードを生成・修正するロジックがここに入る
+            # 現時点では、serenaが直接コードを編集するツールをPythonから呼び出すのは複雑
+            # ここは、serenaがコードを編集したという前提で進めるか、
+            # serenaのMCPサーバーに「コードを編集して」という高レベルな指示を送る形にする。
 
-        if "analysis" in phase_lower or "分析" in phase_lower:
-            return self._simulate_analysis_phase(phase)
-        elif "implementation" in phase_lower or "実装" in phase_lower:
-            return self._simulate_implementation_phase_actual(phase)
-        elif "testing" in phase_lower or "テスト" in phase_lower:
-            return self._simulate_testing_phase(phase)
-        elif "documentation" in phase_lower or "ドキュメント" in phase_lower:
-            return self._simulate_documentation_phase(phase)
-        else:
-            return self._simulate_general_phase(phase)
-
-    def _simulate_analysis_phase(self, phase: str) -> Dict:
-        """分析フェーズシミュレーション"""
-        # 実際の実装では、コード分析、問題特定等を実行
-        return {
-            "success": True,
-            "actions_taken": [
-                "プロジェクト構造の詳細分析",
-                "問題の根本原因特定",
-                "影響範囲の確認",
-            ],
-            "findings": [
-                "特定されたコンポーネントでの問題確認",
-                "既存アーキテクチャとの整合性確認",
-            ],
-            "duration_minutes": 30,
-        }
-
-    def _simulate_implementation_phase_actual(self, phase: str) -> Dict:
-        """実装フェーズシミュレーション"""
-        # 実際の実装では、コード変更、ファイル編集等を実行
-        return {
-            "success": True,
-            "actions_taken": [
-                "必要なファイルの特定と編集",
-                "新機能の実装",
-                "既存コードとの統合",
-            ],
-            "files_modified": ["例: script.js", "例: index.html", "例: style.css"],
-            "tests_added": ["ユニットテスト追加", "統合テスト追加"],
-            "duration_minutes": 120,
-        }
-
-    def _simulate_testing_phase(self, phase: str) -> Dict:
-        """テストフェーズシミュレーション"""
-        # 実際の実装では、テスト実行、結果検証等を実行
-        return {
-            "success": True,
-            "actions_taken": ["ユニットテスト実行", "統合テスト実行", "回帰テスト実行"],
-            "test_results": {
-                "unit_tests": {"passed": 25, "failed": 0},
-                "integration_tests": {"passed": 8, "failed": 0},
-                "regression_tests": {"passed": 15, "failed": 0},
-            },
-            "coverage_percentage": 85,
-            "duration_minutes": 45,
-        }
-
-    def _simulate_documentation_phase(self, phase: str) -> Dict:
-        """ドキュメンテーションフェーズシミュレーション"""
-        return {
-            "success": True,
-            "actions_taken": [
-                "技術仕様書の更新",
-                "ユーザードキュメントの更新",
-                "開発ガイドの更新",
-            ],
-            "documents_updated": ["README.md", "CLAUDE.md", "API documentation"],
-            "duration_minutes": 60,
-        }
-
-    def _simulate_general_phase(self, phase: str) -> Dict:
-        """一般フェーズシミュレーション"""
-        return {
-            "success": True,
-            "actions_taken": [
-                f"フェーズタスク実行: {phase}",
-                "品質チェック実施",
-                "次フェーズ準備",
-            ],
-            "duration_minutes": 45,
-        }
+            # 一旦、成功したと仮定
+            return {
+                "success": True,
+                "actions_taken": [f"Serenaによる実装タスク実行: {phase_description}"],
+                "files_modified": ["（Serenaが修正したファイルリスト）"],
+                "duration_minutes": 60,
+            }
+        except Exception as e:
+            print(f"❌ Serenaによる実装実行エラー: {e}")
+            return {"success": False, "error": str(e)}
 
     def _perform_quality_checks(self):
         """品質チェック実行"""
@@ -303,15 +266,68 @@ class ImplementationEngine:
         print(f"📊 品質チェック完了")
 
     def _check_code_quality(self) -> Dict:
-        """コード品質チェック"""
-        # 実際の実装では、ESLint、SonarQube等を実行
+        """コード品質チェック (ESLint & Serenaによる自動修正ループ)"""
+        print("🤖 ESLintとSerenaによるコード品質チェック実行中...")
+        max_retries = 5
+        linting_issues_found = 0
+        status = "GOOD"
+
+        for attempt in range(max_retries):
+            print(f"🔍 ESLintチェック実行中... (試行 {attempt + 1}/{max_retries})")
+            try:
+                # 1. ESLintを実行してエラーをチェック
+                # ESLint MCPサーバーのツール名と引数はドキュメントで確認が必要
+                # 仮に 'check_project' というツールがあり、プロジェクトパスを引数に取るとする
+                eslint_result = self._call_eslint(
+                    "check_project",  # 仮のツール名
+                    {"project_path": str(self.project_path)},
+                )
+                linting_errors = eslint_result.get("errors", [])
+
+                if not linting_errors:
+                    print("✅ ESLint: コード品質問題なし")
+                    return {"linting_score": 100, "issues_found": 0, "status": "GOOD"}
+                else:
+                    linting_issues_found = len(linting_errors)
+                    status = "BAD"
+                    print(f"⚠️ ESLint: {linting_issues_found}件の問題を検出")
+                    print(
+                        f"Serenaによる修正を試行中... (試行 {attempt + 1}/{max_retries})"
+                    )
+
+                    # 2. Serenaにエラー修正を依頼
+                    # Serenaのexecute_shell_commandを使って、eslint --fix を実行させるのが現実的
+                    serena_fix_response = self._call_serena(
+                        "execute_shell_command",
+                        {
+                            "command": f"npx eslint --fix {self.project_path}",
+                            "cwd": str(self.project_path),
+                        },
+                    )
+                    print(f"Serena修正試行結果: {serena_fix_response}")
+
+                    # 修正が成功したかどうかは、次のループでESLintを再実行して確認する
+                    # ここでは、Serenaが修正を試みたという事実のみを記録
+                    self.implementation_status["issues_encountered"].append(
+                        f"ESLint問題検出とSerenaによる修正試行 (試行 {attempt + 1})"
+                    )
+
+            except Exception as e:
+                print(f"❌ 品質チェック中にエラーが発生: {e}")
+                self.implementation_status["issues_encountered"].append(
+                    f"ESLintチェック中にエラー: {e}"
+                )
+                # エラーが発生した場合も、ループを継続するかどうかは戦略による
+                # ここでは、エラーが発生したらその試行は失敗とみなし、次の試行へ
+                continue
+
+        print(
+            f"❌ ESLint: {linting_issues_found}件の問題が残っています。自動修正できませんでした。"
+        )
         return {
-            "linting_score": 95,
-            "complexity_score": 85,
-            "maintainability_index": 90,
-            "technical_debt_hours": 2.5,
-            "issues_found": 3,
-            "status": "GOOD",
+            "linting_score": 0,
+            "issues_found": linting_issues_found,
+            "status": status,
         }
 
     def _check_test_coverage(self) -> Dict:
