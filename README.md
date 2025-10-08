@@ -1,127 +1,58 @@
-# 🤖 AI協業ワークフローシステム - BOC-95ベース段階的問題解決
+# 🤖 AI協業ワークフローシステム
 
 BOC-95の経験を体系化した、AI協業による持続可能な開発プロセスを実現するワークフローシステムです。
 
-## 🎯 システム概要
+## ✨ 2つの主要な使い方
 
-このシステムは、Linear IssueからSequential Thinking MCPによる戦略立案、AIレビュー、実装まで、全8フェーズの自動化されたワークフローを提供します。
+このプロジェクトには、目的に応じて2つの主要なワークフローがあります。
 
-### 核心理念
-- **長期的発展重視**: 即座の解決よりも持続可能な解決策を優先
-- **技術的合理性**: Sequential Thinking MCPとAI多段階レビューによる意思決定
-- **場当たり的修正の回避**: BOC-95の教訓を活かした体系的アプローチ
-- **AI協業最適化**: 人間とAIの効果的な役割分担
+### 1. `run_workflow.sh`：課題を自動で解決したい時に
+課題の分析から実装、報告までを8つのフェーズで自動処理する、最も包括的なワークフローです。
 
-## 🏗️ システムアーキテクチャ
+- **ユースケース**: Issueの内容を元に、一連の解決プロセスを自動で進めたい場合。
+- **実行コマンド**: `./run_workflow.sh <Issue-ID>`
 
-### 8フェーズワークフロー
+### 2. `working-doit.sh`：特定の課題に手動で取り組む時に
+Issue番号を元に、関連するプロジェクトのディレクトリへ自動で移動し、すぐに作業を開始できるワークフローです。
 
-```
-Phase 1: Issue Intelligence & Project Discovery
-    ↓ (Linear API + project_map.json)
-Phase 2: Project Context Analysis
-    ↓ (構造スキャン + 技術スタック分析)
-Phase 3: Issue Requirements Analysis
-    ↓ (要件抽出 + 影響分析)
-Phase 4: Strategic Planning (Sequential Thinking MCP統合) ⭐
-    ↓ (長期戦略立案 + アーキテクチャ影響評価)
-Phase 5: Report Generation & Linear Integration
-    ↓ (包括レポート + Linear自動更新)
-Phase 6: AI Review & Decision Engine
-    ↓ (Gemini+Claude多段階レビュー + 技術的合理性判定)
-Phase 7: Implementation Execution
-    ↓ (段階的実装 + 品質チェック)
-Phase 8: Documentation & Continuity
-    ↓ (GitHub自動commit + 次回セッション用コンテキスト保存)
-```
+- **ユースケース**: 特定のIssueについて、コーディングなど手動での作業をすぐ始めたい場合。
+- **実行コマンド**: `~/ai-assistant-knowledge-hub/scripts/automation/working-doit.sh <Issue番号>`
 
-## 🚀 使用方法
+## 🛠️ 開発環境のセットアップ
 
-### 基本実行
+作業を始める前に、以下の設定が必要です。
 
+### 1. Linearとの連携設定
+Linear APIを利用するために、APIキーとチームIDをファイルに保存します。
+
+- `~/.linear-api-key`: あなたのLinear APIキーをこのファイルに保存してください。
+- `~/.linear-team-id`: あなたのLinearチームIDをこのファイルに保存してください。
+
+**API直接利用（デバッグ用）:**
 ```bash
-# 完全ワークフロー実行
-python lib/workflow_coordinator.py execute BOC-123
-
-# 特定フェーズ範囲実行
-python lib/workflow_coordinator.py phase 1 4 /path/to/project
-
-# ワークフロー再開
-python lib/workflow_coordinator.py resume session_id_20240919_143000
+curl -X POST "https://api.linear.app/graphql" -H "Authorization: $(cat ~/.linear-api-key)" ...
 ```
 
-### 個別フェーズ実行
+### 2. コード品質ツールの設定 (ESLint)
+開発効率を上げるため、ESLintを導入しています。
 
+**インストール:**
 ```bash
-# Phase 1: Issue Discovery
-python workflows/phase1-issue-discovery.py BOC-123
-
-# Phase 4: Strategic Planning (Sequential Thinking MCP)
-python workflows/phase4-strategic-planning.py /path/to/project
+npm install --save-dev eslint eslint_d vscode-langservers-extracted
 ```
 
-## ⚙️ 設定・要件
-
-### 必要な設定ファイル
-
+**使い方:**
 ```bash
-# Linear API設定
-~/.linear-api-key       # Linear APIキー
-~/.linear-team-id       # Linear チームID
+# ファイルをチェック
+npx eslint <ファイル名>
 
-# プロジェクトマッピング
-project_map.json        # プロジェクトタグ→ディレクトリマッピング
+# 自動で修正
+npx eslint <ファイル名> --fix
 ```
 
-## 🔧 主要機能
+## 思想：ワークベンチ vs ファクトリー
 
-### Sequential Thinking MCP統合 (Phase 4)
-- **長期的戦略立案**: MCPによる体系的思考プロセス
-- **技術的合理性評価**: アーキテクチャ影響分析
-- **代替アプローチ検討**: リスク軽減策の立案
+このプロジェクトでは、作業の役割を明確に分けています。
 
-### AI多段階レビュー (Phase 6)
-- **Gemini + Claude**: 複数AIによるレビュー
-- **技術的合理性判定**: 自動判定アルゴリズム
-- **代替案生成**: レビュー結果に基づく改善提案
-
-### 品質保証システム
-- **品質ゲート**: 各フェーズでの品質チェック
-- **自動リカバリ**: エラー時の自動復旧機能
-- **進捗追跡**: リアルタイム状況監視
-
-### 継続性保証
-- **セッション管理**: 中断・再開対応
-- **コンテキスト保存**: 次回セッション用状態保存
-- **GitHub統合**: 自動commit・push
-
----
-
-**生成システム**: BOC-95ベースAI協業ワークフローシステム
-**バージョン**: 1.0.0
-**最終更新**: 2024-09-19
-
-## 開発環境の基本方針
-このプロジェクトでは、開発効率と安定性を最大化するため、ローカル環境とCI/CD環境の役割を明確に分離します。
-
-### CI/CD環境 (GitHub Actions): "ファクトリー（工場）"
-役割: 本番ビルドを実行する唯一の公式な場所です。リソースを大量に消費する、あるいは特定のプラットフォームに依存する重たい処理は、すべてここで行います。
- * 担当業務:
-   * APKや最終成果物の完全なビルド
-   * 画像最適化などのアセット生成 (例: sharp の利用)
-   * 統合テスト、E2Eテストの実行
- * セットアップ:
-   * npm ci などを使い、すべての依存関係 (ネイティブ依存を含む) をインストールします。
-
-### ローカル環境 (Termuxなど): "ワークベンチ（作業台）"
-役割: 日々のコーディングと品質チェックに特化した、軽量で高速な作業場所です。
- * 担当業務:
-   * コードの記述・編集
-   * リンター (lint) やフォーマッター (format) の実行
-   * 軽量な単体テストの実行
- * セットアップ:
-   * npm ci --no-optional などを使い、重たいビルド用ライブラリを意図的に除外し、開発に必要なツールのみをインストールします。
-
-### 最重要原則
-「ワークベンチに、工場の設備一式を持ち込もうとしないこと」
-ローカル環境の価値は、完全なビルド能力よりも、日々の作業における速度とシンプルさにあります。
+- **ローカル環境（あなたのPC）**: コーディングや簡単なテストを行う「作業台（ワークベンチ）」です。
+- **CI/CD環境（GitHub Actionsなど）**: アプリのビルドなど、重い処理を行う「工場（ファクトリー）」です。
