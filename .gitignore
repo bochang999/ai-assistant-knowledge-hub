@@ -1,38 +1,50 @@
-# Cache directories
+# Cache and dependency directories
 .cache/
-__pycache__/
-*.pyc
-*.pyo
+.npm/
+.cargo/
+.claude/
+.serena/
+.venv/
+go/pkg/
+go/bin/
+node_modules/
 
-# Build directories
-build/
-dist/
-*.egg-info/
+# Backup directories
+laminator-dashboard-backup/
+petit-recipe-backup-20250924_183616/
+recipebox-web-backup/
+recipebox-web-check/
+recipebox-web-clean/
 
-# IDE files
-.vscode/
-.idea/
-
-# OS files
+# OS-specific files
 .DS_Store
 Thumbs.db
 
-# Embedded git repositories
-DeepDanbooru/.git/
-.cache/briefcase/templates/*/
+# IDE configuration
+.idea/
+.vscode/
 
-# Large binary files
-*.apk
-*.so
-*.dylib
-*.dll
+# Python artifacts
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+pip-wheel-metadata/
+*.egg-info/
+.env
 
-# Model files
-*.bin
-*.ggml
-models/
+# Build artifacts
+dist/
+build/
 
-# Temporary files
-*.tmp
-*.temp
+# Temporary files from our session
 *.log
+*.zip
+*.tar.gz
+*.jks
+*.bak
+*.backup
+*.tmp
+*.swp
+cli.py
