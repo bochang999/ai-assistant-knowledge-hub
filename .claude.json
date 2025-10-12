@@ -1,0 +1,25 @@
+{
+  "mcpServers": {
+    "serena": {
+      "type": "stdio",
+      "command": "uv",
+      "args": [
+        "run",
+        "serena",
+        "start-mcp-server",
+        "--project",
+        "/data/data/com.termux/files/home/ai-assistant-knowledge-hub"
+      ],
+      "env": {}
+    },
+    "filesystem": {
+      "type": "stdio",
+      "command": "mcp-server-filesystem",
+      "args": [
+        "/data/data/com.termux/files/home",
+        "/storage/emulated/0/Download"
+      ],
+      "env": {}
+    }
+  }
+}
