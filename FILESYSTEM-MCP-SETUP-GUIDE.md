@@ -457,11 +457,46 @@ gemini mcp add filesystem mcp-server-filesystem \
 
 ---
 
+## Gemini CLIでのツール使用方法
+
+### 重要: ツール命名規則
+
+Gemini CLIでは、MCPサーバーのツールは自動的に発見されますが、**ツール名の衝突**が発生する場合があります。
+
+**命名規則**:
+- Gemini CLIに組み込みツール（例: `list_directory`, `read_file`）がある場合
+- Filesystem MCPサーバーのツールには `filesystem__` プレフィックスが付与される
+- 例: `list_directory` → `filesystem__list_directory`
+
+### ツール名の確認方法
+
+**方法1**: AIアシスタントに質問
+```
+「現在利用可能なツールのリストを表示してください。
+特に "filesystem" または "directory" を含むツール名を教えてください。」
+```
+
+**方法2**: デバッグモードで起動
+```bash
+gemini --debug
+```
+
+### 使用例
+
+```
+「filesystem__list_directory を使って /storage/emulated/0/Download の内容を表示してください」
+```
+
+**詳細**: `GEMINI-FILESYSTEM-MCP-USAGE-GUIDE.md` を参照
+
+---
+
 ## 参考リンク
 
 - **公式リポジトリ**: https://github.com/modelcontextprotocol/servers/tree/main/src/filesystem
 - **MCP仕様**: https://modelcontextprotocol.io/
 - **NPMパッケージ**: https://www.npmjs.com/package/@modelcontextprotocol/server-filesystem
+- **Gemini CLI MCP ドキュメント**: https://gemini-cli.xyz/docs/en/tools/mcp-server
 
 ---
 
