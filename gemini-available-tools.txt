@@ -1,0 +1,97 @@
+# Gemini CLI - 利用可能なツール一覧
+# 取得日時: 2025-10-12
+# コマンド: echo "利用可能なツールを全てリストアップしてください" | gemini --yolo
+
+## Filesystem MCP Server提供のツール（プレフィックス付き）
+
+### filesystem__read_file
+説明: ファイルシステムからファイルの全内容を読み取ります。
+
+### filesystem__write_file
+説明: 新しいファイルを作成するか、既存のファイルを新しい内容で完全に上書きします。
+
+### filesystem__list_directory
+説明: 指定されたパス内のすべてのファイルとディレクトリの詳細なリストを取得します。
+
+---
+
+## 組み込みツール（プレフィックスなし）
+
+### list_directory
+説明: 指定されたディレクトリパス内のファイルとサブディレクトリの名前を一覧表示します。
+注意: サンドボックス制限あり - workspace directories内のみアクセス可能
+
+### read_file
+説明: 指定されたファイルの内容を読み取って返します。
+
+### write_file
+説明: 指定されたファイルに内容を書き込みます。
+
+---
+
+## Serena MCP Server提供のツール（プレフィックス付き）
+
+### serena__read_file
+説明: 指定されたファイルまたはその一部を読み取ります。
+
+### その他のSerenaツール
+- create_text_file
+- list_dir
+- find_file
+- replace_regex
+- search_for_pattern
+- get_symbols_overview
+- find_symbol
+- find_referencing_symbols
+- replace_symbol_body
+- insert_after_symbol
+- insert_before_symbol
+- write_memory / read_memory / list_memories / delete_memory
+- execute_shell_command
+- activate_project
+- switch_modes
+- get_current_config
+- onboarding
+- その他
+
+---
+
+## その他の組み込みツール
+
+- search_file_content
+- glob
+- replace
+- web_fetch
+- read_many_files
+- run_shell_command
+- save_memory
+- google_web_search
+- read_multiple_files
+- edit_file
+- create_directory
+- move_file
+- search_files
+- get_file_info
+- list_allowed_directories
+- その他
+
+---
+
+## 重要な注意事項
+
+1. **Filesystem MCPツールを使用する場合**:
+   - 必ず `filesystem__` プレフィックスを付けてください
+   - 例: `filesystem__list_directory`
+
+2. **プレフィックスなしのツール**:
+   - 組み込みツールが呼ばれます
+   - サンドボックス制限により、workspace directories外へのアクセスは拒否されます
+
+3. **ツール名の確認方法**:
+   ```bash
+   echo "利用可能なツールを全てリストアップしてください。filesystemを含むツール名を教えてください" | gemini --yolo
+   ```
+
+4. **正しい使用例**:
+   - ✅ 「filesystem__list_directory ツールを使って /storage/emulated/0/Download の内容を表示」
+   - ❌ 「list_directory を使って /storage/emulated/0/Download の内容を表示」（組み込みツールが呼ばれる）
