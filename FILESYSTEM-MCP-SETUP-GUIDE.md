@@ -95,6 +95,12 @@ cd /data/data/com.termux/files/home/ai-assistant-knowledge-hub
 gemini mcp add filesystem mcp-server-filesystem /data/data/com.termux/files/home /storage/emulated/0/Download
 ```
 
+**⚠️ 重要な注意点**:
+- 引用符は使用しないでください
+- コマンド名と引数を空白区切りで指定します
+- `--transport stdio`などのオプションは不要です（デフォルトでstdio）
+- 詳細は[トラブルシューティング - 問題4](#問題4-gemini-mcp-addで引用符を使うとdisconnected状態になる)を参照
+
 ### 接続確認
 
 ```bash
@@ -343,6 +349,57 @@ gemini mcp add filesystem mcp-server-filesystem /path/to/dir1 /path/to/dir2 /pat
 gemini mcp add filesystem mcp-server-filesystem /data/data/com.termux/files/home
 ```
 
+### 問題4: `gemini mcp add`で引用符を使うとDisconnected状態になる
+
+**症状**:
+```bash
+# このコマンドを実行するとDisconnectedになる
+gemini mcp add filesystem "mcp-server-filesystem /path1 /path2"
+```
+
+**原因**: 引用符で囲むと、全体が`command`フィールドに入り、`args`が空になる
+
+**誤った設定結果**:
+```json
+{
+  "mcpServers": {
+    "filesystem": {
+      "command": "mcp-server-filesystem /data/data/com.termux/files/home /storage/emulated/0/Download",
+      "args": []
+    }
+  }
+}
+```
+
+**正しい設定**:
+```json
+{
+  "mcpServers": {
+    "filesystem": {
+      "command": "mcp-server-filesystem",
+      "args": [
+        "/data/data/com.termux/files/home",
+        "/storage/emulated/0/Download"
+      ]
+    }
+  }
+}
+```
+
+**解決策**:
+```bash
+# ✅ 正しい: 引用符なしで、空白区切りで指定
+gemini mcp add filesystem mcp-server-filesystem /data/data/com.termux/files/home /storage/emulated/0/Download
+
+# ❌ 間違い: 引用符で囲む
+gemini mcp add filesystem "mcp-server-filesystem /data/data/com.termux/files/home /storage/emulated/0/Download"
+
+# ❌ 間違い: --transport stdio を明示的に指定する必要はない（デフォルトがstdio）
+gemini mcp add filesystem "mcp-server-filesystem /path1 /path2" --transport stdio
+```
+
+**重要**: `gemini mcp add`コマンドは、引用符なしで実行ファイル名と引数を空白区切りで指定します。これにより、自動的に`command`と`args`に正しく分離されます。
+
 ---
 
 ## セキュリティのベストプラクティス
@@ -408,7 +465,7 @@ gemini mcp add filesystem mcp-server-filesystem \
 
 ---
 
-## BOC-XXX: Filesystem MCP統合の教訓
+## Filesystem MCP統合の教訓
 
 このガイドは、Geminiとの協業で得た経験から作成されました。
 
@@ -418,9 +475,25 @@ gemini mcp add filesystem mcp-server-filesystem \
 2. **最低1つのディレクトリが必須**: 引数なしでは起動できない
 3. **stdiモードが推奨**: httpモードよりも安定している
 4. **パッケージは事前インストール**: `npx`よりもグローバルインストールが確実
+5. **引用符を使わない**: `gemini mcp add`コマンドでは引用符なしで空白区切りで指定（最重要！）
+
+### 実際のトラブルシューティング事例
+
+**問題**: `gemini mcp list`で常にDisconnected状態
+**試行錯誤の経緯**:
+1. ❌ `gemini mcp add filesystem npx mcp-server --type filesystem` → 誤ったパッケージ名
+2. ❌ `gemini mcp add filesystem "npx mcp-server --type filesystem" --transport http --port 4333` → httpモードの混乱
+3. ❌ `gemini mcp add filesystem "mcp-server-filesystem /path1 /path2" --transport stdio` → 引用符が原因でargs空配列
+
+**解決策**: 引用符を削除して、空白区切りで指定
+```bash
+gemini mcp add filesystem mcp-server-filesystem /data/data/com.termux/files/home /storage/emulated/0/Download
+```
+
+**根本原因**: `gemini mcp add`コマンドは、引用符で囲まれた文字列全体を`command`フィールドに格納する。引数を正しく`args`配列に分離するには、引用符なしで空白区切りで指定する必要がある。
 
 ---
 
 **作成日**: 2025-10-12
-**最終更新**: Filesystem MCP導入完了時
+**最終更新**: 2025-10-12（引用符問題の教訓追加）
 **メンテナンス**: パッケージ更新時にこのガイドを更新してください

@@ -88,11 +88,14 @@ echo ""
 echo "➕ Step 5/5: Filesystem MCPサーバー登録中..."
 
 # 引数配列を構築
+# 重要: 引用符は使わず、空白区切りで指定する
+# 引用符で囲むと全体がcommandフィールドに入り、argsが空配列になる
 ARGS_STRING="mcp-server-filesystem"
 for dir in "${DEFAULT_DIRS[@]}"; do
     ARGS_STRING="$ARGS_STRING $dir"
 done
 
+# 引用符なしで実行（重要！）
 gemini mcp add filesystem $ARGS_STRING
 
 # 登録確認
